@@ -4,7 +4,11 @@ The community hub is a kit for Modo that centralizes community information
 and third party kits into a singe, easy to use interface.
 
 # Building the kit
-to build the index.xml file, run `lpCreator.py`
+Python version: `3.7` 
+
+To install the kit to your appdata kits directory, run: `install.py`
+
+To build the index.xml file, run: `lpCreator.py`
 
 # Current State
 The current state of the kits is a simple list of resources that will open
