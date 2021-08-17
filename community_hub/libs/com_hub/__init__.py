@@ -1,0 +1,2 @@
+
+hub_window = None

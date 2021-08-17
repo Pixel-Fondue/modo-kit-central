@@ -8,7 +8,7 @@ Python version: `3.7`
 
 To install the kit to your appdata kits directory, run: `install.py`
 
-To build the index.xml file, run: `lpCreator.py`
+To build the lpk file, run: `build.py`
 
 # Current State
 The current state of the kits is a simple list of resources that will open
