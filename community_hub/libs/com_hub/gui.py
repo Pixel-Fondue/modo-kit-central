@@ -1,13 +1,14 @@
 try:
-    from PySide.QtCore import Qt, QTimer
-    from PySide.QtGui import (QPixmap, QLabel, QDesktopWidget, QMainWindow, QCursor, QColor,
-                              QApplication, QWidget, QVBoxLayout, QPushButton, QTabWidget,
-                              QListWidget, QListWidgetItem)
-except (ImportError, ModuleNotFoundError):
     from PySide2.QtCore import Qt, QTimer
     from PySide2.QtGui import QCursor, QPixmap, QColor
     from PySide2.QtWidgets import (QLabel, QDesktopWidget, QMainWindow, QApplication, QTabWidget,
                                    QPushButton, QWidget, QVBoxLayout, QListWidget, QListWidgetItem)
+except ImportError:
+    from PySide.QtCore import Qt, QTimer
+    from PySide.QtGui import (QPixmap, QLabel, QDesktopWidget, QMainWindow, QCursor, QColor,
+                              QApplication, QWidget, QVBoxLayout, QPushButton, QTabWidget,
+                              QListWidget, QListWidgetItem)
+
 # Kit imports
 from com_hub.prefs import Text, KEYS, CSS
 from com_hub.utils import load_resource
@@ -20,8 +21,8 @@ class CommunityHub(QMainWindow):
         super(CommunityHub, self).__init__(None)
         self.setWindowTitle(Text.title)
         self.setWindowFlags(self.windowFlags() | Qt.WindowStaysOnTopHint)
-        self.setMinimumWidth(600)
-        self.setMinimumHeight(400)
+        self.resize(450, 300)
+        self.authors = load_resource(KEYS.authors)
         self.build_ui()
 
         # Display the UI
@@ -37,10 +38,9 @@ class CommunityHub(QMainWindow):
         tabs = QTabWidget()
         base_layout.addWidget(tabs)
 
-        tab_video = self.build_tab(KEYS.videos)
-        tabs.addTab(tab_video, KEYS.videos)
-        tab_kits = self.build_tab(KEYS.kits)
-        tabs.addTab(tab_kits, KEYS.kits)
+        for tab_type in (KEYS.videos, KEYS.kits, KEYS.social):
+            tab = self.build_tab(tab_type)
+            tabs.addTab(tab, tab_type)
 
         self.setCentralWidget(base_widget)
         self.setStyleSheet(CSS)

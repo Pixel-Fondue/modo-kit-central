@@ -1,3 +1,34 @@
 {
-  // TODO: Add social media info
+  "Modo Discussion": {
+    "url": "https://community.foundry.com/discuss/modo",
+    "description": "Official Modo community forums."
+  },
+  "Pixel Fondue": {
+    "url": "https://www.pixelfondue.com",
+    "description": ""
+  },
+  "Modo Japan Group": {
+    "url": "http://modogroup.jp",
+    "description": ""
+  },
+  "Slack Invite": {
+    "url": "https://join.slack.com/t/foundry-modo/shared_invite/zt-4splavhg-Sge5JDWP934gYLN6bJ0Q7A",
+    "description": "Invitation link to gain access to the official Modo slack group."
+  },
+  "Slack": {
+    "url": "https://foundry-modo.slack.com/",
+    "description": "Official Slack group."
+  },
+  "Twitter": {
+    "url": "https://twitter.com/foundrymodo",
+    "description": "Official Modo Twitter"
+  },
+  "Facebook": {
+    "url": "https://www.facebook.com/groups/modousers",
+    "description": "Official Modo Facebook group"
+  },
+  "Discord": {
+    "url": "https://discord.gg/7yqPnSuq",
+    "description": "Unofficial Modo Discord group."
+  }
 }

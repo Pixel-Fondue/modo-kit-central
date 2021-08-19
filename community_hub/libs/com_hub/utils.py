@@ -1,7 +1,7 @@
 # python
 import json
 from os.path import dirname, join, exists
-from com_hub.prefs import resources
+from com_hub import prefs
 
 
 def get_resources():
@@ -15,8 +15,11 @@ def get_resources():
     for i in range(3):
         res_path = dirname(res_path)
     # Add the resources path
-    resources = join(res_path, "resources")
-    return resources
+    prefs.resources = join(res_path, "resources")
+    # Load the authors
+    with open(join(prefs.resources, "authors.json"), "r") as author_file:
+        prefs.authors = json.load(author_file)
+    return prefs.resources
 
 
 def load_resource(res_type):
@@ -28,7 +31,7 @@ def load_resource(res_type):
     Returns:
         (dict): The loaded resource.
     """
-    res_path = resources if resources else get_resources()
+    res_path = prefs.resources if prefs.resources else get_resources()
 
     resource = join(res_path, "{}.json".format(res_type))
 
@@ -37,3 +40,5 @@ def load_resource(res_type):
             return json.load(resource_file)
     else:
         return None
+
+get_resources()

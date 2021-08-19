@@ -1,0 +1,21 @@
+{
+  "Shawn Frueh": {
+    "avatar": "shawn_frueh.png",
+    "handle": "FruehBird",
+    "profile": "https://community.foundry.com/profile/fruehbird",
+    "links": {
+      "Gumroad": "https://shawnfrueh.gumroad.com/",
+      "Github": "https://github.com/ShawnFrueh",
+      "Slack": "https://foundry-modo.slack.com/team/U6DFT3YUQ"
+    }
+  },
+  "Frank Elisabeth": {
+    "avatar": null,
+    "handle": "SMOLUCK",
+    "profile": "https://community.foundry.com/profile/smoluck",
+    "links": {
+      "Gumroad": "https://smoluck.gumroad.com",
+      "Twitter": "https://twitter.com/sm0luck"
+    }
+  }
+}
