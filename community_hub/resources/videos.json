@@ -1,0 +1,16 @@
+{
+  "Workflow Refined": {
+    "category": "quick_clips",
+    "title": "Modo 15.1 - Workflow Refined",
+    "url": "https://www.youtube.com/watch?v=zbQN4sf_hh0",
+    "description": "A summary of the new features in Modo 15.1.",
+    "search": ["quick", "clip"]
+  },
+  "Create Complex 3D Shapes from 2D Curves with Curve Booleans": {
+    "category": "tutorials",
+    "title": "Modo 15.1 - Create Complex 3D Shapes from 2D Curves with Curve Booleans",
+    "url": "https://www.youtube.com/watch?v=kjAfnan-ha0",
+    "description": "Learn how to create complex 3D models such as logos, decals and more using Modo's curve tools coupled with a system of booleans to create complex 2D shapes that are ready for 3D conversion.",
+    "search": ["tutorial", "15", "curve", "boolean"]
+  }
+}

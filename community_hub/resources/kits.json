@@ -1,0 +1,26 @@
+{
+  "PyMOp": {
+    "author": "Shawn Frueh",
+    "version": "2.0",
+    "modo_min": 1000,
+    "modo_max": 1500,
+    "description": "The Python Mesh Operator, PyMop, allows you to edit the code of a mesh operator live from within MODO!",
+    "url": "https://shawnfrueh.gumroad.com/l/pyMop",
+    "help": "https://community.foundry.com/discuss/topic/139479/kit-the-python-mesh-operator",
+    "search": ["python"],
+    "add_ons": {
+      "Plexus": {
+        "url": "https://shawnfrueh.gumroad.com/l/PyMopPlexus",
+        "description": "Using PyMop, this preset lets you procedurally connect particles/points with lines. \nThis checks each point against each point so it will get slow with a high number of points/particles."
+      }
+    }
+  },
+  "PyExpress": {
+    "author": "Shawn Frueh",
+    "version": "2.0",
+    "description": "The Python Modifier, PyExpress, allows you to edit the code of a modifier live from within MODO!",
+    "url": "https://shawnfrueh.gumroad.com/l/pyMop",
+    "help": "https://community.foundry.com/discuss/topic/139479/kit-the-python-mesh-operator",
+    "search": ["python"]
+  }
+}
