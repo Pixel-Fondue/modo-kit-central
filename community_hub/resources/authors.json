@@ -9,13 +9,166 @@
       "Slack": "https://foundry-modo.slack.com/team/U6DFT3YUQ"
     }
   },
-  "Frank Elisabeth": {
+  "Franck Elisabeth": {
     "avatar": null,
     "handle": "SMOLUCK",
     "profile": "https://community.foundry.com/profile/smoluck",
     "links": {
       "Gumroad": "https://smoluck.gumroad.com",
       "Twitter": "https://twitter.com/sm0luck"
+    }
+    },
+  "William Vaughan": {
+    "avatar": null,
+    "handle": "Vaughan3D",
+    "profile": "https://community.foundry.com/profile/williamvaughan",
+    "links": {
+      "Gumroad": "https://vaughan3d.gumroad.com",
+      "Twitter": "https://twitter.com/Vaughan3D"
+    }
+  },
+  "Richard Yot": {
+    "avatar": null,
+    "handle": "AnimationItchy",
+    "profile": "https://community.foundry.com/profile/richardyot",
+    "links": {
+      "Gumroad": "https://richardyot.gumroad.com",
+      "Twitter": "https://twitter.com/AnimationItchy"
+    }
+  },
+  "Mario Baldi": {
+    "avatar": null,
+    "handle": "BluEgo",
+    "profile": "https://community.foundry.com/profile/mariobaldi",
+    "links": {
+      "Gumroad": "https://bluego.gumroad.com",
+      "Twitter": "https://twitter.com/BluEgo"
+    }
+  },
+  "Ymmanuel Flores": {
+    "avatar": null,
+    "handle": "ymmanuel_who",
+    "profile": "https://community.foundry.com/profile/ymmanuelwho",
+    "links": {
+      "Gumroad": "https://xolotlstudio.gumroad.com",
+      "Twitter": "https://twitter.com/ymmanuel_who"
+    }
+  },
+  "Pascal Nocquet": {
+    "avatar": null,
+    "handle": "pasnoc",
+    "profile": "https://community.foundry.com/profile/matelot",
+    "links": {
+      "Gumroad": "https://matelot.gumroad.com",
+      "Twitter": "https://twitter.com/pasnoc"
+    }
+  },
+  "Eric Soulvie": {
+    "avatar": null,
+    "handle": "Testname",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://griffon.gumroad.com",
+      "Twitter": "https://twitter.com/gryphun"
+    }
+  },
+  "Lukasz Pazera": {
+    "avatar": null,
+    "handle": "Testname",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://lukpazera.gumroad.com",
+      "Twitter": "https://twitter.com/LukPazera"
+    }
+  },
+  "Yazan Malkosh": {
+    "avatar": null,
+    "handle": "malkosh",
+    "profile": "https://community.foundry.com/profile/yazanmalkosh",
+    "links": {
+      "Gumroad": "https://9bstudios.gumroad.com",
+      "Twitter": "https://twitter.com/malkosh"
+    }
+  },
+  "Tom Dymond": {
+    "avatar": null,
+    "handle": "eightfivestudios",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://eightfivestudios.gumroad.com",
+      "Twitter": "https://twitter.com"
+    }
+  },
+  "Alexander Kucera": {
+    "avatar": null,
+    "handle": "AlexK",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://www.babylondreams.de",
+      "Twitter": "https://twitter.com/AlexK"
+    }
+  },
+  "Fredrik Widman": {
+    "avatar": null,
+    "handle": "fredrik_widman",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://payhip.com/dex",
+      "Twitter": "https://twitter.com/fredrik_widman"
+    }
+  },
+  "PSoft": {
+    "avatar": null,
+    "handle": "PSoft",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://.gumroad.com",
+      "Twitter": "https://twitter.com"
+    }
+  },
+  "Exoside": {
+    "avatar": null,
+    "handle": "Exoside3D",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://exoside.com/quadremesher",
+      "Twitter": "https://twitter.com/Exoside3D"
+    }
+  },
+  "KitestringOnline": {
+    "avatar": null,
+    "handle": "kitestringonline",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://kitestringonline.com",
+      "Twitter": "https://twitter.com"
+    }
+  },
+  "Apptastic Software": {
+    "avatar": null,
+    "handle": "ApptasticSoftware",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://www.apptastic.com/chimp/",
+      "Twitter": "https://twitter.com"
+    }
+  },
+  "Third Guild": {
+    "avatar": null,
+    "handle": "ThirdGuild",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://www.thethirdguild.com/",
+      "Twitter": "https://twitter.com"
+    }
+  },
+  "Givenname Firstname": {
+    "avatar": null,
+    "handle": "Testname",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://www.thethirdguild.com/",
+      "Twitter": "https://twitter.com"
     }
   }
 }
