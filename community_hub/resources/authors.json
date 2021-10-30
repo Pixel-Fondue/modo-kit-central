@@ -11,11 +11,12 @@
   },
   "Franck Elisabeth": {
     "avatar": null,
-    "handle": "SMOLUCK",
+    "handle": "Smoluck",
     "profile": "https://community.foundry.com/profile/smoluck",
     "links": {
       "Gumroad": "https://smoluck.gumroad.com",
       "Twitter": "https://twitter.com/sm0luck"
+      "Web": "https://smoluck.com"
     }
     },
   "William Vaughan": {
@@ -113,8 +114,9 @@
     "handle": "fredrik_widman",
     "profile": "https://community.foundry.com/profile/",
     "links": {
-      "Gumroad": "https://payhip.com/dex",
-      "Twitter": "https://twitter.com/fredrik_widman"
+      "Gumroad": "https://.gumroad.com",
+      "Twitter": "https://twitter.com/fredrik_widman",
+      "Web": "https://payhip.com/dex"
     }
   },
   "PSoft": {
@@ -149,7 +151,7 @@
     "handle": "ApptasticSoftware",
     "profile": "https://community.foundry.com/profile/",
     "links": {
-      "Gumroad": "https://www.apptastic.com/chimp/",
+      "Gumroad": "https://www.apptastic.com/chimp",
       "Twitter": "https://twitter.com"
     }
   },
@@ -158,7 +160,194 @@
     "handle": "ThirdGuild",
     "profile": "https://community.foundry.com/profile/",
     "links": {
-      "Gumroad": "https://www.thethirdguild.com/",
+      "Gumroad": "https://gumroad.com",
+      "Twitter": "https://twitter.com"
+      "Web": "https://www.thethirdguild.com"
+    }
+  },
+  "Exoside": {
+    "avatar": null,
+    "handle": "Exoside",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://gumroad.com",
+      "Twitter": "https://twitter.com"
+      "Web": "https://exoside.com"
+    }
+  },
+  "Apptastic Software": {
+    "avatar": null,
+    "handle": "Testname",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://gumroad.com",
+      "Twitter": "https://twitter.com"
+      "Web": "https://www.apptastic.com"
+    }
+  },
+  "Tor Frick": {
+    "avatar": null,
+    "handle": "TorFrick",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://snefer.gumroad.com",
+      "Twitter": "https://twitter.com/Snefer"
+    }
+  },
+  "Cristobal Vila": {
+    "avatar": null,
+    "handle": "CristobalVila",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://gumroad.com/",
+      "Twitter": "https://twitter.com/cristobalvila",
+      "Web": "https://etereaestudios.com/resources"
+    }
+  },
+  "Mateusz Losinski": {
+    "avatar": null,
+    "handle": "MateuszLosinski",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://modonerdistry.gumroad.com",
+      "Twitter": "https://twitter.com/ModoNerdistry"
+    }
+  },
+  "Tagg LeDuc": {
+    "avatar": null,
+    "handle": "TaggLeDuc",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://tleduc51.gumroad.com",
+      "Twitter": "https://twitter.com"
+    }
+  },
+  "James Webbon": {
+    "avatar": null,
+    "handle": "JamesWebbon",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://zero3d.gumroad.com",
+      "Twitter": "https://twitter.com"
+    }
+  },
+  "Gennaro Esposito": {
+    "avatar": null,
+    "handle": "GennaroEsposito",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://gennaroesposito.gumroad.com",
+      "Twitter": "https://twitter.com"
+    }
+  },
+  "Funk": {
+    "avatar": null,
+    "handle": "Funk",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://gumroad.com",
+      "Twitter": "https://twitter.com"
+      "Web": "https://community.foundry.com/discuss/topic/87130"
+    }
+  },
+  "Dongju": {
+    "avatar": null,
+    "handle": "Dongju",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://gumroad.com/",
+      "Twitter": "https://twitter.com"
+      "Web": "https://community.foundry.com/discuss/topic/31675"
+    }
+  },
+  "Keith Sheppard": {
+    "avatar": null,
+    "handle": "KeithSheppard",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://keithsheppard.gumroad.com",
+      "Twitter": "https://twitter.com"
+    }
+  },
+  "Tim Crowson": {
+    "avatar": null,
+    "handle": "TimCrowson",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://gumroad.com",
+      "Twitter": "https://twitter.com"
+      "Web": "http://www.timcrowson.com"
+    }
+  },
+  "Mark B Tomlinson": {
+    "avatar": null,
+    "handle": "MarkBTomlinson",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://markbtomlinson.gumroad.com",
+      "Twitter": "https://twitter.com/MarkBTomlinson"
+    }
+  },
+  "Kjell Emanuelsson": {
+    "avatar": null,
+    "handle": "KjellEmanuelsson",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://kjell.gumroad.com",
+      "Twitter": "https://twitter.com/Kiellog"
+    }
+  },
+  "Ellery Connel": {
+    "avatar": null,
+    "handle": "ElleryConnel",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://ellery.gumroad.com",
+      "Twitter": "https://twitter.com"
+    }
+  },
+  "Pierre Dubertrand": {
+    "avatar": null,
+    "handle": "PierreDubertrand",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://pierredubertrand.gumroad.com",
+      "Twitter": "https://twitter.com"
+    }
+  },
+  "Warren Marshall": {
+    "avatar": null,
+    "handle": "WarrenMarshall",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://warrenmarshall.gumroad.com",
+      "Twitter": "https://twitter.com"
+    }
+  },
+  "Sergey Tyapkin": {
+    "avatar": null,
+    "handle": "SergeyTyapkin",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://sergeytyapkin.gumroad.com",
+      "Twitter": "https://twitter.com/tyapkin_art"
+    }
+  },
+  "Daniel Dpotuznik": {
+    "avatar": null,
+    "handle": "Testname",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://dpotuznik.gumroad.com",
+      "Twitter": "https://twitter.com/dpotuznik"
+    }
+  },
+  "Warren Lancshire": {
+    "avatar": null,
+    "handle": "WarrenLancshire",
+    "profile": "https://community.foundry.com/profile/",
+    "links": {
+      "Gumroad": "https://warrenl.gumroad.com",
       "Twitter": "https://twitter.com"
     }
   },
@@ -167,7 +356,7 @@
     "handle": "Testname",
     "profile": "https://community.foundry.com/profile/",
     "links": {
-      "Gumroad": "https://www.thethirdguild.com/",
+      "Gumroad": "https://gumroad.com",
       "Twitter": "https://twitter.com"
     }
   }
