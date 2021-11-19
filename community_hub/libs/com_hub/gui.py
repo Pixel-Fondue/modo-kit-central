@@ -37,7 +37,7 @@ class CommunityHub(QMainWindow):
         self.tabs.setObjectName("Tabs")
         base_layout.addWidget(self.tabs)
 
-        for tab_type in (KEYS.videos, KEYS.kits, KEYS.social):
+        for tab_type in (KEYS.kits, KEYS.videos, KEYS.social):
             tab = build_tab(tab_type)
             self.tabs.addTab(tab, tab_type)
 

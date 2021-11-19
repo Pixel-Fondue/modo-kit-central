@@ -3,13 +3,13 @@ try:
     from PySide2.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
     from PySide2.QtGui import QCursor, QDesktopServices, QPixmap
     from PySide2.QtWidgets import (QLabel, QApplication, QWidget, QVBoxLayout, QPushButton,
-                                   QHBoxLayout, QToolButton, QScrollArea,
-                                   QSizePolicy, QFrame, QTabWidget)
+                                   QHBoxLayout, QToolButton, QScrollArea, QPlainTextEdit,
+                                   QSizePolicy, QFrame, QTabWidget, QLineEdit)
 except ImportError:
     from PySide.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
     from PySide.QtGui import (QLabel, QCursor, QApplication, QWidget, QVBoxLayout, QPushButton,
                               QHBoxLayout, QDesktopServices, QToolButton, QScrollArea, QSizePolicy,
-                              QFrame, QPixmap, QTabWidget)
+                              QFrame, QPixmap, QTabWidget, QPlainTextEdit, QLineEdit)
 
 from com_hub.prefs import KEYS
 from com_hub.prefs import authors, Text
@@ -75,6 +75,8 @@ class KitTab(QScrollArea):
         self.base_widget.setLayout(self.base_layout)
         self.setWidgetResizable(True)
         self.setWidget(self.base_widget)
+        self.search_bar = SearchBar()
+        self.base_layout.addWidget(self.search_bar)
         self.add_kits()
 
     def add_kits(self):
@@ -100,7 +102,11 @@ class KitWidget(QWidget):
         self.author = info.get("author")
         self.author_data = authors.get(self.author)
         self.lbl_author = QLabel("Author: {}".format(info.get("author")))
-        self.description = QLabel(info.get("description"))
+        #self.description = QLabel(info.get("description"))
+        self.description = QPlainTextEdit(info.get("description"))
+        self.description.setReadOnly(True)
+        self.description.setMaximumHeight(120)
+        self.description.setMinimumHeight(20)
         self.btn_link = Button("View")
         self.btn_help = Button("Help")
         self.url_view = QUrl(info.get("url"))
@@ -114,7 +120,7 @@ class KitWidget(QWidget):
         base_layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(base_layout)
 
-        self.description.setWordWrap(True)
+        #self.description.setWordWrap(True)
         self.description.setObjectName("description")
 
         # Setup Author link
@@ -252,9 +258,11 @@ class FoldContainer(QWidget):
     def build_ui(self):
         self.toggle_button.setStyleSheet(
             "QToolButton { background-color: rgb(120,120,120); "
-            "              border-radius: 4px; }"
+            "              border-radius: 4px; "
+            "              font-size: 15px; "
+            "              color: black; }"
         )
-        self.toggle_button.setFixedHeight(15)
+        self.toggle_button.setFixedHeight(17)
         self.toggle_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.toggle_button.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.toggle_button.setArrowType(Qt.RightArrow)
@@ -304,6 +312,19 @@ class FoldContainer(QWidget):
         content_animation.setStartValue(0)
         content_animation.setEndValue(content_height)
 
+
+class SearchBar(QWidget):
+    def __init__(self, parent=None):
+        super(SearchBar, self).__init__(parent)
+        base_layout = QHBoxLayout()
+        self.setLayout(base_layout)
+
+        search_txt = QLineEdit()
+        search_txt.setPlaceholderText("Not yet activate.")
+        search_btn = Button("search")
+        search_btn.setFixedWidth(75)
+        base_layout.addWidget(search_txt)
+        base_layout.addWidget(search_btn)
 
 # Map to get the correct widget class based on the incoming data.
 widget_map = {
