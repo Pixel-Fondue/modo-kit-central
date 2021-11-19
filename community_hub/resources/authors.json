@@ -2,8 +2,8 @@
   "Shawn Frueh": {
     "avatar": "shawn_frueh.jpg",
     "handle": "FruehBird",
-    "profile": "https://community.foundry.com/profile/fruehbird",
     "links": {
+      "Community": "https://community.foundry.com/profile/fruehbird",
       "Gumroad": "https://shawnfrueh.gumroad.com/",
       "Github": "https://github.com/ShawnFrueh",
       "Slack": "https://foundry-modo.slack.com/team/U6DFT3YUQ"
@@ -12,18 +12,18 @@
   "Franck Elisabeth": {
     "avatar": null,
     "handle": "Smoluck",
-    "profile": "https://community.foundry.com/profile/smoluck",
     "links": {
+      "Community": "https://community.foundry.com/profile/smoluck",
       "Gumroad": "https://smoluck.gumroad.com",
-      "Twitter": "https://twitter.com/sm0luck"
+      "Twitter": "https://twitter.com/sm0luck",
       "Web": "https://smoluck.com"
     }
     },
   "William Vaughan": {
     "avatar": null,
     "handle": "Vaughan3D",
-    "profile": "https://community.foundry.com/profile/williamvaughan",
     "links": {
+      "Community": "https://community.foundry.com/profile/williamvaughan",
       "Gumroad": "https://vaughan3d.gumroad.com",
       "Twitter": "https://twitter.com/Vaughan3D"
     }
@@ -31,8 +31,8 @@
   "Richard Yot": {
     "avatar": null,
     "handle": "AnimationItchy",
-    "profile": "https://community.foundry.com/profile/richardyot",
     "links": {
+      "Community": "https://community.foundry.com/profile/richardyot",
       "Gumroad": "https://richardyot.gumroad.com",
       "Twitter": "https://twitter.com/AnimationItchy"
     }
@@ -40,8 +40,8 @@
   "Mario Baldi": {
     "avatar": null,
     "handle": "BluEgo",
-    "profile": "https://community.foundry.com/profile/mariobaldi",
     "links": {
+      "Community": "https://community.foundry.com/profile/mariobaldi",
       "Gumroad": "https://bluego.gumroad.com",
       "Twitter": "https://twitter.com/BluEgo"
     }
@@ -49,8 +49,8 @@
   "Ymmanuel Flores": {
     "avatar": null,
     "handle": "ymmanuel_who",
-    "profile": "https://community.foundry.com/profile/ymmanuelwho",
     "links": {
+      "Community": "https://community.foundry.com/profile/ymmanuelwho",
       "Gumroad": "https://xolotlstudio.gumroad.com",
       "Twitter": "https://twitter.com/ymmanuel_who"
     }
@@ -58,8 +58,8 @@
   "Pascal Nocquet": {
     "avatar": null,
     "handle": "pasnoc",
-    "profile": "https://community.foundry.com/profile/matelot",
     "links": {
+      "Community": "https://community.foundry.com/profile/matelot",
       "Gumroad": "https://matelot.gumroad.com",
       "Twitter": "https://twitter.com/pasnoc"
     }
@@ -67,7 +67,6 @@
   "Eric Soulvie": {
     "avatar": null,
     "handle": "Testname",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://griffon.gumroad.com",
       "Twitter": "https://twitter.com/gryphun"
@@ -76,7 +75,6 @@
   "Lukasz Pazera": {
     "avatar": null,
     "handle": "Testname",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://lukpazera.gumroad.com",
       "Twitter": "https://twitter.com/LukPazera"
@@ -85,8 +83,8 @@
   "Yazan Malkosh": {
     "avatar": null,
     "handle": "malkosh",
-    "profile": "https://community.foundry.com/profile/yazanmalkosh",
     "links": {
+      "Community": "https://community.foundry.com/profile/yazanmalkosh",
       "Gumroad": "https://9bstudios.gumroad.com",
       "Twitter": "https://twitter.com/malkosh"
     }
@@ -94,7 +92,6 @@
   "Tom Dymond": {
     "avatar": null,
     "handle": "eightfivestudios",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://eightfivestudios.gumroad.com",
       "Twitter": "https://twitter.com"
@@ -103,7 +100,6 @@
   "Alexander Kucera": {
     "avatar": null,
     "handle": "AlexK",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://www.babylondreams.de",
       "Twitter": "https://twitter.com/AlexK"
@@ -112,7 +108,6 @@
   "Fredrik Widman": {
     "avatar": null,
     "handle": "fredrik_widman",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://.gumroad.com",
       "Twitter": "https://twitter.com/fredrik_widman",
@@ -122,7 +117,6 @@
   "PSoft": {
     "avatar": null,
     "handle": "PSoft",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://.gumroad.com",
       "Twitter": "https://twitter.com"
@@ -131,7 +125,6 @@
   "Exoside": {
     "avatar": null,
     "handle": "Exoside3D",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://exoside.com/quadremesher",
       "Twitter": "https://twitter.com/Exoside3D"
@@ -149,7 +142,6 @@
   "Apptastic Software": {
     "avatar": null,
     "handle": "ApptasticSoftware",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://www.apptastic.com/chimp",
       "Twitter": "https://twitter.com"
@@ -158,37 +150,15 @@
   "Third Guild": {
     "avatar": null,
     "handle": "ThirdGuild",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://gumroad.com",
-      "Twitter": "https://twitter.com"
+      "Twitter": "https://twitter.com",
       "Web": "https://www.thethirdguild.com"
-    }
-  },
-  "Exoside": {
-    "avatar": null,
-    "handle": "Exoside",
-    "profile": "https://community.foundry.com/profile/",
-    "links": {
-      "Gumroad": "https://gumroad.com",
-      "Twitter": "https://twitter.com"
-      "Web": "https://exoside.com"
-    }
-  },
-  "Apptastic Software": {
-    "avatar": null,
-    "handle": "Testname",
-    "profile": "https://community.foundry.com/profile/",
-    "links": {
-      "Gumroad": "https://gumroad.com",
-      "Twitter": "https://twitter.com"
-      "Web": "https://www.apptastic.com"
     }
   },
   "Tor Frick": {
     "avatar": null,
     "handle": "TorFrick",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://snefer.gumroad.com",
       "Twitter": "https://twitter.com/Snefer"
@@ -197,7 +167,6 @@
   "Cristobal Vila": {
     "avatar": null,
     "handle": "CristobalVila",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://gumroad.com/",
       "Twitter": "https://twitter.com/cristobalvila",
@@ -207,7 +176,6 @@
   "Mateusz Losinski": {
     "avatar": null,
     "handle": "MateuszLosinski",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://modonerdistry.gumroad.com",
       "Twitter": "https://twitter.com/ModoNerdistry"
@@ -216,7 +184,6 @@
   "Tagg LeDuc": {
     "avatar": null,
     "handle": "TaggLeDuc",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
       "Gumroad": "https://tleduc51.gumroad.com",
       "Twitter": "https://twitter.com"
@@ -225,65 +192,56 @@
   "James Webbon": {
     "avatar": null,
     "handle": "JamesWebbon",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
-      "Gumroad": "https://zero3d.gumroad.com",
-      "Twitter": "https://twitter.com"
+      "Gumroad": "https://zero3d.gumroad.com"
     }
   },
   "Gennaro Esposito": {
     "avatar": null,
     "handle": "GennaroEsposito",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
-      "Gumroad": "https://gennaroesposito.gumroad.com",
-      "Twitter": "https://twitter.com"
     }
   },
   "Funk": {
     "avatar": null,
     "handle": "Funk",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
-      "Gumroad": "https://gumroad.com",
-      "Twitter": "https://twitter.com"
-      "Web": "https://community.foundry.com/discuss/topic/87130"
+      "Community": "https://community.foundry.com/profile/funk",
+      "Funk's Scripts and Kits": "https://community.foundry.com/discuss/topic/87130"
     }
   },
   "Dongju": {
     "avatar": null,
     "handle": "Dongju",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
-      "Gumroad": "https://gumroad.com/",
-      "Twitter": "https://twitter.com"
-      "Web": "https://community.foundry.com/discuss/topic/31675"
+      "Community": "https://community.foundry.com/profile/dongju",
+      "LoopSlicePick": "https://community.foundry.com/discuss/topic/31675"
     }
   },
   "Keith Sheppard": {
     "avatar": null,
     "handle": "KeithSheppard",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
+      "Community": "https://community.foundry.com/profile/keith",
       "Gumroad": "https://keithsheppard.gumroad.com",
-      "Twitter": "https://twitter.com"
+      "mLight": "https://community.foundry.com/discuss/topic/109747"
     }
   },
   "Tim Crowson": {
     "avatar": null,
     "handle": "TimCrowson",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
+      "Community": "https://community.foundry.com/profile/",
       "Gumroad": "https://gumroad.com",
-      "Twitter": "https://twitter.com"
+      "Twitter": "https://twitter.com",
       "Web": "http://www.timcrowson.com"
     }
   },
   "Mark B Tomlinson": {
     "avatar": null,
     "handle": "MarkBTomlinson",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
+      "Community": "https://community.foundry.com/profile/",
       "Gumroad": "https://markbtomlinson.gumroad.com",
       "Twitter": "https://twitter.com/MarkBTomlinson"
     }
@@ -291,8 +249,8 @@
   "Kjell Emanuelsson": {
     "avatar": null,
     "handle": "KjellEmanuelsson",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
+      "Community": "https://community.foundry.com/profile/",
       "Gumroad": "https://kjell.gumroad.com",
       "Twitter": "https://twitter.com/Kiellog"
     }
@@ -300,8 +258,8 @@
   "Ellery Connel": {
     "avatar": null,
     "handle": "ElleryConnel",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
+      "Community": "https://community.foundry.com/profile/",
       "Gumroad": "https://ellery.gumroad.com",
       "Twitter": "https://twitter.com"
     }
@@ -309,8 +267,8 @@
   "Pierre Dubertrand": {
     "avatar": null,
     "handle": "PierreDubertrand",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
+      "Community": "https://community.foundry.com/profile/",
       "Gumroad": "https://pierredubertrand.gumroad.com",
       "Twitter": "https://twitter.com"
     }
@@ -318,8 +276,8 @@
   "Warren Marshall": {
     "avatar": null,
     "handle": "WarrenMarshall",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
+      "Community": "https://community.foundry.com/profile/",
       "Gumroad": "https://warrenmarshall.gumroad.com",
       "Twitter": "https://twitter.com"
     }
@@ -327,8 +285,8 @@
   "Sergey Tyapkin": {
     "avatar": null,
     "handle": "SergeyTyapkin",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
+      "Community": "https://community.foundry.com/profile/",
       "Gumroad": "https://sergeytyapkin.gumroad.com",
       "Twitter": "https://twitter.com/tyapkin_art"
     }
@@ -336,8 +294,8 @@
   "Daniel Dpotuznik": {
     "avatar": null,
     "handle": "Testname",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
+      "Community": "https://community.foundry.com/profile/",
       "Gumroad": "https://dpotuznik.gumroad.com",
       "Twitter": "https://twitter.com/dpotuznik"
     }
@@ -345,8 +303,8 @@
   "Warren Lancshire": {
     "avatar": null,
     "handle": "WarrenLancshire",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
+      "Community": "https://community.foundry.com/profile/",
       "Gumroad": "https://warrenl.gumroad.com",
       "Twitter": "https://twitter.com"
     }
@@ -354,8 +312,8 @@
   "Givenname Firstname": {
     "avatar": null,
     "handle": "Testname",
-    "profile": "https://community.foundry.com/profile/",
     "links": {
+      "Community": "https://community.foundry.com/profile/",
       "Gumroad": "https://gumroad.com",
       "Twitter": "https://twitter.com"
     }

@@ -17,17 +17,20 @@ from com_hub.utils import load_avatar
 
 
 class AuthorTab(QScrollArea):
-    def __init__(self, author_data, parent=None):
+    def __init__(self, name, author_data, parent=None):
         """Scroll area that populates with incoming author information.
 
         Args:
+            name (str): Name of the author.
             author_data (dict): Data for the given author.
             parent (QWidget): Widget to set as parent.
         """
         super(AuthorTab, self).__init__(parent)
         self.author_data = author_data
+        self.name = name
         self.base_widget = QWidget()
         self.base_layout = QVBoxLayout()
+        self.base_layout.setAlignment(Qt.AlignCenter)
         self.base_layout.setContentsMargins(0, 0, 0, 0)
         self.base_layout.setAlignment(Qt.AlignTop)
 
@@ -39,10 +42,19 @@ class AuthorTab(QScrollArea):
         self.avatar = load_avatar(author_data.get('avatar'))
         avatar_lbl = QLabel("test")
         avatar_lbl.setFixedSize(64, 64)
-        # Load and scale avatar
+        # Load and scale avatar.
         avatar_pix = QPixmap(self.avatar).scaledToHeight(64)
         avatar_lbl.setPixmap(avatar_pix)
-        self.base_layout.addWidget(avatar_lbl)
+        self.base_layout.addWidget(avatar_lbl, alignment=Qt.AlignCenter)
+
+        author_lbl = QLabel(name)
+        self.base_layout.addWidget(author_lbl, alignment=Qt.AlignCenter)
+
+        for text, url in author_data.get('links').items():
+            link_lbl = QLabel()
+            link_lbl.setText(Text.lbl_link.format(text=text, link=url))
+            link_lbl.setOpenExternalLinks(True)
+            self.base_layout.addWidget(link_lbl)
 
 
 class KitTab(QScrollArea):
@@ -67,7 +79,7 @@ class KitTab(QScrollArea):
 
     def add_kits(self):
         """Adds all kits listed in the kits data. data from kits.json"""
-        for kit_name, kit_info in self.kit_data.items():
+        for kit_name, kit_info in sorted(self.kit_data.items()):
             # Generate a collapsable container
             container = FoldContainer(name=kit_name, version=kit_info.get('version', "N/A"))
             # Add kit widget to container
@@ -129,7 +141,7 @@ class KitWidget(QWidget):
         # get the tab widget
         tab_widget = self.window().findChild(QTabWidget, "Tabs")  # type: QTabWidget
         # Create new avatar tab
-        author_tab = AuthorTab(self.author_data)
+        author_tab = AuthorTab(self.author, self.author_data)
         tab_widget.addTab(author_tab, self.author)
 
 
@@ -316,7 +328,7 @@ if __name__ == "__main__":
     test_lay.addWidget(button)
     window.set_content(button)
     window2.set_content(button2)
-    #window.show()
+    # window.show()
 
     layout.addWidget(window)
     layout.addWidget(window2)

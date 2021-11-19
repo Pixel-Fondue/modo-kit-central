@@ -51,11 +51,11 @@ def load_avatar(avatar):
     Returns:
         resource (str): Path to the avatar file or None if it doesnt exist.
     """
+    avatar = avatar if avatar else "profile.png"
     res_path = prefs.resources if prefs.resources else get_resources()
     resource = join(res_path, "avatars", avatar)
-    print(resource)
+
     if exists(resource):
-        print(resource)
         return resource
 
 
