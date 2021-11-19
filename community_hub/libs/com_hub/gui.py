@@ -60,7 +60,6 @@ class CommunityHub(QMainWindow):
             del tab_widget
 
 
-
 if __name__ == "__main__":
     """Used to test this UI outside of Modo"""
     import sys

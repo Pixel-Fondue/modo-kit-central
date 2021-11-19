@@ -11,6 +11,7 @@ authors = None
 class Text:
     title = "Community Hub"
     author = "Author: <a href='{}' style='color: white'>{}</a>"
+    lbl_link = "<a href='{link}' style='color: white'>{text}</a>"
 
 
 class KEYS:
