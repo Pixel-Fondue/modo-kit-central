@@ -41,4 +41,22 @@ def load_resource(res_type):
     else:
         return None
 
+
+def load_avatar(avatar):
+    """Gets the avatar image from the resources directory.
+
+    Args:
+        avatar (str): The file name of the avatar to load.
+
+    Returns:
+        resource (str): Path to the avatar file or None if it doesnt exist.
+    """
+    res_path = prefs.resources if prefs.resources else get_resources()
+    resource = join(res_path, "avatars", avatar)
+    print(resource)
+    if exists(resource):
+        print(resource)
+        return resource
+
+
 get_resources()

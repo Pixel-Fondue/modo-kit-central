@@ -1,18 +1,14 @@
 try:
-    from PySide2.QtCore import Qt, QTimer
-    from PySide2.QtGui import QCursor, QPixmap, QColor
-    from PySide2.QtWidgets import (QLabel, QDesktopWidget, QMainWindow, QApplication, QTabWidget,
-                                   QPushButton, QWidget, QVBoxLayout, QListWidget, QListWidgetItem)
+    from PySide2.QtCore import Qt
+    from PySide2.QtWidgets import (QMainWindow, QApplication, QTabWidget, QWidget, QVBoxLayout)
 except ImportError:
-    from PySide.QtCore import Qt, QTimer
-    from PySide.QtGui import (QPixmap, QLabel, QDesktopWidget, QMainWindow, QCursor, QColor,
-                              QApplication, QWidget, QVBoxLayout, QPushButton, QTabWidget,
-                              QListWidget, QListWidgetItem)
+    from PySide.QtCore import Qt
+    from PySide.QtGui import (QMainWindow, QApplication, QTabWidget, QWidget, QVBoxLayout)
 
 # Kit imports
 from com_hub.prefs import Text, KEYS, CSS
 from com_hub.utils import load_resource
-from com_hub.widgets import widget_map
+from com_hub.gui_utils import build_tab
 
 
 class CommunityHub(QMainWindow):
@@ -35,47 +31,38 @@ class CommunityHub(QMainWindow):
         base_widget.setLayout(base_layout)
 
         # Generate Tabs
-        tabs = QTabWidget()
-        base_layout.addWidget(tabs)
+        self.tabs = QTabWidget()
+        self.tabs.setTabsClosable(True)
+        self.tabs.tabCloseRequested.connect(self.tab_close)
+        self.tabs.setObjectName("Tabs")
+        base_layout.addWidget(self.tabs)
 
         for tab_type in (KEYS.videos, KEYS.kits, KEYS.social):
-            tab = self.build_tab(tab_type)
-            tabs.addTab(tab, tab_type)
+            tab = build_tab(tab_type)
+            self.tabs.addTab(tab, tab_type)
 
         self.setCentralWidget(base_widget)
         self.setStyleSheet(CSS)
-
-    def build_tab(self, tab_type):
-        # Get tab resource
-        tab_data = load_resource(tab_type)
-        if not tab_data:
-            return
-
-        widget_class = widget_map.get(tab_type)
-        print(widget_class)
-        tab_list = QListWidget()
-
-        for name, info in tab_data.items():
-            print(name)
-            # Create QList widget for item
-            item = QListWidgetItem()
-            # Create Widget for info
-            widget = widget_class(name, info)
-            # Add the QListWidgetItem to the QListView
-            tab_list.addItem(item)
-            # Set the widget to the QListWidgetItem
-            tab_list.setItemWidget(item, widget)
-            item.setSizeHint(widget.sizeHint())
-            print(widget)
-        return tab_list
 
     def closeEvent(self, event):
         """ PySide method: Handle closing the UI"""
         self.close()
         event.accept()
 
+    def tab_close(self, index):
+        """Handle closing Author tabs."""
+        if index > 2:
+            # Ge the widget attached to the tab
+            tab_widget = self.tabs.widget(index)
+            # Remove tab from tab widget
+            self.tabs.removeTab(index)
+            # Destroy widget as it's no longer needed.
+            del tab_widget
+
+
 
 if __name__ == "__main__":
+    """Used to test this UI outside of Modo"""
     import sys
 
     app = QApplication(sys.argv)
