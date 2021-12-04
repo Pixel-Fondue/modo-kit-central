@@ -1,18 +1,19 @@
 # python
 try:
-    from PySide2.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
+    from PySide2.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, \
+        QAbstractAnimation
     from PySide2.QtGui import QCursor, QDesktopServices, QPixmap
     from PySide2.QtWidgets import (QLabel, QApplication, QWidget, QVBoxLayout, QPushButton,
                                    QHBoxLayout, QToolButton, QScrollArea, QPlainTextEdit,
                                    QSizePolicy, QFrame, QTabWidget, QLineEdit)
 except ImportError:
-    from PySide.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
+    from PySide.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, \
+        QAbstractAnimation
     from PySide.QtGui import (QLabel, QCursor, QApplication, QWidget, QVBoxLayout, QPushButton,
                               QHBoxLayout, QDesktopServices, QToolButton, QScrollArea, QSizePolicy,
                               QFrame, QPixmap, QTabWidget, QPlainTextEdit, QLineEdit)
 
-from com_hub.prefs import KEYS
-from com_hub.prefs import authors, Text
+from com_hub.prefs import KEYS, authors, Text, CSS_FOLD
 from com_hub.utils import load_avatar
 
 
@@ -28,6 +29,7 @@ class AuthorTab(QScrollArea):
         super(AuthorTab, self).__init__(parent)
         self.author_data = author_data
         self.name = name
+        self.setObjectName(name)
         self.base_widget = QWidget()
         self.base_layout = QVBoxLayout()
         self.base_layout.setAlignment(Qt.AlignCenter)
@@ -75,7 +77,7 @@ class KitTab(QScrollArea):
         self.base_widget.setLayout(self.base_layout)
         self.setWidgetResizable(True)
         self.setWidget(self.base_widget)
-        self.search_bar = SearchBar()
+        self.search_bar = SearchBar(self)
         self.base_layout.addWidget(self.search_bar)
         self.add_kits()
 
@@ -98,19 +100,18 @@ class KitWidget(QWidget):
             info (dict): The information about the kit.
         """
         super(KitWidget, self).__init__()
-
-        self.author = info.get("author")
+        self.search = info.get('search', [])
+        self.author = info.get('author')
         self.author_data = authors.get(self.author)
-        self.lbl_author = QLabel("Author: {}".format(info.get("author")))
-        #self.description = QLabel(info.get("description"))
-        self.description = QPlainTextEdit(info.get("description"))
+        self.lbl_author = QLabel("Author: {}".format(info.get('author')))
+        self.description = QPlainTextEdit(info.get('description'))
         self.description.setReadOnly(True)
         self.description.setMaximumHeight(120)
         self.description.setMinimumHeight(20)
         self.btn_link = Button("View")
         self.btn_help = Button("Help")
-        self.url_view = QUrl(info.get("url"))
-        self.url_help = QUrl(info.get("help"))
+        self.url_view = QUrl(info.get('url'))
+        self.url_help = QUrl(info.get('help'))
 
         self.build_ui()
 
@@ -120,12 +121,12 @@ class KitWidget(QWidget):
         base_layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(base_layout)
 
-        #self.description.setWordWrap(True)
         self.description.setObjectName("description")
 
         # Setup Author link
         if self.author_data:
-            self.lbl_author.setText(Text.author.format(self.author_data.get("profile"), self.author))
+            self.lbl_author.setText(
+                Text.author.format(self.author_data.get("profile"), self.author))
             self.lbl_author.mousePressEvent = self.open_author
 
         # Create the layout to hold the interactive buttons
@@ -144,11 +145,16 @@ class KitWidget(QWidget):
         base_layout.addWidget(self.lbl_author)
 
     def open_author(self, event):
-        # get the tab widget
+        # Get the tab widget
         tab_widget = self.window().findChild(QTabWidget, "Tabs")  # type: QTabWidget
-        # Create new avatar tab
-        author_tab = AuthorTab(self.author, self.author_data)
-        tab_widget.addTab(author_tab, self.author)
+        # Find if Author is already a tab
+        author_widget = tab_widget.findChild(QScrollArea, self.author)
+        if not author_widget:
+            # Create new avatar tab
+            author_widget = AuthorTab(self.author, self.author_data)
+            tab_widget.addTab(author_widget, self.author)
+        # Set the tab as active
+        tab_widget.setCurrentIndex(tab_widget.indexOf(author_widget))
 
 
 class VideoWidget(QWidget):
@@ -244,6 +250,7 @@ class FoldContainer(QWidget):
 
     def __init__(self, name="test", version=0, parent=None):
         super(FoldContainer, self).__init__(parent)
+        self.setObjectName(name)
         self.anim_length = 200
         self.forward = QAbstractAnimation.Forward
         self.reverse = QAbstractAnimation.Backward
@@ -253,15 +260,11 @@ class FoldContainer(QWidget):
         )
         self.toggle_animation = QParallelAnimationGroup(self)
         self.content_area = QScrollArea(maximumHeight=0, minimumHeight=0)
+        self.content = None
         self.build_ui()
 
     def build_ui(self):
-        self.toggle_button.setStyleSheet(
-            "QToolButton { background-color: rgb(120,120,120); "
-            "              border-radius: 4px; "
-            "              font-size: 15px; "
-            "              color: black; }"
-        )
+        self.toggle_button.setStyleSheet(CSS_FOLD)
         self.toggle_button.setFixedHeight(17)
         self.toggle_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.toggle_button.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
@@ -284,16 +287,23 @@ class FoldContainer(QWidget):
         self.toggle_animation.addAnimation(QPropertyAnimation(self.content_area, b"maximumHeight"))
 
     def on_pressed(self):
+        """Enable animation when user selects the bar."""
         checked = self.toggle_button.isChecked()
         self.toggle_button.setArrowType(Qt.DownArrow if not checked else Qt.RightArrow)
         self.toggle_animation.setDirection(self.forward if not checked else self.reverse)
         self.toggle_animation.start()
 
     def set_content(self, content):
+        """Sets a widget as the containers displayable content.
+
+        Args:
+            content (QWidget): The widget to set as the core content.
+        """
+        self.content = content
         # Create new layout
         lay = QVBoxLayout()
         # Add content to layout
-        lay.addWidget(content)
+        lay.addWidget(self.content)
         # Set layout as the main content layout
         self.content_area.setLayout(lay)
         # Calculate the height of the widget when closed.
@@ -307,24 +317,53 @@ class FoldContainer(QWidget):
             animation.setStartValue(collapsed_height)
             animation.setEndValue(collapsed_height + content_height)
 
-        content_animation = self.toggle_animation.animationAt(self.toggle_animation.animationCount() - 1)
+        content_animation = self.toggle_animation.animationAt(
+            self.toggle_animation.animationCount() - 1)
         content_animation.setDuration(self.anim_length)
         content_animation.setStartValue(0)
         content_animation.setEndValue(content_height)
 
 
 class SearchBar(QWidget):
-    def __init__(self, parent=None):
-        super(SearchBar, self).__init__(parent)
-        base_layout = QHBoxLayout()
-        self.setLayout(base_layout)
+    def __init__(self, search_tab, parent=None):
+        """Initialization of the search bar.
 
-        search_txt = QLineEdit()
-        search_txt.setPlaceholderText("Not yet activate.")
-        search_btn = Button("search")
-        search_btn.setFixedWidth(75)
-        base_layout.addWidget(search_txt)
-        base_layout.addWidget(search_btn)
+        Args:
+            search_tab (QWidget): Widget to search children for.
+            parent (QWidget): Parent to attach widget to.
+        """
+        super(SearchBar, self).__init__(parent)
+        self.search_tab = search_tab
+        self.base_layout = QHBoxLayout()
+        self.setLayout(self.base_layout)
+        self.search_txt = QLineEdit()
+        # Build the UI
+        self.build_ui()
+
+    def build_ui(self):
+        self.search_txt.setPlaceholderText("Search")
+        # search_btn = Button("search")
+        # search_btn.setFixedWidth(75)
+        self.base_layout.addWidget(self.search_txt)
+        # self.base_layout.addWidget(search_btn)
+        # Connect search bar to search function.
+        self.search_txt.textChanged.connect(self.search)
+
+    def search(self, text):
+        """Handles searching the widgets and disabling the ones that do not match.
+
+        Args:
+            text (str): The search text.
+        """
+        search_text = text.lower()
+        # Find all Fold containers
+        for child in self.search_tab.findChildren(FoldContainer):  # type: FoldContainer
+            # Adjust the visibility based on the search.
+            match_terms = any(s for s in child.content.search if search_text in s)
+            match_author = search_text in child.content.author.lower()
+            match_name = search_text in child.objectName().lower()
+            child.setVisible(any((match_terms, match_author, match_name)))
+
 
 # Map to get the correct widget class based on the incoming data.
 widget_map = {
@@ -339,21 +378,6 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     base = QWidget()
-    layout = QVBoxLayout()
-    base.setLayout(layout)
-    window = FoldContainer()
-    window2 = FoldContainer()
-    test_lay = QVBoxLayout()
-    button = Button("test")
-    button2 = Button("ok")
-    test_lay.addWidget(button)
-    window.set_content(button)
-    window2.set_content(button2)
-    # window.show()
-
-    layout.addWidget(window)
-    layout.addWidget(window2)
-    layout.setAlignment(Qt.AlignTop)
     base.show()
 
     sys.exit(app.exec_())

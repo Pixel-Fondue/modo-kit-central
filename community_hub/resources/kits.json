@@ -7,7 +7,7 @@
     "description": "The Python Mesh Operator, PyMop, allows you to edit the code of a mesh operator live from within MODO!",
     "url": "https://shawnfrueh.gumroad.com/l/pyMop",
     "help": "https://community.foundry.com/discuss/topic/139479",
-    "search": ["python"],
+    "search": ["python", "meshop", "procedural", "code"],
     "add_ons": {
       "Plexus": {
         "url": "https://shawnfrueh.gumroad.com/l/PyMopPlexus",
@@ -21,7 +21,7 @@
     "description": "The Python Modifier, PyExpress, allows you to edit the code of a modifier live from within MODO!",
     "url": "https://shawnfrueh.gumroad.com/l/pyMop",
     "help": "https://community.foundry.com/discuss/topic/139479",
-    "search": ["python"]
+    "search": ["python", "node", "Expression", "code"]
   },
   "SMONSTER V2": {
     "author": "Franck Elisabeth",

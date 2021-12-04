@@ -19,6 +19,8 @@ class CommunityHub(QMainWindow):
         self.setWindowFlags(self.windowFlags() | Qt.WindowStaysOnTopHint)
         self.resize(450, 300)
         self.authors = load_resource(KEYS.authors)
+        # Initialize GUI args
+        self.tabs = QTabWidget()
         self.build_ui()
 
         # Display the UI
@@ -31,7 +33,6 @@ class CommunityHub(QMainWindow):
         base_widget.setLayout(base_layout)
 
         # Generate Tabs
-        self.tabs = QTabWidget()
         self.tabs.setTabsClosable(True)
         self.tabs.tabCloseRequested.connect(self.tab_close)
         self.tabs.setObjectName("Tabs")
@@ -45,7 +46,7 @@ class CommunityHub(QMainWindow):
         self.setStyleSheet(CSS)
 
     def closeEvent(self, event):
-        """ PySide method: Handle closing the UI"""
+        """PySide method: Handle closing the UI"""
         self.close()
         event.accept()
 

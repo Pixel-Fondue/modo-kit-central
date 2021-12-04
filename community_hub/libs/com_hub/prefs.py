@@ -31,3 +31,10 @@ QListWidget::item:selected {
     color: rgb(220, 220, 220);
 }
 """
+
+CSS_FOLD = """
+QToolButton { background-color: rgb(50, 50, 50);
+              border-radius: 4px;
+              font-size: 12px;
+              color: rgb(220, 220, 220); }
+"""
