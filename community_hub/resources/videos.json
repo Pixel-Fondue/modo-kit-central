@@ -1,451 +1,520 @@
 {
-  "Workflow Refined 15.1": {
+  "Modo 15.2 - Workflow Elevated": {
+    "category": "quick_clips",
+    "title": "Modo 15.2 - Workflow Elevated",
+    "url": "https://youtu.be/4b4yD0sKXxo",
+    "description": "A summary of the new features in Modo 15.2",
+    "search": ["quick", "clip", "152"]
+  },
+  "Modo 15.2 - Cutting Shapes Out Of Geometry With the Primitive Slice Tool": {
+    "category": "quick_clips",
+    "title": "Modo 15.2 - Cutting Shapes Out Of Geometry With the Primitive Slice Tool",
+    "url": "https://youtu.be/OjjWJy7jvsM",
+    "description": "Cutting Shapes Out Of Geometry With the Primitive Slice Tool",
+    "search": ["quick", "clip", "152"]
+  },
+  "Modo 15.2 - Hard Surface Modeling Made Easy with the Slice Effector": {
+    "category": "quick_clips",
+    "title": "Modo 15.2 - Hard Surface Modeling Made Easy with the Slice Effector",
+    "url": "https://youtu.be/wCMOEWpWk3U",
+    "description": "Hard Surface Modeling Made Easy with the Slice Effector",
+    "search": ["quick", "clip", "152"]
+  },
+  "Modo 15.2 - Creating Additional Vertices With Edge SubDivide": {
+    "category": "quick_clips",
+    "title": "Modo 15.2 - Creating Additional Vertices With Edge SubDivide",
+    "url": "https://youtu.be/GbZmwtkqZOM",
+    "description": "Creating Additional Vertices With Edge SubDivide",
+    "search": ["quick", "clip", "152"]
+  },
+  "Modo 15.2 - Visualize Ordered Selections in the Schematic Using the Selection Op Stack Node": {
+    "category": "quick_clips",
+    "title": "Modo 15.2 - Visualize Ordered Selections in the Schematic Using the Selection Op Stack Node",
+    "url": "https://youtu.be/ry_9NQ8djaA",
+    "description": "Visualize Ordered Selections in the Schematic Using the Selection Op Stack Node",
+    "search": ["quick", "clip", "152"]
+  },
+  "Modo 15.2 - Increase Productivity With Schematic Enhancements": {
+    "category": "quick_clips",
+    "title": "Modo 15.2 - Increase Productivity With Schematic Enhancements",
+    "url": "https://youtu.be/r7gk9QnOqJc",
+    "description": "Increase Productivity With Schematic Enhancements",
+    "search": ["quick", "clip", "152"]
+  },
+  "Modo 15.2 - Easily Create Boolean Effects Only at Render Time With mPath": {
+    "category": "quick_clips",
+    "title": "Modo 15.2 - Easily Create Boolean Effects Only at Render Time With mPath",
+    "url": "https://youtu.be/02pj4qaQEAQ",
+    "description": "Easily Create Boolean Effects Only at Render Time With mPath",
+    "search": ["quick", "clip", "152"]
+  },
+  "Modo 15.2 - Quality of Life Improvements in the Script Editor": {
+    "category": "quick_clips",
+    "title": "Modo 15.2 - Quality of Life Improvements in the Script Editor",
+    "url": "https://youtu.be/BjUBo28_AbQ",
+    "description": "Quality of Life Improvements in the Script Editor",
+    "search": ["quick", "clip", "152"]
+  },
+  "Modo 15.2 - Project Sharing Made Easy With Assembly Presets": {
+    "category": "quick_clips",
+    "title": "Modo 15.2 - Project Sharing Made Easy With Assembly Presets",
+    "url": "https://youtu.be/QEb76wXNyBU",
+    "description": "Project Sharing Made Easy With Assembly Presets",
+    "search": ["quick", "clip", "152"]
+  },
+  "Modo 15.2 - Create Render-Quality Playblasts with AVP Progressive Mode": {
+    "category": "quick_clips",
+    "title": "Modo 15.2 - Create Render-Quality Playblasts with AVP Progressive Mode",
+    "url": "https://youtu.be/zYwFtJLCQ6U",
+    "description": "Create Render-Quality Playblasts with AVP Progressive Mode",
+    "search": ["quick", "clip", "152"]
+  },
+  "Modo 15.2 - Quickly Configure Imported Textures for PBR Workflows": {
+    "category": "quick_clips",
+    "title": "Modo 15.2 - Quickly Configure Imported Textures for PBR Workflows",
+    "url": "https://youtu.be/TtyKL0bTyo0",
+    "description": "Quickly Configure Imported Textures for PBR Workflows",
+    "search": ["quick", "clip", "152"]
+  },
+  "Modo 15.2 - Use Weighted Edges to Create Precise Bevels in MeshFusion": {
+    "category": "quick_clips",
+    "title": "Modo 15.2 - Use Weighted Edges to Create Precise Bevels in MeshFusion",
+    "url": "https://youtu.be/NCwVUNCfRxg",
+    "description": "Use Weighted Edges to Create Precise Bevels in MeshFusion",
+    "search": ["quick", "clip", "152"]
+  },
+  "Modo 15.1 - Workflow Refined": {
     "category": "quick_clips",
     "title": "Modo 15.1 - Workflow Refined",
-    "url": "https://www.youtube.com/watch?v=zbQN4sf_hh0",
+    "url": "https://youtu.be/zbQN4sf_hh0",
     "description": "A summary of the new features in Modo 15.1.",
     "search": ["quick", "clip", "151"]
   },
-  "Never Leave the Viewport Again and Speed up Your Workflow with OmniHaul": {
+  "Modo 15.1 - Never Leave the Viewport Again": {
     "category": "quick_clips",
-    "title": "Modo 15.1 - Never Leave the Viewport Again and Speed up Your Workflow with OmniHaul",
-    "url": "https://www.youtube.com/watch?v=PBHgc9jnJ5g",
-    "description": "Never Leave the Viewport Again and Speed up Your Workflow with OmniHaul.",
+    "title": "Modo 15.1 - Never Leave the Viewport Again",
+    "url": "https://youtu.be/PBHgc9jnJ5g",
+    "description": "Never Leave the Viewport Again.",
     "search": ["quick", "clip", "151"]
   },
-  "Create Complex Models Easily With Curve Booleans": {
+  "Modo 15.1 - Create Complex Models Easily With Curve Booleans": {
     "category": "quick_clips",
     "title": "Modo 15.1 - Create Complex Models Easily With Curve Booleans.",
-    "url": "https://www.youtube.com/watch?v=NJnJ25zRTf8",
+    "url": "https://youtu.be/NJnJ25zRTf8",
     "description": "Create Complex Models Easily With Curve Booleans.",
     "search": ["quick", "clip", "151"]
   },
-  "Streamline your Procedural Workflow with the MeshOp Stack Node": {
+  "Modo 15.1 - Streamline your Procedural Workflow with the MeshOp Stack Node": {
     "category": "quick_clips",
     "title": "Modo 15.1 - Streamline your Procedural Workflow with the MeshOp Stack Node",
-    "url": "https://www.youtube.com/watch?v=imVZd5xe_uw",
+    "url": "https://youtu.be/imVZd5xe_uw",
     "description": "Streamline your Procedural Workflow with the MeshOp Stack Node.",
     "search": ["quick", "clip", "151"]
   },
-  "Improve Performance in Modo with Deferred Evaluations": {
+  "Modo 15.1 - Improve Performance in Modo with Deferred Evaluations": {
     "category": "quick_clips",
     "title": "Modo 15.1 - Improve Performance in Modo with Deferred Evaluations",
-    "url": "https://www.youtube.com/watch?v=vwl8BjylhA0",
+    "url": "https://youtu.be/vwl8BjylhA0",
     "description": "Improve Performance in Modo with Deferred Evaluations.",
     "search": ["quick", "clip", "151"]
   },
-  "Refract Light and Look Around in the Viewport with mPath Improvements": {
+  "Modo 15.1 - Refract Light and Look Around in the Viewport with mPath Improvements": {
     "category": "quick_clips",
     "title": "Modo 15.1 - Refract Light and Look Around in the Viewport with mPath Improvements",
-    "url": "https://www.youtube.com/watch?v=WaOG1wVkpUw",
+    "url": "https://youtu.be/WaOG1wVkpUw",
     "description": "Refract Light and Look Around in the Viewport with mPath Improvements.",
     "search": ["quick", "clip", "151"]
   },
-  "Clean up Heavy Scenes Quickly and Easily with Static Analysis": {
+  "Modo 15.1 - Clean up Heavy Scenes Quickly and Easily with Static Analysis": {
     "category": "quick_clips",
     "title": "Modo 15.1 - Clean up Heavy Scenes Quickly and Easily with Static Analysis",
-    "url": "https://www.youtube.com/watch?v=tpi8nq_5k0o",
+    "url": "https://youtu.be/tpi8nq_5k0o",
     "description": "Clean up Heavy Scenes Quickly and Easily with Static Analysis.",
     "search": ["quick", "clip", "151"]
   },
-  "Making Precision Modeling Easy": {
+  "Modo 15.1 - Making Precision Modeling Easy": {
     "category": "quick_clips",
     "title": "Modo 15.1 - Making Precision Modeling Easy",
-    "url": "https://www.youtube.com/watch?v=ChgWxsifq1c",
+    "url": "https://youtu.be/ChgWxsifq1c",
     "description": "Making Precision Modeling Easy.",
     "search": ["quick", "clip", "151"]
   },
-  "Tile UVs and Scale to Real World Size with File I/O Enhancements": {
+  "Modo 15.1 - Tile UVs and Scale to Real World Size with File I/O Enhancements": {
     "category": "quick_clips",
     "title": "Modo 15.1 - Tile UVs and Scale to Real World Size with File I/O Enhancements",
-    "url": "https://www.youtube.com/watch?v=pJMYGLRBWmk",
+    "url": "https://youtu.be/pJMYGLRBWmk",
     "description": "Tile UVs and Scale to Real World Size with File I/O Enhancements.",
     "search": ["quick", "clip", "151"]
   },
-  "Mesh Fusion - UI Updates": {
+  "Modo 15.1 - Create Complex 3D Shapes from 2D Curves with Curve Booleans": {
+    "category": "tutorials",
+    "title": "Modo 15.1 - Create Complex 3D Shapes from 2D Curves with Curve Booleans",
+    "url": "https://youtu.be/kjAfnan-ha0",
+    "description": "Learn how to create complex 3D models such as logos, decals and more using Modo's curve tools coupled with a system of booleans to create complex 2D shapes that are ready for 3D conversion.",
+    "search": ["tutorial", "151", "curve", "boolean"]
+  },
+  "Modo 15.1 -Cut Down Waiting Times With Mesh Stack Evaluations": {
+    "category": "tutorials",
+    "title": "Modo 15.1 - Cut Down Waiting Times With Mesh Stack Evaluations",
+    "url": "https://youtu.be/uHFpiJjZTPE",
+    "description": "Cut Down Waiting Times With Mesh Stack Evaluations.",
+    "search": ["tutorial", "151", "meshop"]
+  },
+  "Modo 15.1 -Speed up Your Workflow With OmniHaul": {
+    "category": "tutorials",
+    "title": "Modo 15.1 - Speed up Your Workflow With OmniHaul",
+    "url": "https://youtu.be/JemSBlPJpC8",
+    "description": "Speed up Your Workflow With OmniHaul.",
+    "search": ["tutorial", "151", "omnihaul"]
+  },
+  "Modo 15.0 - Mesh Fusion - UI Updates": {
     "category": "quick_clips",
     "title": "Modo 15.0 - Mesh Fusion - UI Updates",
-    "url": "https://www.youtube.com/watch?v=d_s2IVkuubU",
+    "url": "https://youtu.be/d_s2IVkuubU",
     "description": "Mesh Fusion - UI Updates.",
     "search": ["quick", "clip", "150"]
   },
-  "Mesh Fusion - Select Source Mode": {
+  "Modo 15.0 - Mesh Fusion - Select Source Mode": {
     "category": "quick_clips",
     "title": "Modo 15.0 - Mesh Fusion - Select Source Mode",
-    "url": "https://www.youtube.com/watch?v=x8fDjz59rQM",
+    "url": "https://youtu.be/x8fDjz59rQM",
     "description": "Mesh Fusion - Select Source Mode.",
     "search": ["quick", "clip", "150"]
   },
-  "Mesh Fusion - Edit Attribute Mode": {
+  "Modo 15.0 - Mesh Fusion - Edit Attribute Mode": {
     "category": "quick_clips",
     "title": "Modo 15.0 - Mesh Fusion - Edit Attribute Mode",
-    "url": "https://www.youtube.com/watch?v=Quz1R6sdLgg",
+    "url": "https://youtu.be/Quz1R6sdLgg",
     "description": "Mesh Fusion - Edit Attribute Mode.",
     "search": ["quick", "clip", "150"]
   },
-  "Mesh Fusion - Technology Enhancements": {
+  "Modo 15.0 - Mesh Fusion - Technology Enhancements": {
     "category": "quick_clips",
     "title": "Modo 15.0 - Mesh Fusion - Technology Enhancements",
-    "url": "https://www.youtube.com/watch?v=",
+    "url": "https://youtu.be/",
     "description": "Mesh Fusion - Technology Enhancements.",
     "search": ["quick", "clip", "150"]
   },
-  " Animation Editor": {
+  "Modo 15.0 - Animation Editor": {
     "category": "quick_clips",
     "title": "Modo 15.0 -  Animation Editor",
-    "url": "https://www.youtube.com/watch?v=dAYaVglSpZs",
+    "url": "https://youtu.be/dAYaVglSpZs",
     "description": " Animation Editor.",
     "search": ["quick", "clip", "150"]
   },
-  "Rig Clay Enhancements": {
+  "Modo 15.0 - Rig Clay Enhancements": {
     "category": "quick_clips",
     "title": "Modo 15.0 - Rig Clay Enhancements",
-    "url": "https://www.youtube.com/watch?v=XIjS-aC39ek",
+    "url": "https://youtu.be/XIjS-aC39ek",
     "description": "Rig Clay Enhancements.",
     "search": ["quick", "clip", "150"]
   },
-  "Modeling Enhancements": {
+  "Modo 15.0 - Modeling Enhancements": {
     "category": "quick_clips",
     "title": "Modo 15.0 - Modeling Enhancements",
-    "url": "https://www.youtube.com/watch?v=bD0Q4sDMymc",
+    "url": "https://youtu.be/bD0Q4sDMymc",
     "description": "Modeling Enhancements.",
     "search": ["quick", "clip", "150"]
   },
-  "Procedural Modeling Enhancements": {
+  "Modo 15.0 - Procedural Modeling Enhancements": {
     "category": "quick_clips",
     "title": "Modo 15.0 - Procedural Modeling Enhancements",
-    "url": "https://www.youtube.com/watch?v=HgigC7wOp0Q",
+    "url": "https://youtu.be/HgigC7wOp0Q",
     "description": "Procedural Modeling Enhancements.",
     "search": ["quick", "clip", "150"]
   },
-  "AVP Depth of Field": {
+  "Modo 15.0 - AVP Depth of Field": {
     "category": "quick_clips",
     "title": "Modo 15.0 - AVP Depth of Field",
-    "url": "https://www.youtube.com/watch?v=FN3_UcOZWB0",
+    "url": "https://youtu.be/FN3_UcOZWB0",
     "description": "AVP Depth of Field.",
     "search": ["quick", "clip", "150"]
   },
-  "Python Support": {
+  "Modo 15.0 - Python Support": {
     "category": "quick_clips",
     "title": "Modo 15.0 - Python Support",
-    "url": "https://www.youtube.com/watch?v=XfH-F1eIabw",
+    "url": "https://youtu.be/XfH-F1eIabw",
     "description": "Python Support.",
     "search": ["quick", "clip", "150"]
   },
-  "Tune Ups": {
+  "Modo 15.0 - Tune Ups": {
     "category": "quick_clips",
     "title": "Modo 15.0 - Tune Ups",
-    "url": "https://www.youtube.com/watch?v=WOrf-RWldYg",
+    "url": "https://youtu.be/WOrf-RWldYg",
     "description": "Tune Ups.",
     "search": ["quick", "clip", "150"]
   },
-  "Overview": {
+  "Modo 14.2 - Overview": {
     "category": "quick_clips",
     "title": "Modo 14.2 - Overviews",
-    "url": "https://www.youtube.com/watch?v=Hty8DuCXA08",
+    "url": "https://youtu.be/Hty8DuCXA08",
     "description": "Overview.",
     "search": ["quick", "clip", "142"]
   },
-  "Rig Clay": {
+  "Modo 14.2 - Rig Clay": {
     "category": "quick_clips",
     "title": "Modo 14.2 - Rig Clay",
-    "url": "https://www.youtube.com/watch?v=AXGNQcAUPmo",
+    "url": "https://youtu.be/AXGNQcAUPmo",
     "description": "Rig Clay.",
     "search": ["quick", "clip", "142"]
   },
-  "AVP Enhancements": {
+  "Modo 14.2 - AVP Enhancements": {
     "category": "quick_clips",
     "title": "Modo 14.2 - AVP Enhancements",
-    "url": "https://www.youtube.com/watch?v=6NP-WSqgNVc",
+    "url": "https://youtu.be/6NP-WSqgNVc",
     "description": "AVP Enhancements.",
     "search": ["quick", "clip", "142"]
   },
-  "Edge Chamfer Enhancements": {
+  "Modo 14.2 - Edge Chamfer Enhancements": {
     "category": "quick_clips",
     "title": "Modo 14.2 - Edge Chamfer Enhancements",
     "url": "https://vimeo.com/478860419",
     "description": "Edge Chamfer Enhancements.",
     "search": ["quick", "clip", "142"]
   },
-  "Solo Command": {
+  "Modo 14.2 - Solo Command": {
     "category": "quick_clips",
     "title": "Modo 14.2 - Solo Command",
-    "url": "https://www.youtube.com/watch?v=XeD3FWNxbyw",
+    "url": "https://youtu.be/XeD3FWNxbyw",
     "description": "Solo Command.",
     "search": ["quick", "clip", "142"]
   },
-  "Procedural Vertex Map Operations": {
+  "Modo 14.2 - Procedural Vertex Map Operations": {
     "category": "quick_clips",
     "title": "Modo 14.2 - Procedural Vertex Map Operations",
-    "url": "https://www.youtube.com/watch?v=Q5AC8m8N20I",
+    "url": "https://youtu.be/Q5AC8m8N20I",
     "description": "Procedural Vertex Map Operations.",
     "search": ["quick", "clip", "142"]
   },
-  "MeshFusion: Sharp Bezier Corners": {
+  "Modo 14.2 - MeshFusion: Sharp Bezier Corners": {
     "category": "quick_clips",
     "title": "Modo 14.2 - MeshFusion: Sharp Bezier Corners",
-    "url": "https://www.youtube.com/watch?v=JBb0pvZN1Hw",
+    "url": "https://youtu.be/JBb0pvZN1Hw",
     "description": "MeshFusion: Sharp Bezier Corners.",
     "search": ["quick", "clip", "142"]
   },
-  "Modeling Enhancements": {
+  "Modo 14.2 - Modeling Enhancements": {
     "category": "quick_clips",
     "title": "Modo 14.2 - Modeling Enhancements",
-    "url": "https://www.youtube.com/watch?v=uVze9k0EFlw",
+    "url": "https://youtu.be/uVze9k0EFlw",
     "description": "Modeling Enhancements.",
     "search": ["quick", "clip", "142"]
   },
-  "Cryptomatte": {
+  "Modo 14.2 - Cryptomatte": {
     "category": "quick_clips",
     "title": "Modo 14.2 - Cryptomatte",
-    "url": "https://www.youtube.com/watch?v=RnhCAW9MTU4",
+    "url": "https://youtu.be/RnhCAW9MTU4",
     "description": "Cryptomatte.",
     "search": ["quick", "clip", "142"]
   },
-  "Workflow and User Experience": {
+  "Modo 14.2 - Workflow and User Experience": {
     "category": "quick_clips",
     "title": "Modo 14.2 - Workflow and User Experience",
-    "url": "https://www.youtube.com/watch?v=NimXWp7esFw",
+    "url": "https://youtu.be/NimXWp7esFw",
     "description": "Workflow and User Experience.",
     "search": ["quick", "clip", "142"]
   },
-  "Performance Improvements": {
+  "Modo 14.2 - Performance Improvements": {
     "category": "quick_clips",
     "title": "Modo 14.2 - Performance Improvements",
-    "url": "https://www.youtube.com/watch?v=GskFvwxaJwA",
+    "url": "https://youtu.be/GskFvwxaJwA",
     "description": "Performance Improvements.",
     "search": ["quick", "clip", "142"]
   },
-  "UV Enhancements": {
+  "Modo 14.2 - UV Enhancements": {
     "category": "quick_clips",
     "title": "Modo 14.2 - UV Enhancements",
-    "url": "https://www.youtube.com/watch?v=tHeSYlrAa7o",
+    "url": "https://youtu.be/tHeSYlrAa7o",
     "description": "UV Enhancements.",
     "search": ["quick", "clip", "142"]
   },
-  "Workflow Enhanced": {
+  "Modo 14.1 - Workflow Enhanced": {
     "category": "quick_clips",
     "title": "Modo 14.1 - Workflow Enhanced",
-    "url": "https://www.youtube.com/watch?v=iquqWRFoPOw",
+    "url": "https://youtu.be/iquqWRFoPOw",
     "description": "Workflow Enhanced.",
     "search": ["quick", "clip", "141"]
   },
-  "AVP Improvements": {
+  "Modo 14.1 - AVP Improvements": {
     "category": "quick_clips",
     "title": "Modo 14.1 - AVP Improvements",
-    "url": "https://www.youtube.com/watch?v=BCbL-ncwyX0",
+    "url": "https://youtu.be/BCbL-ncwyX0",
     "description": "AVP Improvements.",
     "search": ["quick", "clip", "141"]
   },
-  "Rigging Improvements": {
+  "Modo 14.1 - Rigging Improvements": {
     "category": "quick_clips",
     "title": "Modo 14.1 - Rigging Improvements",
-    "url": "https://www.youtube.com/watch?v=V1RCVsM5vmg",
+    "url": "https://youtu.be/V1RCVsM5vmg",
     "description": "Rigging Improvements.",
     "search": ["quick", "clip", "141"]
   },
-  "Bevel Auto Weld": {
+  "Modo 14.1 - Bevel Auto Weld": {
     "category": "quick_clips",
     "title": "Modo 14.1 - Bevel Auto Weld",
-    "url": "https://www.youtube.com/watch?v=n3fOnWw4Fhg",
+    "url": "https://youtu.be/n3fOnWw4Fhg",
     "description": "Bevel Auto Weld.",
     "search": ["quick", "clip", "141"]
   },
-  "UV Enhancements": {
+  "Modo 14.1 - UV Enhancements": {
     "category": "quick_clips",
     "title": "Modo 14.1 - UV Enhancements",
-    "url": "https://www.youtube.com/watch?v=R2qF1sPqLqg",
+    "url": "https://youtu.be/R2qF1sPqLqg",
     "description": "UV Enhancements.",
     "search": ["quick", "clip", "141"]
   },
-  "Modeling Enhancements": {
+  "Modo 14.1 - Modeling Enhancements": {
     "category": "quick_clips",
     "title": "Modo 14.1 - Modeling Enhancements",
-    "url": "https://www.youtube.com/watch?v=nKCWLaHjnt4",
+    "url": "https://youtu.be/nKCWLaHjnt4",
     "description": "Modeling Enhancements.",
     "search": ["quick", "clip", "141"]
   },
-  "Denoise Updates": {
+  "Modo 14.1 - Denoise Updates": {
     "category": "quick_clips",
     "title": "Modo 14.1 - Denoise Updates",
-    "url": "https://www.youtube.com/watch?v=gr0BhDcTDxc",
+    "url": "https://youtu.be/gr0BhDcTDxc",
     "description": "Denoise Updates.",
     "search": ["quick", "clip", "141"]
   },
-  "Rendering Enhancements": {
+  "Modo 14.1 - Rendering Enhancements": {
     "category": "quick_clips",
     "title": "Modo 14.1 - Rendering Enhancements",
-    "url": "https://www.youtube.com/watch?v=gvAnGtk8iYw",
+    "url": "https://youtu.be/gvAnGtk8iYw",
     "description": "Rendering Enhancements.",
     "search": ["quick", "clip", "141"]
   },
-  "PBR Loader": {
+  "Modo 14.1 - PBR Loader": {
     "category": "quick_clips",
     "title": "Modo 14.1 - PBR Loader",
-    "url": "https://www.youtube.com/watch?v=BfXonhSii4w",
+    "url": "https://youtu.be/BfXonhSii4w",
     "description": "PBR Loader.",
     "search": ["quick", "clip", "141"]
   },
-  "Performance Improvements": {
+  "Modo 14.1 - Performance Improvements": {
     "category": "quick_clips",
     "title": "Modo 14.1 - Performance Improvements",
-    "url": "https://www.youtube.com/watch?v=xHTgpoajwCg",
+    "url": "https://youtu.be/xHTgpoajwCg",
     "description": "Performance Improvements.",
     "search": ["quick", "clip", "141"]
   },
-  "USD Importer": {
+  "Modo 14.1 - USD Importer": {
     "category": "quick_clips",
     "title": "Modo 14.1 - USD Importer",
-    "url": "https://www.youtube.com/watch?v=RGWXNvc_UXI",
+    "url": "https://youtu.be/RGWXNvc_UXI",
     "description": "USD Importer.",
     "search": ["quick", "clip", "141"]
   },
-  "Curve Sweep": {
+  "Modo 14.1 - Curve Sweep": {
     "category": "quick_clips",
     "title": "Modo 14.1 - Curve Sweep",
-    "url": "https://www.youtube.com/watch?v=PwNdU5a09oo",
+    "url": "https://youtu.be/PwNdU5a09oo",
     "description": "Curve Sweep.",
     "search": ["quick", "clip", "141"]
   },
-  "IK/FK Matching": {
+  "Modo 14.1 - IK/FK Matching": {
     "category": "quick_clips",
     "title": "Modo 14.1 - IK/FK Matching",
-    "url": "https://www.youtube.com/watch?v=rIqG0w_MFfs",
+    "url": "https://youtu.be/rIqG0w_MFfs",
     "description": "IK/FK Matching.",
     "search": ["quick", "clip", "141"]
   },
-  "Disable IK": {
+  "Modo 14.1 - Disable IK": {
     "category": "quick_clips",
     "title": "Modo 14.1 - Disable IK",
-    "url": "https://www.youtube.com/watch?v=KbVvrPT4Qbc",
+    "url": "https://youtu.be/KbVvrPT4Qbc",
     "description": "Disable IK.",
     "search": ["quick", "clip", "141"]
   },
-  "AVP Performance": {
+  "Modo 14.1 - AVP Performance": {
     "category": "quick_clips",
     "title": "Modo 14.1 - AVP Performance",
-    "url": "https://www.youtube.com/watch?v=yS1sdXT09n8",
+    "url": "https://youtu.be/yS1sdXT09n8",
     "description": "AVP Performance.",
     "search": ["quick", "clip", "141"]
   },
-  "Workflow Enhanced": {
+  "Modo 14.0 - Workflow Enhanced": {
     "category": "quick_clips",
     "title": "Modo 14.0 - Workflow Enhanced",
-    "url": "https://www.youtube.com/watch?v=csuM8nuP4jk",
+    "url": "https://youtu.be/csuM8nuP4jk",
     "description": "Workflow Enhanced.",
     "search": ["quick", "clip", "140"]
   },
-  "Ghost and Xray Modes": {
+  "Modo 14.0 - Ghost and Xray Modes": {
     "category": "quick_clips",
     "title": "Modo 14.0 - Ghost and Xray Modes",
-    "url": "https://www.youtube.com/watch?v=jhPZKC_Kbjg",
+    "url": "https://youtu.be/jhPZKC_Kbjg",
     "description": "Ghost and Xray Modes.",
     "search": ["quick", "clip", "140"]
   },
-  "Unbevel and Add Point": {
+  "Modo 14.0 - Unbevel and Add Point": {
     "category": "quick_clips",
     "title": "Modo 14.0 - Unbevel and Add Point",
-    "url": "https://www.youtube.com/watch?v=gJvJNeNToIs",
+    "url": "https://youtu.be/gJvJNeNToIs",
     "description": "Unbevel and Add Point.",
     "search": ["quick", "clip", "140"]
   },
-  "Edge Chamfer": {
+  "Modo 14.0 - Edge Chamfer": {
     "category": "quick_clips",
     "title": "Modo 14.0 - Edge Chamfer",
-    "url": "https://www.youtube.com/watch?v=sAqNBuJQZ6k",
+    "url": "https://youtu.be/sAqNBuJQZ6k",
     "description": "Edge Chamfer.",
     "search": ["quick", "clip", "140"]
   },
-  "Face Slide Mode": {
+  "Modo 14.0 - Face Slide Mode": {
     "category": "quick_clips",
     "title": "Modo 14.0 - Face Slide Mode",
-    "url": "https://www.youtube.com/watch?v=HUXhYCFDRg",
+    "url": "https://youtu.be/HUXhYCFDRg",
     "description": "Face Slide Mode.",
     "search": ["quick", "clip", "140"]
   },
-  "Scale Texture Groups": {
+  "Modo 14.0 - Scale Texture Groups": {
     "category": "quick_clips",
     "title": "Modo 14.0 - Scale Texture Groups",
-    "url": "https://www.youtube.com/watch?v=1vBkoEZZQOY",
+    "url": "https://youtu.be/1vBkoEZZQOY",
     "description": "Scale Texture Groups.",
     "search": ["quick", "clip", "140"]
   },
   "Procedural Vertex Maps": {
     "category": "quick_clips",
     "title": "Modo 14.0 - Procedural Vertex Maps",
-    "url": "https://www.youtube.com/watch?v=MemMlKdyYP8",
+    "url": "https://youtu.be/MemMlKdyYP8",
     "description": "Procedural Vertex Maps.",
     "search": ["quick", "clip", "140"]
   },
-  "MeshFusion Embossing": {
+  "Modo 14.0 - MeshFusion Embossing": {
     "category": "quick_clips",
     "title": "Modo 14.0 - MeshFusion Embossing",
-    "url": "https://www.youtube.com/watch?v=0efarjxVuVA",
+    "url": "https://youtu.be/0efarjxVuVA",
     "description": "MeshFusion Embossing.",
     "search": ["quick", "clip", "140"]
   },
-  "UV Enhancements": {
+  "Modo 14.0 - UV Enhancements": {
     "category": "quick_clips",
     "title": "Modo 14.0 - UV Enhancements",
-    "url": "https://www.youtube.com/watch?v=NrASEZk5Vz0",
+    "url": "https://youtu.be/NrASEZk5Vz0",
     "description": "UV Enhancements.",
     "search": ["quick", "clip", "140"]
   },
-  "Markup": {
+  "Modo 14.0 - Markup": {
     "category": "quick_clips",
     "title": "Modo 14.0 - Markup",
-    "url": "https://www.youtube.com/watch?v=cbh4y96tXtw",
+    "url": "https://youtu.be/cbh4y96tXtw",
     "description": "Markup.",
     "search": ["quick", "clip", "140"]
   },
-  "mPath Renderer Enhancements": {
+  "Modo 14.0 - mPath Renderer Enhancements": {
     "category": "quick_clips",
     "title": "Modo 14.0 - mPath Renderer Enhancements",
-    "url": "https://www.youtube.com/watch?v=spbnlHZaglA",
+    "url": "https://youtu.be/spbnlHZaglA",
     "description": "mPath Renderer Enhancements.",
     "search": ["quick", "clip", "140"]
   },
-  "General Enhancements": {
+  "Modo 14.0 - General Enhancements": {
     "category": "quick_clips",
     "title": "Modo 14.0 - General Enhancements",
-    "url": "https://www.youtube.com/watch?v=oOvNgvVyukw",
+    "url": "https://youtu.be/oOvNgvVyukw",
     "description": "General Enhancements.",
     "search": ["quick", "clip", "140"]
-  },
-  "Create Complex 3D Shapes from 2D Curves with Curve Booleans": {
-    "category": "tutorials",
-    "title": "Modo 15.1 - Create Complex 3D Shapes from 2D Curves with Curve Booleans",
-    "url": "https://www.youtube.com/watch?v=kjAfnan-ha0",
-    "description": "Learn how to create complex 3D models such as logos, decals and more using Modo's curve tools coupled with a system of booleans to create complex 2D shapes that are ready for 3D conversion.",
-    "search": ["tutorial", "151", "curve", "boolean"]
-  },
-  "Cut Down Waiting Times With Mesh Stack Evaluations": {
-    "category": "tutorials",
-    "title": "Modo 15.1 - Cut Down Waiting Times With Mesh Stack Evaluations",
-    "url": "https://www.youtube.com/watch?v=uHFpiJjZTPE",
-    "description": "Cut Down Waiting Times With Mesh Stack Evaluations.",
-    "search": ["tutorial", "151", "meshop"]
-  },
-  "Speed up Your Workflow With OmniHaul": {
-    "category": "tutorials",
-    "title": "Modo 15.1 - Speed up Your Workflow With OmniHaul",
-    "url": "https://www.youtube.com/watch?v=JemSBlPJpC8",
-    "description": "Speed up Your Workflow With OmniHaul.",
-    "search": ["tutorial", "151", "omnihaul"]
-  },
-  
-  "Cut Down Waiting Times With Mesh Stack Evaluations": {
-    "category": "tutorials",
-    "title": "Modo 15.1 - Cut Down Waiting Times With Mesh Stack Evaluations",
-    "url": "https://www.youtube.com/watch?v=uHFpiJjZTPE",
-    "description": "Cut Down Waiting Times With Mesh Stack Evaluations.",
-    "search": ["quick", "clip"]
-  },
-  "Speed up Your Workflow With OmniHaul": {
-    "category": "tutorials",
-    "title": "Modo 15.1 - Speed up Your Workflow With OmniHaul",
-    "url": "https://www.youtube.com/watch?v=JemSBlPJpC8",
-    "description": "Speed up Your Workflow With OmniHaul.",
-    "search": ["quick", "clip"]
   }
 }
