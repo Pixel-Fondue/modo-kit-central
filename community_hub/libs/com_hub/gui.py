@@ -1,13 +1,14 @@
 try:
     from PySide2.QtCore import Qt
-    from PySide2.QtWidgets import (QMainWindow, QApplication, QTabWidget, QWidget, QVBoxLayout)
+    from PySide2.QtWidgets import (QMainWindow, QApplication, QTabWidget, QWidget, QVBoxLayout,
+                                   QTabBar)
 except ImportError:
     from PySide.QtCore import Qt
-    from PySide.QtGui import (QMainWindow, QApplication, QTabWidget, QWidget, QVBoxLayout)
+    from PySide.QtGui import (QMainWindow, QApplication, QTabWidget, QWidget, QVBoxLayout, QTabBar)
 
 # Kit imports
+from com_hub import utils
 from com_hub.prefs import Text, KEYS, CSS
-from com_hub.utils import load_resource
 from com_hub.gui_utils import build_tab
 
 
@@ -18,7 +19,7 @@ class CommunityHub(QMainWindow):
         self.setWindowTitle(Text.title)
         self.setWindowFlags(self.windowFlags() | Qt.WindowStaysOnTopHint)
         self.resize(450, 300)
-        self.authors = load_resource(KEYS.authors)
+        self.authors = utils.load_resource(KEYS.authors)
         # Initialize GUI args
         self.tabs = QTabWidget()
         self.build_ui()
@@ -27,6 +28,7 @@ class CommunityHub(QMainWindow):
         self.show()
 
     def build_ui(self):
+        self.setStyleSheet(CSS)
         base_widget = QWidget(self)
         base_layout = QVBoxLayout(base_widget)
         base_layout.setContentsMargins(2, 2, 2, 2)
@@ -38,12 +40,13 @@ class CommunityHub(QMainWindow):
         self.tabs.setObjectName("Tabs")
         base_layout.addWidget(self.tabs)
 
-        for tab_type in (KEYS.kits, KEYS.videos, KEYS.social):
+        for i, tab_type in enumerate((KEYS.kits, KEYS.videos, KEYS.social)):
             tab = build_tab(tab_type)
             self.tabs.addTab(tab, tab_type)
+            # Remove the close button from these core tabs
+            self.tabs.tabBar().setTabButton(i, QTabBar.RightSide, None)
 
         self.setCentralWidget(base_widget)
-        self.setStyleSheet(CSS)
 
     def closeEvent(self, event):
         """PySide method: Handle closing the UI"""
@@ -52,7 +55,7 @@ class CommunityHub(QMainWindow):
 
     def tab_close(self, index):
         """Handle closing Author tabs."""
-        if index > 2:
+        if index > 2:  # Keep 0-2 locked.
             # Ge the widget attached to the tab
             tab_widget = self.tabs.widget(index)
             # Remove tab from tab widget
@@ -66,6 +69,7 @@ if __name__ == "__main__":
     import sys
 
     app = QApplication(sys.argv)
+    app.setAttribute(Qt.AA_EnableHighDpiScaling)
 
     window = CommunityHub()
 
