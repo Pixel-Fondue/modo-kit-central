@@ -11,19 +11,20 @@ except ImportError:
 
 from com_hub.utils import load_resource
 from com_hub.prefs import KEYS
-from com_hub.widgets import widget_map, KitTab
+from com_hub.widgets import widget_tabs, widget_map, KitTab
 
 
-def build_tab(tab_type):
+def build_tab(tab_type, closable=False):
     # Get tab resource
     tab_data = load_resource(tab_type)
     if not tab_data:
         return
     # Get the widget by class type
     widget_class = widget_map.get(tab_type)
+    tab_class = widget_tabs.get(tab_type)
 
-    if tab_type == KEYS.kits:
-        tab_list = KitTab(tab_data)
+    if tab_class:
+        return tab_class(tab_data)
     else:
         tab_list = QListWidget()
 

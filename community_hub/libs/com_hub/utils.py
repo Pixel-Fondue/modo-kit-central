@@ -42,6 +42,15 @@ def load_resource(res_type):
         return None
 
 
+def load_stylesheet():
+    """Leads the stylesheet used for the QT widgets."""
+    style_path = join(prefs.resources, "style.css")
+    print(style_path)
+    with open(style_path, "r") as style_file:
+        # Set the preferences CSS data.
+        prefs.CSS = style_file.read()
+
+
 def load_avatar(avatar):
     """Gets the avatar image from the resources directory.
 
@@ -60,3 +69,4 @@ def load_avatar(avatar):
 
 
 get_resources()
+load_stylesheet()

@@ -2,6 +2,7 @@
 
 resources = None
 authors = None
+CSS = ""
 
 # TODO: Enable location based text for all regions not just english
 # import locale
@@ -12,6 +13,7 @@ class Text:
     title = "Community Hub"
     author = "Author: <a href='{}' style='color: white'>{}</a>"
     lbl_link = "<a href='{link}' style='color: white'>{text}</a>"
+    youtube_embed = "https://www.youtube.com/embed/{}"
 
 
 class KEYS:
@@ -19,22 +21,3 @@ class KEYS:
     kits = "kits"
     social = "social"
     authors = "authors"
-
-
-CSS = """
-QListWidget,
-QListWidget::item:selected {
-    background-color: rgb(70, 70, 70);
-}
-#description {
-    background-color: rgb(65, 65, 65);
-    color: rgb(220, 220, 220);
-}
-"""
-
-CSS_FOLD = """
-QToolButton { background-color: rgb(50, 50, 50);
-              border-radius: 4px;
-              font-size: 12px;
-              color: rgb(220, 220, 220); }
-"""
