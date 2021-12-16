@@ -46,9 +46,9 @@ class AuthorTab(QScrollArea):
         # Load avatar if it exists.
         self.avatar = load_avatar(author_data.get('avatar'))
         avatar_lbl = QLabel("test")
-        avatar_lbl.setFixedSize(64, 64)
+        avatar_lbl.setFixedSize(120, 100)
         # Load and scale avatar.
-        avatar_pix = QPixmap(self.avatar).scaledToHeight(64)
+        avatar_pix = QPixmap(self.avatar).scaledToHeight(100)
         avatar_lbl.setPixmap(avatar_pix)
         self.base_layout.addWidget(avatar_lbl, alignment=Qt.AlignCenter)
 
