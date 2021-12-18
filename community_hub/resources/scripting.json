@@ -200,7 +200,7 @@
     "url6": null,
     "search": ["XXXXX"]
   },
-  "Calculate x,y,z sizes of selected geometry (since layer.bounds will give you the bounding box of the entire layer): {
+  "Calculate x,y,z sizes of selected geometry (since layer.bounds will give you the bounding box of the entire layer)": {
     "url": "https://community.foundry.com/discuss/topic/69758",
     "url2": null,
     "url3": null,
@@ -607,7 +607,6 @@
     "url": "https://community.foundry.com/discuss/topic/128890",
     "2ndsolution": "Another approach (more simple)",
     "url2": "http://community.thefoundry.co.uk/discussion/post.aspx?f=119&t=128890&p=1067373",
-    "url2": null,
     "url3": null,
     "url4": null,
     "url5": null,
