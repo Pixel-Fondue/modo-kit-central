@@ -64,6 +64,18 @@ def mid_resources(folder, files):
     # print (xml_resources)
     return xml_resources
 
+def mid_libs(folder, files):
+    # For each file add target
+    xml_libs = f''
+    for file in files:  # type: Path
+        # Path including the kit directory
+        libs_full_path = file.relative_to(folder.parent)
+        # Path without kit directory
+        libs_rel_path = file.relative_to(folder)
+        xml_libs += f'\n\t\t<source target="{libs_full_path}">{libs_rel_path}</source>'
+    # print (xml_libs)
+    return xml_libs
+
 def mid_lxserv(folder, files):
     # For each file add target
     xml_lxserv = f''

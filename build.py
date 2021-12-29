@@ -8,6 +8,7 @@ import utils
 from utils import mid_header
 from utils import mid_root
 from utils import mid_configs
+from utils import mid_libs
 from utils import mid_lxserv
 from utils import mid_message
 from utils import mid_resources
@@ -19,6 +20,7 @@ kit_name = "community_hub"
 # Get the kit directories
 kit_dir = repo_dir / "community_hub"
 configs_dir = kit_dir / "configs"
+libs_dir = kit_dir / "libs"
 lxserv_dir = kit_dir / "lxserv"
 resources_dir = kit_dir / "resources"
 # Get the build directory
@@ -32,6 +34,7 @@ def root_fi():
     # Get Base files for a kit description index.cfg
     root_files = []
     files = [f for f in os.listdir(kit_dir) if f.endswith(".cfg") or f.endswith(".txt")]
+    # print (files)
     for f in files:
         f = kit_dir / f
         root_files.append(f)
@@ -52,6 +55,14 @@ def configs_fi():
     print(configs_files)
     return configs_files
 # config_fi()
+
+# Files contained in the "libs" folder and make sure no pyc files come along
+def libs_fi():
+    libs_files = [f for f in libs_dir.glob("**/*") if f.is_file() and not f.name.endswith(".pyc")]
+    print("INDEX ----- files in libs folder -----")
+    print(libs_files)
+    return libs_files
+# libs_fi()
 
 # Files contained in the "lxserv" folder and make sure no pyc files come along
 def lxserv_fi():
@@ -85,6 +96,7 @@ lpk_path = build_dir / f"community_hub_{version}.lpk"
 message = f"Successfully installed Modo Community Hub: v{version}"
 
 # Build the LPK file.
+# with ZipFile(lpk_path, mode="w", compression=ZIP_STORED, allowZip64=True, compresslevel=None) as lpk:              # test using different zip compression doesn't solve the uncompressing issue
 with ZipFile(lpk_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     # Add the license
     # lpk.write(license_file, "license")
@@ -99,6 +111,9 @@ with ZipFile(lpk_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     print("----- Copy Root/configs Folder Data -----")
     indexconfigs = mid_configs(folder=kit_dir, files=configs_fi())
 
+    print("----- Copy Root/libs Folder Data -----")
+    indexlibs = mid_libs(folder=kit_dir, files=libs_fi())
+
     print("----- Copy Root/lxserv Folder Data -----")
     indexlxserv = mid_lxserv(folder=kit_dir, files=lxserv_fi())
 
@@ -109,9 +124,9 @@ with ZipFile(lpk_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     indexmessage = mid_message(info=message)
 
     # Write the index.xml file
-    index_data = (indexheader + indexroot + indexconfigs + indexmessage)
-    # index_data = (indexheader + indexroot + indexconfigs + indexlxserv + indexresources + indexmessage)
+    index_data = (indexheader + indexroot + indexconfigs + indexlibs + indexlxserv + indexresources + indexmessage)
     lpk.writestr("index.xml", index_data)
+
 
     # Write all file into the lpk
     print("----- Root files -----")
@@ -121,6 +136,11 @@ with ZipFile(lpk_path, mode="w", compression=ZIP_DEFLATED) as lpk:
 
     print("----- configs folder files -----")
     for file in configs_fi():
+        print(file.relative_to(kit_dir))
+        lpk.write(file, file.relative_to(kit_dir))
+
+    print("----- libs Folder files -----")
+    for file in libs_fi():
         print(file.relative_to(kit_dir))
         lpk.write(file, file.relative_to(kit_dir))
 
