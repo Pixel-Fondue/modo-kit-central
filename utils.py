@@ -39,10 +39,10 @@ def make_index(folder, files, message, restart="No"):
 
 
 def fwd_slash(file_path):
-    """Ensure that all slashes are /
+    """Ensure that all slashes are '/'
 
     Args:
-        file_path (str): The path to force /
+        file_path (st|Path): The path to force '/'
 
     Returns:
         (str): Formatted path

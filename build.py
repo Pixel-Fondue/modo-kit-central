@@ -45,4 +45,7 @@ with ZipFile(lpk_path, mode="w", compression=ZIP_DEFLATED) as lpk:
         print(file.relative_to(kit_dir))
         lpk.write(file, fwd_slash(file.relative_to(kit_dir)))
 
+    print([f for f in lpk.filelist])
+    print(lpk.testzip())
+
 print(f"\nLPK package built: {lpk_name}")
