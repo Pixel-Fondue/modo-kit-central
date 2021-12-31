@@ -4,7 +4,7 @@ from shutil import rmtree
 from zipfile import ZipFile, ZIP_DEFLATED
 
 import utils
-from utils import make_index
+from utils import make_index, fwd_slash
 
 # Get the root path to this repo
 repo_dir = Path(__file__).parent
@@ -43,6 +43,6 @@ with ZipFile(lpk_path, mode="w", compression=ZIP_DEFLATED) as lpk:
     # Write all file into the lpk
     for file in kit_files:
         print(file.relative_to(kit_dir))
-        lpk.write(file, file.relative_to(kit_dir))
+        lpk.write(file, fwd_slash(file.relative_to(kit_dir)))
 
 print(f"\nLPK package built: {lpk_name}")

@@ -28,7 +28,7 @@ def make_index(folder, files, message, restart="No"):
         # Path including the kit directory
         full_path = file.relative_to(folder.parent)
         # Path without kit directory. Modo requires that paths in the index use forward slash
-        rel_path = file.relative_to(folder).as_posix().replace("\\", "/")
+        rel_path = fwd_slash(file.relative_to(folder))
         xml += f'\n\t\t<source target="{full_path}">{rel_path}</source>'
     # Add license file
     xml += f'\n\t\t<source target="community_hub\LICENSE">LICENSE</source>'
@@ -36,6 +36,18 @@ def make_index(folder, files, message, restart="No"):
     xml += f'\n\t</kit>\n\t<message button="Help">{message}</message>\n</package>'
     # Return Text
     return xml
+
+
+def fwd_slash(file_path):
+    """Ensure that all slashes are /
+
+    Args:
+        file_path (str): The path to force /
+
+    Returns:
+        (str): Formatted path
+    """
+    return str(file_path).replace("\\", "/")
 
 
 def get_version():

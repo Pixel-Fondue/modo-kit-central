@@ -39,7 +39,7 @@ jobs:
         with:
           # Set tag values
           tag_name: ${{ env.KIT_VERSION }}
-          release_name: Kit Name ${{ env.KIT_VERSION }}
+          release_name: Modo Community Hub ${{ env.KIT_VERSION }}
           draft: false
           prerelease: false
       # Upload the .lpk file to the release tag.
