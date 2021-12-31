@@ -33,7 +33,7 @@ jobs:
       # Create a tag release on the repository
       - name: Generate Release Tag
         id: create_release
-        uses: actions/create_release@v1
+        uses: actions/create_release@1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -50,7 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           # Get the url of the checked out code
-          upload_url: ${{ steps.create_modo_release.outputs.upload_url }}
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           # Get the relative path to the generated kit
           asset_path: ./build/community_hub_${{ env.KIT_VERSION }}.lpk
           # Get the name of the lpk file
