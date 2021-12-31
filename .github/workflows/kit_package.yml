@@ -1,0 +1,59 @@
+# Action to generate the lpk kit file
+name: Kit Release
+
+on:
+  # Triggers the workflow when a branch is merged to main
+  push:
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # Release job is used to package the community hub kit and upload the lpk
+  release:
+    # We are just using python so lets use linux
+    runs-on: ubuntu-latest
+    steps:
+      # Get the repository code
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      # Setup Python
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.7"
+      # Get the version of the kit and store it as an environment variable
+      - name: Get Kit Version
+        run: |
+          VER=$(cat VERSION)
+          echo "KIT_VERSION=$VER" >> $GITHUB_ENV
+      # Package the lpk file
+      - name: Package Kit
+        run: python build.py
+      # Create a tag release on the repository
+      - name: Generate Release Tag
+        id: create_modo_release
+        uses: actions/create_modo_release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # Set tag values
+          tag_name: ${{ env.KIT_VERSION }}
+          release_name: Kit Name ${{ env.KIT_VERSION }}
+          draft: false
+          prerelease: false
+      # Upload the .lpk file to the release tag.
+      - name: Upload LPK Asset
+        id: upload-lpk-asset
+        uses: actions/upload-lpk-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # Get the url of the checked out code
+          upload_url: ${{ steps.create_modo_release.outputs.upload_url }}
+          # Get the relative path to the generated kit
+          asset_path: ./build/community_hub_${{ env.KIT_VERSION }}.lpk
+          # Get the name of the lpk file
+          asset_name: community_hub_${{ env.KIT_VERSION }}.lpk
+          # Mark the LPK type as zip
+          asset_content_type: application/zip

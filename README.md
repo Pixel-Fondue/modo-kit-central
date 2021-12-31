@@ -26,5 +26,5 @@ kit/tutorial/blog or preset via GitHub. Walk-through tutorials are in the making
 to help make the process easy for new users to GitHub.
 
 # Creating A release
-When A branch is merged to main, a kit will need to be released. While anyone can 
-build the kits Those with special access will be able to publish a kit on GitHub.
+When A branch is merged to main, a GitHub action will begin to process the LPK 
+generation and add the kit file to a release tag where users can download the latest file.
