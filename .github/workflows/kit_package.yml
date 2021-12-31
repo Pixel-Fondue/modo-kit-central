@@ -33,7 +33,7 @@ jobs:
       # Create a tag release on the repository
       - name: Generate Release Tag
         id: create_release
-        uses: actions/create_release@1.1.4
+        uses: actions/create_release@v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
