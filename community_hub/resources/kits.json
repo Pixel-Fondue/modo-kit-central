@@ -23,13 +23,13 @@
     "help": "https://community.foundry.com/discuss/topic/139479",
     "search": ["python", "node", "Expression", "code"]
   },
-  "SMONSTER V2": {
+  "SMONSTER": {
     "author": "Franck Elisabeth",
-    "version": "2.726",
-    "description": "SMONSTER V2 is a Kit Compilation that bring you powerful new tools to Modo. \nIt include 13 Standard Kits and 3 Livelink Kits to simplify integration of other software within Modo and improve your workflow. \nIt includes:\nBAKE - BATCH - CAD TOOLS - CLEANUP - COLOR BAR - GAME CONTENT - MASTER - MATH TOOLS - MESHOPS - MIFABOMA - QUICK TAG - UV - VENOM kits \nand \nMARMOSET TOOLBAG LiveLink - PIXAFLUX LiveLink - RIZOM UV LiveLink kits \nAs usual, more functions and kits will be added to it over time.",
-    "url": "https://smoluck.gumroad.com/l/smonster_v2",
+    "version": "3.0",
+    "description": "SMONSTER (v3) is a Kit Compilation that bring you powerful new tools to Modo. \nIt include 13 Standard Kits and 3 Livelink Kits to simplify integration of other software within Modo and improve your workflow. \nIt includes:\nBAKE - BATCH - CAD TOOLS - CLEANUP - COLOR BAR - GAME CONTENT - MASTER - MATH TOOLS - MESHOPS - MIFABOMA - QUICK TAG - UV - VENOM kits \nand \nMARMOSET TOOLBAG LiveLink - PIXAFLUX LiveLink - RIZOM UV LiveLink kits \nAs usual, more functions and kits will be added to it over time.",
+    "url": "https://smoluck.gumroad.com/l/Smonster-v3",
     "help": "https://community.foundry.com/discuss/topic/156389",
-    "search": ["modeling", "livelink", "uv", "workflow", "pipeline", "baking", "IO", "UI", "meshops", "batch"]
+    "search": ["modeling", "livelink", "uv", "workflow", "pipeline", "baking", "IO", "UI", "meshops", "batch", "tag", "material", "game", "art", "rizomuv", "marmoset", "toolbag", "pixaflux", "schematic", "vertex", "normals"]
   },
   "SMO Math Tools": {
     "author": "Franck Elisabeth",
