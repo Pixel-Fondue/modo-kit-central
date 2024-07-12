@@ -49,12 +49,13 @@ jobs:
         uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          KIT_FILE_NAME: modo_kit_cental_${{ env.KIT_VERSION }}.lpk
         with:
           # Get the url of the checked out code
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           # Get the relative path to the generated kit
-          asset_path: ./build/modo_kit_central_${{ env.KIT_VERSION }}.lpk
+          asset_path: ./build/${{ env.KIT_FILE_NAME }}
           # Get the name of the lpk file
-          asset_name: community_hub_${{ env.KIT_VERSION }}.lpk
+          asset_name: ${{ env.KIT_FILE_NAME }}
           # Mark the LPK type as zip
           asset_content_type: application/zip
