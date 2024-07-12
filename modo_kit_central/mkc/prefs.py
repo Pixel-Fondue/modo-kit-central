@@ -41,7 +41,7 @@ class KIT:
     CMD_LAUNCHER = f"{ABV}.launcher"
 
 
-@dataclass(slots=True)
+@dataclass
 class KitData:
     """Dataclass for the kit's information."""
     id: int
@@ -60,7 +60,7 @@ class KitData:
         self.search = self.search.split(",") if self.search else []
 
 
-@dataclass(slots=True)
+@dataclass
 class AuthorData:
     """Dataclass for the author's information."""
     id: int
