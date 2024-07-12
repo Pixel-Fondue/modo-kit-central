@@ -1,0 +1,379 @@
+{
+  "PyMOp": {
+    "author": "Shawn Frueh",
+    "version": "2.0",
+    "modo_min": 1000,
+    "modo_max": 1500,
+    "description": "The Python Mesh Operator, PyMop, allows you to edit the code of a mesh operator live from within MODO!",
+    "url": "https://shawnfrueh.gumroad.com/l/pyMop",
+    "help": "https://community.foundry.com/discuss/topic/139479",
+    "search": ["python", "meshop", "procedural", "code"],
+    "installable": false,
+    "add_ons": {
+      "Plexus": {
+        "url": "https://shawnfrueh.gumroad.com/l/PyMopPlexus",
+        "description": "Using PyMop, this preset lets you procedurally connect particles/points with lines. \nThis checks each point against each point so it will get slow with a high number of points/particles."
+      }
+    }
+  },
+  "PyExpress": {
+    "author": "Shawn Frueh",
+    "version": "2.0",
+    "description": "The Python Modifier, PyExpress, allows you to edit the code of a modifier live from within MODO!",
+    "url": "https://shawnfrueh.gumroad.com/l/pyMop",
+    "help": "https://community.foundry.com/discuss/topic/139479",
+    "search": ["python", "node", "Expression", "code"]
+  },
+  "SMONSTER": {
+    "author": "Franck Elisabeth",
+    "version": "3.0",
+    "description": "SMONSTER (v3) is a Kit Compilation that bring you powerful new tools to Modo. \nIt include 13 Standard Kits and 3 Livelink Kits to simplify integration of other software within Modo and improve your workflow. \nIt includes:\nBAKE - BATCH - CAD TOOLS - CLEANUP - COLOR BAR - GAME CONTENT - MASTER - MATH TOOLS - MESHOPS - MIFABOMA - QUICK TAG - UV - VENOM kits \nand \nMARMOSET TOOLBAG LiveLink - PIXAFLUX LiveLink - RIZOM UV LiveLink kits \nAs usual, more functions and kits will be added to it over time.",
+    "url": "https://smoluck.gumroad.com/l/Smonster-v3",
+    "help": "https://community.foundry.com/discuss/topic/156389",
+    "search": ["modeling", "livelink", "uv", "workflow", "pipeline", "baking", "IO", "UI", "meshops", "batch", "tag", "material", "game", "art", "rizomuv", "marmoset", "toolbag", "pixaflux", "schematic", "vertex", "normals"]
+  },
+  "SMO Math Tools": {
+    "author": "Franck Elisabeth",
+    "version": "1.0",
+    "description": "In a long run it can be cumbersome to walk through all the menus to get a logic node, a function node or a simple basic math node. \nAs i’ve buid up a lot of Meshops on the last year, i’ve decided to get this little Pie Menu to help you and me gain 5 to 10 Mins of browsing for those nodes each day. \nIt keeps things tiddy, but if you prefer the Vertical or an Horizontal bar, it’s available too.",
+    "url": "https://smoluck.gumroad.com/l/SMO_Math_Tools",
+    "help": "https://community.foundry.com/discuss/topic/150217",
+    "search": ["schematic"]
+  },
+  "SMO Color Bar": {
+    "author": "Franck Elisabeth",
+    "version": "1.0",
+    "description": "This kit brings you easy tools to gives independent GL drawing to your items and nodes in Modo.",
+    "url": "https://smoluck.gumroad.com/l/SMO_COLOR_BAR",
+    "help": "https://community.foundry.com/discuss/topic/149822",
+    "search": ["schematic", "UI", "itemlist"]
+  },
+  "The Pushing Points - MOP Booleans": {
+    "author": "William Vaughan",
+    "version": "2.1",
+    "description": "This kit is designed to remove the challenges of working with complex boolean operations and introduces a non-destructive workflow that makes creating highly detailed meshes a trivial task.",
+    "url": "https://vaughan3d.gumroad.com/l/WWlrn",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["modeling", "meshops"]
+  },
+  "The Pushing Points - Nifty": {
+    "author": "William Vaughan",
+    "version": "1.0",
+    "description": "This kit is a collection of user-requested scripts, designed to add functionality and increase the speed of working in MODO.",
+    "url": "https://vaughan3d.gumroad.com/l/lJkMa",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["workflow", "scripts"]
+  },
+  "The Pushing Points - Modo Tips": {
+    "author": "William Vaughan",
+    "version": "1.0",
+    "description": "This kit provides a quick tip for each day of the year. Learn tools, features, tips and techniques each day to build up your Modo toolkit. ",
+    "url": "https://vaughan3d.gumroad.com/l/blpNw",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["tips"]
+  },
+  "The Pushing Points - V60 Search Tool": {
+    "author": "William Vaughan",
+    "version": "1.0",
+    "description": "This kit is a custom search engine for the Vaughan in 60 Seconds video series. This search engine works right inside of MODO, making it easy and efficient to access over 900 videos.",
+    "url": "https://vaughan3d.gumroad.com/l/phwSF",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["videos", "tips"]
+  },
+  "The Pushing Points - Polystein": {
+    "author": "William Vaughan",
+    "version": "2.5",
+    "description": "This kit is consisting of an array of all-quad SubD mesh presets that can be seamlessly added to a model making mesh detailing incredibly easy. This powerful toolset positions, scales, orients and auto-stitches these mesh presets to your active mesh relieving you of the tedious process of doing it manually.",
+    "url": "https://vaughan3d.gumroad.com/l/HDfFv",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["modeling"]
+  },
+  "The Pushing Points - Coolidge Collection": {
+    "author": "William Vaughan",
+    "version": "2.1",
+    "description": "Thi kit is a collection of scripts, tool presets and commands designed to add functionality and increase the speed of working in MODO.",
+    "url": "https://vaughan3d.gumroad.com/l/SukpL",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["workflow", "scripts"]
+  },
+  "The Pushing Points - Topology Scripts": {
+    "author": "William Vaughan",
+    "version": "1.8.0",
+    "description": "Topology Scripts for MODO are designed to speed up re-configuring the topology of a mesh.",
+    "url": "https://vaughan3d.gumroad.com/l/EwqPT",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["modeling", "scripts", "topology"]
+  },
+  "The Pushing Points - Hatchet Collection": {
+    "author": "William Vaughan",
+    "version": "10.3.0",
+    "description": "This kit is consisting of over 100 Python scripts developed to add functionality to MODO 10+ and make creating more efficient.",
+    "url": "https://vaughan3d.gumroad.com/l/cLLOO",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["modeling", "meshops"]
+  },
+  "The Pushing Points - PySnippets": {
+    "author": "William Vaughan",
+    "version": "1.2",
+    "description": "This kit is a collection of small blocks of reusable code that can be quickly inserted into the MODO Script Editor or any external source code editor. Use these commonly used code blocks to speed up the creation of python scripts.",
+    "url": "https://vaughan3d.gumroad.com/l/fQbwH",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["python"]
+  },
+  "The Pushing Points - MOP Tubes": {
+    "author": "William Vaughan",
+    "version": "1.1",
+    "description": "This kit introduce a non-destructive workflow that speeds up the process of creating procedural tube geometry.",
+    "url": "https://vaughan3d.gumroad.com/l/WnCfKg",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["modeling"]
+  },
+  "MOP Booleans": {
+    "author": "William Vaughan",
+    "version": "1.0",
+    "description": "Put text description here",
+    "url": "https://.gumroad.com",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["modeling", "meshops"]
+  },
+  "Instant Lighting Bundle": {
+    "author": "Richard Yot",
+    "version": "1.0",
+    "description": "Buy all three Instant Lighting Kits at a discount in this bundle. \nThe Instant Lighting Kit for Modo is designed to help you create beautiful renders in the shortest possible time, allowing you to light your scenes quickly and to get professional lighting results at the click of a button.",
+    "url": "https://richardyot.gumroad.com/l/ILKbundlepage",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["lighting", "rendering"]
+  },
+  "Instant Lighting 3": {
+    "author": "Richard Yot",
+    "version": "1.0",
+    "description": "The Instant Lighting Kit for Modo Part 3: 36 new environments available at the click of a button. With this third edition of the Instant Lighting Kit you now have even more options to create great lighting quickly.",
+    "url": "https://richardyot.gumroad.com/l/ILK3",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["lighting", "rendering"]
+  },
+  "Studio Lighting 2": {
+    "author": "Richard Yot",
+    "version": "1.0",
+    "description": "The Instant Lighting Kit for Modo Part 2: 36 new environments available at the click of a button. Three new controls to help you fine-tune your lighting to perfection. With this second installment of the Instant Lighting Kit you now have even more options to create great lighting quickly.",
+    "url": "https://richardyot.gumroad.com/l/ilk2",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["lighting", "rendering"]
+  },
+  "Studio Lighting": {
+    "author": "Richard Yot",
+    "version": "1.0",
+    "description": "The Studio Lighting Kit for Modo will enable you to add realistic studio lights to your scenes quickly and efficiently.",
+    "url": "https://richardyot.gumroad.com/l/studiokit",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["lighting", "rendering"]
+  },
+  "HDR Sun and Sky": {
+    "author": "Richard Yot",
+    "version": "1.0",
+    "description": "The HDR Sun and Sky Kit is a fully-featured outdoor lighting solution for Modo, providing you with total control over outdoor lighting and weather conditions. You can control every important parameter, from the height and rotation of the sun to the amount of cloud cover. That's right, unlike any other Sun and Sky system this one has fully controllable clouds!",
+    "url": "https://richardyot.gumroad.com/l/sunsky",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["lighting", "rendering"]
+  },
+  "Geo From Curves": {
+    "author": "Mario Baldi",
+    "version": "1.0",
+    "description": "Geo From Curves will allow you to extrude planes along curves, with the ability to adjust Scale, Twist and Bend indipendently, for quick real-time hair generation.",
+    "url": "https://bluego.gumroad.com/l/EOqju",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["modeling"]
+  },
+  "Edge Flow": {
+    "author": "Mario Baldi",
+    "version": "1.0",
+    "description": "EdgeFlow is a C++ tool available for modo 901 and above*, that emulates maya's edge flow tool.",
+    "url": "https://bluego.gumroad.com/l/LwKN",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["modeling"]
+  },
+  "Edge Flow 2": {
+    "author": "Mario Baldi",
+    "version": "2.0",
+    "description": "EdgeFlow is a C++ tool available for modo 12+ and above*, that emulates maya's edge flow tool.",
+    "url": "https://bluego.gumroad.com/l/edgeFlow2",
+    "help": "https://community.foundry.com/discuss/topic/145739",
+    "search": ["modeling"]
+  },
+  "TRacer X": {
+    "author": "Mario Baldi",
+    "version": "1.0",
+    "description": "TRacer X is a plugin for Modo® 11.1+, the powerful and flexible 3D modeling, texturing and rendering toolset from Foundry.",
+    "url": "https://bluego.gumroad.com/l/BUWBg",
+    "help": "https://community.foundry.com/discuss/topic/136224",
+    "search": ["modeling"]
+  },
+  "Shrinkwrap": {
+    "author": "Mario Baldi",
+    "version": "1.0",
+    "description": "Shrinkwrap is a new C++ meshOp available for modo 11, that emulates modo's constraint to background.",
+    "url": "https://bluego.gumroad.com/l/hstIt",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["modeling"]
+  },
+  "Substance Painter Live Link": {
+    "author": "Ymmanuel Flores",
+    "version": "1.0",
+    "description": "This is the full version of the Live Link connection between Substance Painter and multiple DCC's. \nIt works with Marmoset Toolbag, Cinema 4D, 3DS Max, Maya, Blender, Modo and Houdini so far, but i'll keep adding other platforms. \nIt is compatible with Mac and Windows (Linux coming soon...)",
+    "url": "https://xolotlstudio.gumroad.com/l/fTRFN",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["livelink"]
+  },
+  "Substance Designer Live Link": {
+    "author": "Ymmanuel Flores",
+    "version": "1.0",
+    "description": "This is the full version of the Live Link connection between Substance Designer and multiple DCC's. \nIt works with Marmoset Toolbag, Cinema 4D, 3DS Max, Maya, Blender, Modo and Houdini so far, but i'll keep adding other platforms. \nIt is compatible with Windows and Mac (Linux coming soon...)",
+    "url": "https://xolotlstudio.gumroad.com/l/WKayC",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["livelink"]
+  },
+  "Stitchmap": {
+    "author": "Pascal Nocquet",
+    "version": "1.0",
+    "description": "Stitchmap Kit for Modo 15 and up is a series of high quality presets to generate very realistic stitches/bolts/screws, only with texture maps, with an easy to use setup to replicate them along a curve. The assets are of course useable any other traditional way (point replicas, UVs...)",
+    "url": "https://matelot.gumroad.com/l/xZHqM",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["modeling"]
+  },
+  "LDraw Lego Loader": {
+    "author": "Eric Soulvie",
+    "version": "1.0",
+    "description": "This is a plugin for Modo 901+ ( win and osx ). \nIt lets you load any LDraw data file into Modo (*.mpd, *.ldr, *.dat ). \nIt also automatically creates all the materials.",
+    "url": "https://griffon.gumroad.com/l/AtpzFF",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["rendering", "IO"]
+  },
+  "ACS 1 - Auto Character Setup": {
+    "author": "Lukasz Pazera",
+    "version": "1.0",
+    "description": "Auto Character Setup Free Edition (ACS FE) is a free version of a production-ready, automatic rigging solution for bipedal characters that works with Foundry MODO. \nIt offers flexible, general-purpose biped rig and a set of tools streamlining the processes of fitting, binding, weight painting and animating.  \nRigs are standard MODO scenes and after baking can be exported to external applications via .fbx format. \nACS FE can be used commercially.",
+    "url": "https://lukpazera.gumroad.com/l/vrBFE",
+    "help": "https://www.autocharactersetup.com",
+    "search": ["rigging", "animation"]
+  },
+  "ACS 2": {
+    "author": "Lukasz Pazera",
+    "version": "2.0",
+    "description": "Auto Character Setup (ACS) 2 is a production-ready, automatic rigging solution for bipedal characters that works with Foundry MODO. \nACS2 offers flexible, general-purpose biped rig and a set of tools streamlining the processes of binding, weight painting, animating and applying corrective morphs. \nIt also includes poses and actions library and adds an optimised retargeting workflow for working with motion capture data (including Mixamo support). \nACS rigs are standard MODO scenes and can be exported to external applications such as Unity or Unreal Engine using .fbx format.",
+    "url": "https://lukpazera.gumroad.com/l/xsSvL",
+    "help": "https://www.autocharactersetup.com",
+    "search": ["rigging", "animation"]
+  },
+  "ACS 3": {
+    "author": "Lukasz Pazera",
+    "version": "3.0",
+    "description": "Auto Character System 3 is next generation of auto rigging and animation tools for Foundry MODO and a continuation of production proven Auto Character Setup series.",
+    "url": "https://lukpazera.gumroad.com/l/RqqSQ",
+    "help": "https://www.autocharactersetup.com",
+    "search": ["rigging", "animation"]
+  },
+  "Render Assistant": {
+    "author": "Yazan Malkosh",
+    "version": "1.0",
+    "description": "RA (Render Assistant) for MODO 11 & 10 is a render assistance kit targeting product designers wanting to minimize fiddling with render settings to get a beautiful shot. \nIt includes tools to streamline GL, Traditional Render & Progressive rendering within MODO’s toolset. \nDrop down lists for HDRIs and Backplates. \nMinimizes clicking in the shader tree & properties settings.",
+    "url": "https://9bstudios.gumroad.com/l/bcWYK",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["rendering"]
+  },
+  "SLIK 2": {
+    "author": "Yazan Malkosh",
+    "version": "2.0",
+    "description": "If you want to light a 3d model then SLIK2 is for you. \nEncompassing a full lighting system for the cg artist, SLIK2 can provide a complete lighting solution to light your models. \nUsers can use the enclosed lighting setups, create their own or just as easily save out a customized HDR image to use for image based lighting. \nAll of this can be done in the viewport and interactively using Preview. \nNothing comes close to this type of streamlined workflow for realistic lighting solutions. \nWhile spherical maps are great for quick & dirty setups, SLIK2 offers real world lighting nuances that accentuate your creations.",
+    "url": "https://9bstudios.gumroad.com/l/zvTzI",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["rendering", "lighting"]
+  },
+  "Image Board": {
+    "author": "Tom Dymond",
+    "version": "2.0",
+    "description": "Create and Save Image boards directly within Modo.",
+    "url": "https://eightfivestudios.gumroad.com/l/PtJPP",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["workflow"]
+  },
+  "BabylonDreams Pipeline": {
+    "author": "Alexander Kucera",
+    "version": "1.0",
+    "description": "Modo is a wonderfully capable content creation tool. \nBut as with any complicated piece of software it does have its shortcomings in certain areas. \nNobody is perfect, right? We developed the BabylonDreams Pipeline Kit to plug many of those shortcomings we find during daily work. \nAs such this kit is geared towards working with massive CAD scenes, optimizing the shading and rendering workflow and anything in-between.",
+    "url": "http://pipeline-kit.babylondreams.de/",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["workflow", "pipeline"]
+  },
+  "VRScene GUI": {
+    "author": "Alexander Kucera",
+    "version": "1.0",
+    "description": "V-Ray is one of the most powerful rendering engines out there. \nUsed in productions all over the globe it has become an artist-friendly but mighty render engine. \nVRScene GUI helps you control that engine by providing you with tools to render and adjust your V-Ray render scene files (.vrscene) on the fly.",
+    "url": "http://vrscenegui.de/",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["workflow", "pipeline", "rendering"]
+  },
+  "Tropism": {
+    "author": "Fredrik Widman",
+    "version": "1.0",
+    "description": "Tropism is a fully procedural tree/vine/vein generator plugin for Modo built on custom Mesh Operators. \nGrow entities like trees, shrubs, plants, twigs, hedges, veins, vines, lightning bolts in real time. Grow inside mesh boundaries, on mesh surfaces, along curves or in particle systems.",
+    "url": "https://payhip.com/dex",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["trees", "modeling"]
+  },
+  "CharacterBox": {
+    "author": "PSoft",
+    "version": "1.0",
+    "description": "PSOFT CharacterBox is a character animation plugin for the 3D computer graphics software Modo. \nIt offers various capabilities necessary for character animation.",
+    "url": "https://www.psoft.co.jp/en/product/cbox",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["rigging"]
+  },
+  "QuadRemesher": {
+    "author": "Exoside",
+    "version": "1.0",
+    "description": "Quad Remesher is an automatic quad remeshing (or auto retopology) algorithm.",
+    "url": "https://exoside.com/quadremesher",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["modeling", "topology"]
+  },
+  "Ozone Studio": {
+    "author": "KitestringOnline",
+    "version": "1.0",
+    "description": "Put text description here",
+    "url": "https://kitestringonline.com/#ozone-studio",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["tag"]
+  },
+  "Channel Chimp": {
+    "author": "Apptastic Software",
+    "version": "2.0",
+    "description": "Animate your characters faster and with intuitive controls. \nKey poses manually, or motion capture your real-time performances to create organic animations. \nNEW! Channel Chimp version 2 includes an easy-to-use facial rig assembly and web browser interface.",
+    "url": "https://www.apptastic.com/chimp/",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["animation"]
+  },
+  "Arch-E": {
+    "author": "Third Guild",
+    "version": "1.0",
+    "description": "Improve your arch-viz and related workflows with a set of 25 custom-built tools.",
+    "url": "https://www.thethirdguild.com/arch-essentials-kit.html",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["modeling", "architecture"]
+  },
+  "First Light": {
+    "author": "Third Guild",
+    "version": "1.0",
+    "description": "Enhance your lighting workflow with a set of 9 custom-built (C++ plugin) lighting tools.",
+    "url": "https://www.thethirdguild.com/first-light-kit.html",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["lighting"]
+  },
+  "KitTest": {
+    "author": "Givenname Firstname",
+    "version": "1.0",
+    "description": "Put text description here",
+    "url": "https://.gumroad.com",
+    "help": "https://community.foundry.com/discuss/topic/",
+    "search": ["tag"]
+  }
+}

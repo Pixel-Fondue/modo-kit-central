@@ -1,30 +1,22 @@
-# Modo Community Hub
+# Modo Kit Central
 
-The community hub is a kit for Modo that centralizes community information 
-and third party kits into a singe, easy to use interface.
+Modo Kit Central is a community led project to help users find and install kits for Modo.
 
-# Building or Installing the kit
-Python version: `3.7` 
+# Installing the kit
+Navigate to the releases tab and download the [latest release](https://github.com/Pixel-Fondue/modo-kit-central/releases/latest).
 
-To install the kit to your appdata kits directory, run: `install.py`
-
-To build the lpk file, run: `build.py`
+Once downloaded, drag-and-drop the `modo_kit_central_<version>.lpk` file into Modo to install.
 
 # Current State
-The current state of the kits is displaying Kits, Videos and some Social links.
+The current state of the kit is to show and install (if applicable) all free kits available to the community.
 
 # Future state
-The hub will be designed as a UI that is easy to navigate showing various 
-resources from the community, including: Various hard to find kits, Recent 
-events in the Modo world, links to tutorials, links to all third-party kits 
-with option to install directly from the hub given the developer has set up
-there kit to do so.
+Modo Kit Central will be a hub for all kits, free and paid.
+Users will be able to install and update kits directly from the UI.
 
 # Publicly sourced information
-After initial release, there will be a method for any user to submit their
-kit/tutorial/blog or preset via GitHub. Walk-through tutorials are in the making
-to help make the process easy for new users to GitHub.
+After initial release, there will be a method for any user to submit their free or paid (future) kits
+to be added to the central hub.
 
-# Creating A release
-When A branch is merged to main, a GitHub action will begin to process the LPK 
-generation and add the kit file to a release tag where users can download the latest file.
+# Contributing to the project
+See the [TECH_NOTES.md](TECH_NOTES.md) file for more information.

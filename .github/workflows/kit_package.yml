@@ -21,7 +21,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.7"
+          python-version: "3.10"
       # Get the version of the kit and store it as an environment variable
       - name: Get Kit Version
         run: |
@@ -29,7 +29,7 @@ jobs:
           echo "KIT_VERSION=$VER" >> $GITHUB_ENV
       # Package the lpk file
       - name: Package Kit
-        run: python build.py
+        run: python -m scripts.build
       # Create a tag release on the repository
       - name: Create Release
         id: create_release
@@ -39,7 +39,7 @@ jobs:
         with:
           # Set tag values
           tag_name: ${{ env.KIT_VERSION }}
-          release_name: Modo Community Hub ${{ env.KIT_VERSION }}
+          release_name: Modo Kit Central ${{ env.KIT_VERSION }}
           draft: false
           prerelease: false
       # Upload the .lpk file to the release tag.
@@ -52,7 +52,7 @@ jobs:
           # Get the url of the checked out code
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           # Get the relative path to the generated kit
-          asset_path: ./build/community_hub_${{ env.KIT_VERSION }}.lpk
+          asset_path: ./build/modo_kit_central_${{ env.KIT_VERSION }}.lpk
           # Get the name of the lpk file
           asset_name: community_hub_${{ env.KIT_VERSION }}.lpk
           # Mark the LPK type as zip

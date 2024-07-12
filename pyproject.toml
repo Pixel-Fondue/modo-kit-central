@@ -1,0 +1,15 @@
+[project]
+name = "modo_kit_central"
+version = "0.1.6"
+authors = [
+    {name = "Shawn Frueh", email = "shawnfrueh@live.com"}
+]
+requires-python = ">=3.10, <3.11"
+dependencies = [
+    "PySide6==6.3.1",
+    "toml==0.10.2",
+]
+
+[modo.kit]
+short_name = "mkc"
+lpk_name = "modo_kit_central_{version}.lpk"
