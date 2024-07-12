@@ -5,6 +5,8 @@
 # Build
 *.pyc
 build/
+*venv*/
+*.egg*
 
 # Mac crap
 .DS_Store
