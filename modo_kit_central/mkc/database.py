@@ -1,9 +1,10 @@
+from typing import List
 import sqlite3
 
 from .prefs import Paths, AuthorData
 
 
-def search_kits(search_text: str) -> list[int]:
+def search_kits(search_text: str) -> List[int]:
     """Searches the database for the given search text.
 
     Args:
@@ -28,7 +29,7 @@ def search_kits(search_text: str) -> list[int]:
         return [kit[0] - 1 for kit in cursor.fetchall()]
 
 
-def get_kits() -> list[tuple]:
+def get_kits() -> List[tuple]:
     """Gets all kits from the database.
 
     Returns:
