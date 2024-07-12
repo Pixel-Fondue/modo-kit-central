@@ -1,11 +1,18 @@
-import sqlite3
-
-from PySide6.QtGui import QCursor, QDesktopServices, QPixmap, QIcon, QMouseEvent
-from PySide6.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
-from PySide6.QtWidgets import (
-    QLabel, QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QToolButton, QScrollArea, QPlainTextEdit, QSizePolicy,
-    QFrame, QTabWidget, QLineEdit
-)
+try:
+    from PySide6.QtGui import QCursor, QDesktopServices, QPixmap, QIcon, QMouseEvent
+    from PySide6.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
+    from PySide6.QtWidgets import (
+        QLabel, QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QToolButton, QScrollArea, QPlainTextEdit, QSizePolicy,
+        QFrame, QTabWidget, QLineEdit
+    )
+except ImportError:
+    # Fallback to PySide2 if PySide6 is not available
+    from PySide2.QtGui import QCursor, QDesktopServices, QPixmap, QIcon, QMouseEvent
+    from PySide2.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
+    from PySide2.QtWidgets import (
+        QLabel, QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QToolButton, QScrollArea, QPlainTextEdit, QSizePolicy,
+        QFrame, QTabWidget, QLineEdit
+    )
 
 from .prefs import KEYS, Text, Paths
 from .prefs import DATA, KitData, AuthorData

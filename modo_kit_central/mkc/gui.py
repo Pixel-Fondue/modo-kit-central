@@ -1,12 +1,16 @@
-from typing import List
-
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QCloseEvent
-from PySide6.QtWidgets import QMainWindow, QTabWidget, QWidget, QVBoxLayout, QTabBar
+try:
+    from PySide6.QtCore import Qt
+    from PySide6.QtGui import QCloseEvent
+    from PySide6.QtWidgets import QMainWindow, QTabWidget, QWidget, QVBoxLayout, QTabBar
+except ImportError:
+    # Fallback to PySide2 if PySide6 is not available
+    from PySide2.QtCore import Qt
+    from PySide2.QtGui import QCloseEvent
+    from PySide2.QtWidgets import QMainWindow, QTabWidget, QWidget, QVBoxLayout, QTabBar
 
 # Kit imports
 from .prefs import Text, KEYS, DATA
-from .widgets import KitTab, KitWidget
+from .widgets import KitTab
 
 
 class KitCentralWindow(QMainWindow):
