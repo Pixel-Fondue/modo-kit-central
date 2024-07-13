@@ -1,16 +1,16 @@
 try:
     from PySide6.QtCore import Qt
-    from PySide6.QtGui import QCloseEvent
-    from PySide6.QtWidgets import QMainWindow, QTabWidget, QWidget, QVBoxLayout, QTabBar
+    from PySide6.QtGui import QCloseEvent, QPixmap
+    from PySide6.QtWidgets import QMainWindow, QTabWidget, QWidget, QVBoxLayout, QTabBar, QLabel
 except ImportError:
     # Fallback to PySide2 if PySide6 is not available
     from PySide2.QtCore import Qt
-    from PySide2.QtGui import QCloseEvent
-    from PySide2.QtWidgets import QMainWindow, QTabWidget, QWidget, QVBoxLayout, QTabBar
+    from PySide2.QtGui import QCloseEvent, QPixmap
+    from PySide2.QtWidgets import QMainWindow, QTabWidget, QWidget, QVBoxLayout, QTabBar, QLabel
 
 # Kit imports
-from .prefs import Text, KEYS, DATA
-from .widgets import KitTab
+from .prefs import Text, KEYS, DATA, Paths
+from .widgets import KitsTab
 
 
 class KitCentralWindow(QMainWindow):
@@ -31,15 +31,25 @@ class KitCentralWindow(QMainWindow):
         self.setStyleSheet(DATA.CSS)
         self.setWindowTitle(Text.title)
         self.setWindowFlags(self.windowFlags() | Qt.WindowStaysOnTopHint)
-        self.resize(450, 300)
+        self.setFixedWidth(512)
+        self.resize(512, 364)
 
     def _build_ui(self) -> None:
         """Builds the UI for the Kit Central."""
         self.base_widget = QWidget(self)
         self.base_layout = QVBoxLayout(self.base_widget)
-        self.base_layout.setContentsMargins(2, 2, 2, 2)
+        self.base_layout.setContentsMargins(0, 0, 0, 0)
+        self.base_layout.setSpacing(6)
         self.base_widget.setLayout(self.base_layout)
+        self.base_layout.addWidget(self._ui_banner())
         self.setCentralWidget(self.base_widget)
+
+    def _ui_banner(self) -> QLabel:
+        """Sets up the banner for the kits tab."""
+        self.banner = QLabel()
+        self.banner.setPixmap(QPixmap(Paths.IMAGES / "banner.png"))
+        self.banner.setAlignment(Qt.AlignLeft)
+        return self.banner
 
     def _build_tabs(self) -> None:
         """Builds the tabs for Modo Kit Central."""
@@ -50,10 +60,12 @@ class KitCentralWindow(QMainWindow):
         self.tabs.setObjectName("Tabs")
         self.base_layout.addWidget(self.tabs)
         # Add the core tab
-        self.tab_kits = KitTab()
+        self.tab_kits = KitsTab()
         self.tabs.addTab(self.tab_kits, KEYS.KITS)
         # Remove the close button from these core tab
         self.tabs.tabBar().setTabButton(0, QTabBar.RightSide, None)
+        # Remove close button on macOS
+        self.tabs.tabBar().setTabButton(0, QTabBar.LeftSide, None)
 
     def closeEvent(self, event: QCloseEvent) -> None:
         """PySide method: Handle closing the UI

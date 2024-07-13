@@ -19,7 +19,8 @@ class DATA:
 class Paths:
     KIT_ROOT = Path(__file__).parent.parent.absolute()
     RESOURCES = KIT_ROOT / "resources"
-    CSS_IMAGES = RESOURCES / "images"
+    IMAGES = RESOURCES / "images"
+    IMAGES_CSS = IMAGES / "css"
     DATABASE = RESOURCES / "kits.db"
 
 

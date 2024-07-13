@@ -1,3 +1,5 @@
+from typing import List
+
 try:
     from PySide6.QtGui import QCursor, QDesktopServices, QPixmap, QIcon, QMouseEvent
     from PySide6.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
@@ -130,7 +132,7 @@ class AuthorTab(QScrollArea):
             self.base_layout.addWidget(link_lbl)
 
 
-class KitTab(QScrollArea):
+class KitsTab(QWidget):
     """Class to display the kits in the main UI."""
 
     def __init__(self, parent: QWidget = None) -> None:
@@ -139,29 +141,47 @@ class KitTab(QScrollArea):
         Args:
             parent: Widget to set as parent.
         """
-        super(KitTab, self).__init__(parent)
-        self.kits: list[FoldContainer] = []
+        super(KitsTab, self).__init__(parent)
+        self.kits: List[FoldContainer] = []
+        self._ui_setup()
+        self._add_kits()
+
+    def _ui_setup(self) -> None:
+        """Sets up the UI for the kit tab."""
+        self.setContentsMargins(4, 4, 4, 4)
+        # Search
+        self.search_bar = KitSearchBar(self)
+        # Base layout for the tab
         self.base_widget = QWidget()
         self.base_layout = QVBoxLayout()
         self.base_layout.setContentsMargins(0, 0, 0, 0)
         self.base_layout.setAlignment(Qt.AlignTop)
-
-        self.base_widget.setLayout(self.base_layout)
-        self.setWidgetResizable(True)
-        self.setWidget(self.base_widget)
-        self.search_bar = KitSearchBar(self)
         self.base_layout.addWidget(self.search_bar)
-        self.add_kits()
+        self.base_widget.setLayout(self.base_layout)
+        # Scroll area for kits
+        self.kits_widget = QWidget()
+        self.kits_scroll = QScrollArea()
+        self.kits_scroll.setWidget(self.kits_widget)
+        self.kits_scroll.setWidgetResizable(True)
+        self.kits_layout = QVBoxLayout()
+        self.kits_layout.setContentsMargins(0, 0, 0, 0)
+        self.kits_layout.setAlignment(Qt.AlignTop)
+        self.kits_scroll.setWidget(self.kits_widget)
+        self.kits_widget.setLayout(self.kits_layout)
+        # Add Kits to the base layout
+        self.base_layout.addWidget(self.kits_scroll)
+        # Set the base layout as the main layout
+        self.setLayout(self.base_layout)
 
-    def add_kits(self) -> None:
-        """Iterate over the kit database table and add the kits to the UI."""
+    def _add_kits(self) -> None:
+        """Iterate over the kits database table and add the kits to the UI."""
         for kit in get_kits():
             # Generate a collapsable container
             kit_data = KitData(*kit)
             kit_container = FoldContainer(name=kit_data.name, version=kit_data.version)
             kit_container.set_content(KitWidget(kit_data))
             self.kits.append(kit_container)
-            self.base_layout.addWidget(kit_container)
+            self.kits_layout.addWidget(kit_container)
 
 
 class Button(QPushButton):
@@ -280,7 +300,7 @@ class FoldContainer(QWidget):
 
 
 class KitSearchBar(QWidget):
-    def __init__(self, kit_tab: KitTab, parent: QWidget = None):
+    def __init__(self, kit_tab: KitsTab, parent: QWidget = None):
         """Initialization of the search bar for the kits tab.
 
         Args:
@@ -324,5 +344,5 @@ widget_map = {
 }
 
 widget_tabs = {
-    KEYS.KITS: KitTab
+    KEYS.KITS: KitsTab
 }
