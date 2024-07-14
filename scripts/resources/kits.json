@@ -1,4 +1,12 @@
 {
+  "Modo Kit Central": {
+    "author": "Pixel Fondue",
+    "version": "1.0",
+    "description": "Kit to help you find and install kits for Modo.",
+    "url": "https://github.com/Pixel-Fondue/modo-kit-central",
+    "help": "https://github.com/Pixel-Fondue/modo-kit-central",
+    "search": ["modo", "kits", "install", "python", "search"]
+  },
   "PyMOp": {
     "author": "Shawn Frueh",
     "version": "2.0",
@@ -35,7 +43,7 @@
   "SMO Math Tools": {
     "author": "Franck Elisabeth",
     "version": "1.0",
-    "description": "In a long run it can be cumbersome to walk through all the menus to get a logic node, a function node or a simple basic math node. \nAs i’ve buid up a lot of Meshops on the last year, i’ve decided to get this little Pie Menu to help you and me gain 5 to 10 Mins of browsing for those nodes each day. \nIt keeps things tiddy, but if you prefer the Vertical or an Horizontal bar, it’s available too.",
+    "description": "In a long run it can be cumbersome to walk through all the menus to get a logic node, a function node or a simple basic math node. \nAs i've buid up a lot of Meshops on the last year, i've decided to get this little Pie Menu to help you and me gain 5 to 10 Mins of browsing for those nodes each day. \nIt keeps things tiddy, but if you prefer the Vertical or an Horizontal bar, it's available too.",
     "url": "https://smoluck.gumroad.com/l/SMO_Math_Tools",
     "help": "https://community.foundry.com/discuss/topic/150217",
     "search": ["schematic"]
@@ -275,7 +283,7 @@
   "Render Assistant": {
     "author": "Yazan Malkosh",
     "version": "1.0",
-    "description": "RA (Render Assistant) for MODO 11 & 10 is a render assistance kit targeting product designers wanting to minimize fiddling with render settings to get a beautiful shot. \nIt includes tools to streamline GL, Traditional Render & Progressive rendering within MODO’s toolset. \nDrop down lists for HDRIs and Backplates. \nMinimizes clicking in the shader tree & properties settings.",
+    "description": "RA (Render Assistant) for MODO 11 & 10 is a render assistance kit targeting product designers wanting to minimize fiddling with render settings to get a beautiful shot. \nIt includes tools to streamline GL, Traditional Render & Progressive rendering within MODO's toolset. \nDrop down lists for HDRIs and Backplates. \nMinimizes clicking in the shader tree & properties settings.",
     "url": "https://9bstudios.gumroad.com/l/bcWYK",
     "help": "https://community.foundry.com/discuss/topic/",
     "search": ["rendering"]
@@ -367,13 +375,5 @@
     "url": "https://www.thethirdguild.com/first-light-kit.html",
     "help": "https://community.foundry.com/discuss/topic/",
     "search": ["lighting"]
-  },
-  "KitTest": {
-    "author": "Givenname Firstname",
-    "version": "1.0",
-    "description": "Put text description here",
-    "url": "https://.gumroad.com",
-    "help": "https://community.foundry.com/discuss/topic/",
-    "search": ["tag"]
   }
 }

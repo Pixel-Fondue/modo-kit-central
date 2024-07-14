@@ -19,9 +19,11 @@ class DATA:
 class Paths:
     KIT_ROOT = Path(__file__).parent.parent.absolute()
     RESOURCES = KIT_ROOT / "resources"
-    IMAGES = RESOURCES / "images"
-    IMAGES_CSS = IMAGES / "css"
     DATABASE = RESOURCES / "kits.db"
+    IMAGES = RESOURCES / "images"
+    ICON = IMAGES / "icon.png"
+    IMAGES_CSS = IMAGES / "css"
+    BANNERS = IMAGES / "banners"
 
 
 class Text:
@@ -73,3 +75,12 @@ class AuthorData:
     def __post_init__(self):
         """Convert the links json string to a dictionary."""
         self.links = json.loads(self.links) if self.links else {}
+
+
+@dataclass
+class QueryData:
+    """Dataclass for the query data."""
+    SelectKits: str = "SELECT * FROM kits WHERE TRUE"
+    SearchTerm: str = " AND (name LIKE ? OR author LIKE ? OR search LIKE ? OR Description LIKE ?)"
+    SelectAuthor: str = "SELECT * FROM authors WHERE name LIKE ?"
+    SelectKitsByAuthor: str = "SELECT * FROM kits WHERE author = ?"

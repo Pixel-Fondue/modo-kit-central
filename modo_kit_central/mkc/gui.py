@@ -10,7 +10,7 @@ except ImportError:
 
 # Kit imports
 from .prefs import Text, KEYS, DATA, Paths
-from .widgets import KitsTab
+from .widgets import KitsTab, Banner
 
 
 class KitCentralWindow(QMainWindow):
@@ -31,25 +31,20 @@ class KitCentralWindow(QMainWindow):
         self.setStyleSheet(DATA.CSS)
         self.setWindowTitle(Text.title)
         self.setWindowFlags(self.windowFlags() | Qt.WindowStaysOnTopHint)
+        self.icon = QPixmap(Paths.ICON.as_posix())
+        self.setWindowIcon(self.icon)
         self.setFixedWidth(512)
-        self.resize(512, 364)
+        self.resize(512, 400)
 
     def _build_ui(self) -> None:
         """Builds the UI for the Kit Central."""
         self.base_widget = QWidget(self)
         self.base_layout = QVBoxLayout(self.base_widget)
         self.base_layout.setContentsMargins(0, 0, 0, 0)
-        self.base_layout.setSpacing(6)
+        self.base_layout.setSpacing(0)
         self.base_widget.setLayout(self.base_layout)
-        self.base_layout.addWidget(self._ui_banner())
+        self.base_layout.addWidget(Banner(Paths.BANNERS / "mkc.png"))
         self.setCentralWidget(self.base_widget)
-
-    def _ui_banner(self) -> QLabel:
-        """Sets up the banner for the kits tab."""
-        self.banner = QLabel()
-        self.banner.setPixmap(QPixmap(Paths.IMAGES / "banner.png"))
-        self.banner.setAlignment(Qt.AlignLeft)
-        return self.banner
 
     def _build_tabs(self) -> None:
         """Builds the tabs for Modo Kit Central."""

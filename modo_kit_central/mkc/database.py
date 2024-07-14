@@ -1,7 +1,7 @@
 from typing import List
 import sqlite3
 
-from .prefs import Paths, AuthorData
+from .prefs import Paths, AuthorData, QueryData
 
 
 def search_kits(search_text: str) -> List[int]:
@@ -14,12 +14,13 @@ def search_kits(search_text: str) -> List[int]:
     search_terms = [s.strip() for s in search_text.split(",")]
 
     # Generate the search query for all terms.
-    query = "SELECT * FROM kits WHERE 1=1"
+    query = QueryData.SelectKits
     params = []
 
     for term in search_terms:
-        query += " AND (name LIKE ? OR author LIKE ? OR search LIKE ? OR Description LIKE ?)"
-        params.extend([f"%{term}%"] * 4)
+        query += QueryData.SearchTerm
+        # For every '?' in the query, add the search term to the params.
+        params.extend([f"%{term}%"] * QueryData.SearchTerm.count("?"))
 
     with sqlite3.connect(Paths.DATABASE) as connection:
         cursor = connection.cursor()
@@ -37,7 +38,7 @@ def get_kits() -> List[tuple]:
     """
     with sqlite3.connect(Paths.DATABASE) as connection:
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM kits")
+        cursor.execute(QueryData.SelectKits)
         return cursor.fetchall()
 
 
@@ -50,10 +51,24 @@ def get_author(author: str) -> AuthorData:
     Returns:
         author_data: The author's data class.
     """
+    search_params = [f"%{author}%"]
+
     with sqlite3.connect(Paths.DATABASE) as connection:
         cursor = connection.cursor()
-        cursor.execute(
-            "SELECT * FROM authors WHERE name=?",
-            (author,)
-        )
+        cursor.execute(QueryData.SelectAuthor, search_params)
         return AuthorData(*cursor.fetchone())
+
+
+def get_author_kits(author: str) -> List[tuple]:
+    """Gets all kits from the database by the given author.
+
+    Args:
+        author: The author's name to get data for.
+
+    Returns:
+        kits: A list of all kits by the author.
+    """
+    with sqlite3.connect(Paths.DATABASE) as connection:
+        cursor = connection.cursor()
+        cursor.execute(QueryData.SelectKitsByAuthor, [author])
+        return cursor.fetchall()
