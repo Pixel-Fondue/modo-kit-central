@@ -28,7 +28,7 @@ def set_absolute_images(css_data: str) -> str:
     Args:
         css_data: The CSS data to update.
     """
-    return css_data.replace("url(", f"url({Paths.CSS_IMAGES.as_posix()}/")
+    return css_data.replace("url(", f"url({Paths.IMAGES_CSS.as_posix()}/")
 
 
 def load_stylesheet() -> None:
