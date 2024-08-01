@@ -43,7 +43,9 @@ class KitCentralWindow(QMainWindow):
         self.base_layout.setContentsMargins(0, 0, 0, 0)
         self.base_layout.setSpacing(0)
         self.base_widget.setLayout(self.base_layout)
-        self.base_layout.addWidget(Banner(Paths.BANNERS / "mkc.png"))
+        self.banner = Banner(Paths.BANNER_MKC)
+        self.banner.setContentsMargins(0, 0, 0, 0)
+        self.base_layout.addWidget(self.banner)
         self.setCentralWidget(self.base_widget)
 
     def _build_tabs(self) -> None:

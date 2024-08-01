@@ -24,6 +24,7 @@ class Paths:
     ICON = IMAGES / "icon.png"
     IMAGES_CSS = IMAGES / "css"
     BANNERS = IMAGES / "banners"
+    BANNER_MKC = BANNERS / "Modo Kit Central.png"
 
 
 class Text:

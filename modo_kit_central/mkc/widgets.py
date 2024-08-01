@@ -41,6 +41,7 @@ class KitWidget(QWidget):
 
     def _build_ui(self) -> None:
         """Builds the UI for the kit widget."""
+        self.setContentsMargins(0, 0, 0, 0)
         self.base_layout = QVBoxLayout()
         self.base_layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.base_layout)
@@ -193,6 +194,7 @@ class KitsTab(QWidget):
         # Scroll area for kits
         self.kits_widget = QWidget()
         self.kits_scroll = QScrollArea()
+        self.kits_scroll.setContentsMargins(0, 0, 0, 0)
         self.kits_scroll.setWidget(self.kits_widget)
         self.kits_scroll.setWidgetResizable(True)
         self.kits_layout = QVBoxLayout()
@@ -277,8 +279,9 @@ class FoldContainer(QWidget):
 
     def build_ui(self) -> None:
         """Builds the UI"""
+        self.setContentsMargins(0, 0, 0, 0)
         self.toggle_button.setStyleSheet(DATA.CSS)
-        self.toggle_button.setFixedHeight(17)
+        self.toggle_button.setFixedHeight(20)
         self.toggle_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.toggle_button.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.toggle_button.setArrowType(Qt.RightArrow)
