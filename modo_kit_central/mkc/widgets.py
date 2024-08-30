@@ -1,26 +1,28 @@
 from typing import List
 from pathlib import Path
 
+from .utils import load_avatar
+
+
 try:
-    from PySide6.QtGui import QCursor, QDesktopServices, QPixmap, QIcon, QMouseEvent, QPalette, QColor
-    from PySide6.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
+    from PySide6.QtGui import QCursor, QDesktopServices, QPixmap, QIcon, QMouseEvent, QPalette, QColor, QPainter
+    from PySide6.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation, QRect
     from PySide6.QtWidgets import (
         QLabel, QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QToolButton, QScrollArea, QPlainTextEdit, QSizePolicy,
-        QFrame, QTabWidget, QLineEdit
+        QFrame, QTabWidget, QLineEdit, QTabBar, QStylePainter, QStyleOptionTab, QStyle
     )
 except ImportError:
     # Fallback to PySide2 if PySide6 is not available
-    from PySide2.QtGui import QCursor, QDesktopServices, QPixmap, QIcon, QMouseEvent, QPalette, QColor
-    from PySide2.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
+    from PySide2.QtGui import QCursor, QDesktopServices, QPixmap, QIcon, QMouseEvent, QPalette, QColor, QPainter
+    from PySide2.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation, QRect
     from PySide2.QtWidgets import (
         QLabel, QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QToolButton, QScrollArea, QPlainTextEdit, QSizePolicy,
-        QFrame, QTabWidget, QLineEdit
+        QFrame, QTabWidget, QLineEdit, QTabBar, QStylePainter, QStyleOptionTab, QStyle
     )
 
-from .prefs import Text, Paths
-from .prefs import DATA, KitData, AuthorData
-from .utils import load_avatar
-from .database import search_kits, get_kits, get_author, get_author_kits
+from .prefs import Text, Paths, KitData, AuthorData
+from .prefs import DATA, KitData
+from .database import search_kits, get_author, get_kits, get_author_kits
 
 
 class KitWidget(QWidget):
@@ -102,120 +104,6 @@ class KitWidget(QWidget):
             tab_widget.addTab(author_widget, self.kit_data.author)
         # Set the tab as active
         tab_widget.setCurrentIndex(tab_widget.indexOf(author_widget))
-
-
-class AuthorTab(QScrollArea):
-    def __init__(self, author_data: AuthorData, parent: QWidget = None) -> None:
-        """Scroll area that populates with incoming author information.
-
-        Args:
-            author_data: Data for the given author.
-            parent: Widget to set as parent.
-        """
-        super(AuthorTab, self).__init__(parent)
-        self.data = author_data
-        self.setObjectName(self.data.name)
-        self._build_ui()
-        self._add_links()
-        self._add_kits()
-
-    def _build_ui(self) -> None:
-        """Builds the UI for the author tab."""
-        self.base_widget = QWidget()
-        self.base_layout = QVBoxLayout()
-        self.base_layout.setAlignment(Qt.AlignCenter)
-        self.base_layout.setContentsMargins(0, 0, 0, 0)
-        self.base_layout.setAlignment(Qt.AlignTop)
-
-        self.base_widget.setLayout(self.base_layout)
-        self.setWidgetResizable(True)
-        self.setWidget(self.base_widget)
-
-        # Load avatar if it exists.
-        self.avatar = load_avatar(self.data.avatar)
-        avatar_lbl = QLabel("test")
-        avatar_lbl.setFixedSize(120, 100)
-        # Load and scale avatar.
-        avatar_pix = QPixmap(self.avatar).scaledToHeight(100)
-        avatar_lbl.setPixmap(avatar_pix)
-        self.base_layout.addWidget(avatar_lbl, alignment=Qt.AlignCenter)
-
-        author_lbl = QLabel(self.data.name)
-        self.base_layout.addWidget(author_lbl, alignment=Qt.AlignCenter)
-        self.links_layout = QHBoxLayout()
-        self.base_layout.addLayout(self.links_layout)
-
-    def _add_links(self) -> None:
-        """Adds all links to the author tab as clickable."""
-        for text, url in self.data.links.items():
-            link_lbl = QLabel()
-            link_lbl.setText(Text.lbl_link.format(text=text, link=url))
-            link_lbl.setOpenExternalLinks(True)
-            self.links_layout.addWidget(link_lbl)
-
-    def _add_kits(self) -> None:
-        """Iterate over the author's kits and add them to the UI."""
-        for authors_kit in get_author_kits(self.data.name):
-            # Add fold-able element for each kit
-            folder = FoldContainer(name=authors_kit[1], version=authors_kit[3])
-            kit_data = KitData(*authors_kit)
-            # Since we are on the authors tab, don't show the author on each kit.
-            kit_widget = KitWidget(kit_data, show_author=False)
-            folder.set_content(kit_widget)
-            self.base_layout.addWidget(folder)
-
-
-class KitsTab(QWidget):
-    """Class to display the kits in the main UI."""
-
-    def __init__(self, parent: QWidget = None) -> None:
-        """Scroll area that populates with incoming kit information.
-
-        Args:
-            parent: Widget to set as parent.
-        """
-        super(KitsTab, self).__init__(parent)
-        self.kits: List[FoldContainer] = []
-        self._ui_setup()
-        self._add_kits()
-
-    def _ui_setup(self) -> None:
-        """Sets up the UI for the kit tab."""
-        self.setContentsMargins(4, 4, 4, 4)
-        # Search
-        self.search_bar = KitSearchBar(self)
-        # Base layout for the tab
-        self.base_widget = QWidget()
-        self.base_layout = QVBoxLayout()
-        self.base_layout.setContentsMargins(0, 0, 0, 0)
-        self.base_layout.setAlignment(Qt.AlignTop)
-        self.base_layout.addWidget(self.search_bar)
-        self.base_widget.setLayout(self.base_layout)
-        # Scroll area for kits
-        self.kits_widget = QWidget()
-        self.kits_scroll = QScrollArea()
-        self.kits_scroll.setContentsMargins(0, 0, 0, 0)
-        self.kits_scroll.setWidget(self.kits_widget)
-        self.kits_scroll.setWidgetResizable(True)
-        self.kits_layout = QVBoxLayout()
-        self.kits_layout.setContentsMargins(0, 0, 0, 0)
-        self.kits_layout.setAlignment(Qt.AlignTop)
-        self.kits_scroll.setWidget(self.kits_widget)
-        self.kits_widget.setLayout(self.kits_layout)
-        # Add Kits to the base layout
-        self.base_layout.addWidget(self.kits_scroll)
-        # Set the base layout as the main layout
-        self.setLayout(self.base_layout)
-
-    def _add_kits(self) -> None:
-        """Iterate over the kits database table and add the kits to the UI."""
-        for kit in get_kits():
-            # Generate a collapsable container
-            kit_data = KitData(*kit)
-            kit_container = FoldContainer(name=kit_data.name, version=kit_data.version)
-            kit_container.set_content(KitWidget(kit_data))
-            self.kits.append(kit_container)
-            self.kits_layout.addWidget(kit_container)
 
 
 class Button(QPushButton):
@@ -353,7 +241,7 @@ class FoldContainer(QWidget):
 
 
 class KitSearchBar(QWidget):
-    def __init__(self, kit_tab: KitsTab, parent: QWidget = None):
+    def __init__(self, kit_tab: 'KitsTab', parent: QWidget = None):
         """Initialization of the search bar for the kits tab.
 
         Args:
@@ -392,3 +280,135 @@ class KitSearchBar(QWidget):
                 kit.setVisible(True)
             else:
                 kit.setVisible(False)
+
+
+class KitsTab(QWidget):
+    """Class to display the kits in the main UI."""
+
+    def __init__(self, parent: QWidget = None) -> None:
+        """Scroll area that populates with incoming kit information.
+
+        Args:
+            parent: Widget to set as parent.
+        """
+        super(KitsTab, self).__init__(parent)
+        self.kits: List[FoldContainer] = []
+        self._ui_setup()
+        self._add_kits()
+
+    def _ui_setup(self) -> None:
+        """Sets up the UI for the kit tab."""
+        self.setContentsMargins(4, 4, 4, 4)
+        # Search
+        self.search_bar = KitSearchBar(self)
+        # Base layout for the tab
+        self.base_widget = QWidget()
+        self.base_layout = QVBoxLayout()
+        self.base_layout.setContentsMargins(0, 0, 0, 0)
+        self.base_layout.setAlignment(Qt.AlignTop)
+        self.base_layout.addWidget(self.search_bar)
+        self.base_widget.setLayout(self.base_layout)
+        # Scroll area for kits
+        self.kits_widget = QWidget()
+        self.kits_scroll = QScrollArea()
+        self.kits_scroll.setContentsMargins(0, 0, 0, 0)
+        self.kits_scroll.setWidget(self.kits_widget)
+        self.kits_scroll.setWidgetResizable(True)
+        self.kits_layout = QVBoxLayout()
+        self.kits_layout.setContentsMargins(0, 0, 0, 0)
+        self.kits_layout.setAlignment(Qt.AlignTop)
+        self.kits_scroll.setWidget(self.kits_widget)
+        self.kits_widget.setLayout(self.kits_layout)
+        # Add Kits to the base layout
+        self.base_layout.addWidget(self.kits_scroll)
+        # Set the base layout as the main layout
+        self.setLayout(self.base_layout)
+
+    def _add_kits(self) -> None:
+        """Iterate over the kits database table and add the kits to the UI."""
+        for kit in get_kits():
+            # Generate a collapsable container
+            kit_data = KitData(*kit)
+            kit_container = FoldContainer(name=kit_data.name, version=kit_data.version)
+            kit_container.set_content(KitWidget(kit_data))
+            self.kits.append(kit_container)
+            self.kits_layout.addWidget(kit_container)
+
+
+class AuthorTab(QScrollArea):
+    def __init__(self, author_data: AuthorData, parent: QWidget = None) -> None:
+        """Scroll area that populates with incoming author information.
+
+        Args:
+            author_data: Data for the given author.
+            parent: Widget to set as parent.
+        """
+        super(AuthorTab, self).__init__(parent)
+        self.data = author_data
+        self.setObjectName(self.data.name)
+        self._build_ui()
+        self._add_links()
+        self._add_kits()
+
+    def _build_ui(self) -> None:
+        """Builds the UI for the author tab."""
+        self.base_widget = QWidget()
+        self.base_layout = QVBoxLayout()
+        self.base_layout.setAlignment(Qt.AlignCenter)
+        self.base_layout.setContentsMargins(0, 0, 0, 0)
+        self.base_layout.setAlignment(Qt.AlignTop)
+
+        self.base_widget.setLayout(self.base_layout)
+        self.setWidgetResizable(True)
+        self.setWidget(self.base_widget)
+
+        # Load avatar if it exists.
+        self.avatar = load_avatar(self.data.avatar)
+        avatar_lbl = QLabel("test")
+        avatar_lbl.setFixedSize(120, 100)
+        # Load and scale avatar.
+        avatar_pix = QPixmap(self.avatar).scaledToHeight(100)
+        avatar_lbl.setPixmap(avatar_pix)
+        self.base_layout.addWidget(avatar_lbl, alignment=Qt.AlignCenter)
+
+        author_lbl = QLabel(self.data.name)
+        self.base_layout.addWidget(author_lbl, alignment=Qt.AlignCenter)
+        self.links_layout = QHBoxLayout()
+        self.base_layout.addLayout(self.links_layout)
+
+    def _add_links(self) -> None:
+        """Adds all links to the author tab as clickable."""
+        for text, url in self.data.links.items():
+            link_lbl = QLabel()
+            link_lbl.setText(Text.lbl_link.format(text=text, link=url))
+            link_lbl.setOpenExternalLinks(True)
+            self.links_layout.addWidget(link_lbl)
+
+    def _add_kits(self) -> None:
+        """Iterate over the author's kits and add them to the UI."""
+        for authors_kit in get_author_kits(self.data.name):
+            # Add fold-able element for each kit
+            folder = FoldContainer(name=authors_kit[1], version=authors_kit[3])
+            kit_data = KitData(*authors_kit)
+            # Since we are on the authors tab, don't show the author on each kit.
+            kit_widget = KitWidget(kit_data, show_author=False)
+            folder.set_content(kit_widget)
+            self.base_layout.addWidget(folder)
+
+
+class HelpTab(QWidget):
+    """Class to display the help information in the main UI."""
+
+    def __init__(self) -> None:
+        """Initialization of the Help Tab."""
+        super(HelpTab, self).__init__()
+        self._build_ui()
+
+    def _build_ui(self) -> None:
+        """Builds the UI for the help tab."""
+        self.base_layout = QVBoxLayout()
+        self.base_layout.setAlignment(Qt.AlignTop)
+        self.setLayout(self.base_layout)
+        self.lbl_help = QLabel("Help")
+        self.lbl_help.setWordWrap(True)
+        self.base_layout.addWidget(self.lbl_help)

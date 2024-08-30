@@ -8,12 +8,30 @@ if TYPE_CHECKING:
 
 
 @dataclass
+class KitInfo:
+    """Dataclass for the kit's information."""
+    name: str
+    enabled: bool
+    version: str
+    path: Path
+
+
+@dataclass
+class ImportInfo:
+    """Dataclass for the import information."""
+    name: str
+    version: str
+    path: Path
+
+
+@dataclass
 class DATA:
     local: bool = False
     resources: Path = None
-    authors: dict = None
+    authors: Dict = None
     CSS: str = ""
     mkc_window: 'KitCentralWindow' = None
+    modo_kits: Dict[str, KitInfo] = None
 
 
 class Paths:

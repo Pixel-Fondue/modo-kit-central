@@ -23,6 +23,9 @@ def load_queries() -> dict[str, str]:
 def populate_kits(cursor: Cursor) -> None:
     """Populates the kits table with data from `kits.json`.
 
+    Notes:
+        name, author, version, description, url, help, installable, search
+
     Args:
          cursor: The database cursor.
     """
@@ -38,7 +41,7 @@ def populate_kits(cursor: Cursor) -> None:
                 kit_info.get('description'),
                 kit_info.get('url'),
                 kit_info.get('help'),
-                kit_info.get('installable', None),
+                kit_info.get('installable', False),
                 ",".join(kit_info.get("search"))
             )
         )

@@ -3,6 +3,7 @@
     "author": "Pixel Fondue",
     "version": "1.0",
     "description": "Kit to help you find and install kits for Modo.",
+    "installable": true,
     "url": "https://github.com/Pixel-Fondue/modo-kit-central",
     "help": "https://github.com/Pixel-Fondue/modo-kit-central",
     "search": ["modo", "kits", "install", "python", "search"]

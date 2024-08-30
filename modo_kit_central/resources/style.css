@@ -2,7 +2,7 @@
 
 /* Override the "social" widget */
 QListWidget#social {
-    background-color: #3e3e3e;
+    background-color: rgb(62, 62, 62);
     border: None;
     border-radius: 1px;
     padding: 1px;
@@ -11,7 +11,7 @@ QListWidget#social {
 
 /* Handle selected item in QListWidget */
 QListWidget#social::item:selected {
-    background: #a84c4c;
+    background: rgb(168, 76, 76);
     border: None;
 }
 
