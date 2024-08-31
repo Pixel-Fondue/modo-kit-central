@@ -19,3 +19,16 @@ QListWidget#social::item:selected {
 QListWidget#social::item {
     border: None;
 }
+
+QLineEdit#kit_search {
+    background-color: rgb(100, 50, 100);
+    color: rgb(220, 220, 220);
+}
+
+QPushButton[update=true] {
+    background: rgb(100, 50, 100);
+    color: white;
+}
+QPushButton:hover[update=true] {
+    background: rgb(180, 100, 180);
+}

@@ -73,7 +73,7 @@ def hint_to_kit_info(value: str, import_data: Dict[str, ImportInfo]) -> KitInfo:
         return KitInfo(name=name.strip(), enabled=True, version=version.strip(), path=import_info.path)
 
 
-def get_installed_kits():
+def populate_installed_kits():
     """Gets all kits recognized by the users current Modo session."""
     # Initialize the modo_kits dictionary
     DATA.modo_kits = {}
@@ -89,6 +89,8 @@ def get_installed_kits():
         ui_value_hint = ui_value_hints.PopUserName(hint_index)
         # Convert the hint into a KitInfo.
         kit_info = hint_to_kit_info(ui_value_hint, import_data)
+        # Add kit info to the modo_kits data.
+        DATA.modo_kits[kit_info.name] = kit_info
 
 
 def get_import_data() -> Dict[str, ImportInfo]:

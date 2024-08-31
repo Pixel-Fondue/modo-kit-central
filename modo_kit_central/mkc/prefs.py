@@ -68,6 +68,7 @@ class KitData:
     """Dataclass for the kit's information."""
     id: int
     name: str
+    label: str
     author: str
     version: str
     description: str

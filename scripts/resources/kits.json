@@ -1,5 +1,6 @@
 {
-  "Modo Kit Central": {
+  "modo_kit_central": {
+    "label": "Modo Kit Central",
     "author": "Pixel Fondue",
     "version": "1.0",
     "description": "Kit to help you find and install kits for Modo.",

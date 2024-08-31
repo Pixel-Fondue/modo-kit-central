@@ -52,17 +52,23 @@ class KitWidget(QWidget):
         self.description.setReadOnly(True)
         self.description.setMaximumHeight(120)
         self.description.setMinimumHeight(20)
-        self.btn_link = Button("View")
-        self.btn_help = Button("Help")
-        self.url_view = QUrl(self.kit_data.url)
-        self.url_help = QUrl(self.kit_data.help)
         self.description.setObjectName("description")
+
+        self.btn_link = Button("View")
+        self.url_view = QUrl(self.kit_data.url)
+
+        self.btn_install = Button("Install")
+
+        self.btn_help = Button("Help")
+        self.url_help = QUrl(self.kit_data.help)
 
         # Create the layout to hold the interactive buttons
         self.interactive_layout = QHBoxLayout()
         self.interactive_layout.setContentsMargins(0, 0, 0, 0)
         self.interactive_layout.addWidget(self.btn_link)
+        self.interactive_layout.addWidget(self.btn_install)
         self.interactive_layout.addWidget(self.btn_help)
+
         # Check if banner is available and add it to the widget.
         self._add_banner()
         # Add all elements to the base layout.
@@ -74,6 +80,23 @@ class KitWidget(QWidget):
             self.lbl_author.setText(
                 Text.author.format(self.kit_data.author, self.kit_data.author))
             self.lbl_author.mousePressEvent = self.open_author
+        # Check if the kit is installable.
+        if self.kit_data.installable:
+            installed_kit = DATA.modo_kits.get(self.kit_data.name, False)
+            print(installed_kit, DATA.modo_kits)
+            if not installed_kit:
+                self.btn_install.setText("Install")
+            elif installed_kit and installed_kit.version != self.kit_data.version:
+                self.btn_install.setText(
+                    f"Update! v{installed_kit.version} -> {self.kit_data.version}"
+                )
+                self.btn_install.setProperty('update', True)
+            else:
+                self.btn_install.setText("Installed")
+                self.btn_install.setDisabled(True)
+
+    def _handle_installed_kit(self) -> None:
+        ...
 
     def _add_banner(self) -> None:
         """Adds a banner to the widget if it exists."""
@@ -158,7 +181,7 @@ class FoldContainer(QWidget):
         self.collapsed_height = 0
         self.forward = QAbstractAnimation.Forward
         self.reverse = QAbstractAnimation.Backward
-        button_text = "{} ({})".format(name, version) if version else name
+        button_text = f"{name} v{version}" if version else name
         self.toggle_button = QToolButton(text=button_text, checkable=True, checked=False)
         self.toggle_animation = QParallelAnimationGroup(self)
         self.content_area = QScrollArea(maximumHeight=0, minimumHeight=0)
@@ -261,7 +284,7 @@ class KitSearchBar(QWidget):
         self.setLayout(self.base_layout)
         self.search_txt = QLineEdit()
         self.search_txt.setPlaceholderText("Search...")
-        self.setStyleSheet("QLineEdit {background-color: rgb(100, 50, 100); color: rgb(220, 220, 220); }")
+        self.search_txt.setObjectName("kit_search")
         self.base_layout.addWidget(self.search_txt)
         # Connect search bar to search function.
         self.search_txt.textChanged.connect(self.search)
@@ -326,10 +349,9 @@ class KitsTab(QWidget):
 
     def _add_kits(self) -> None:
         """Iterate over the kits database table and add the kits to the UI."""
-        for kit in get_kits():
+        for kit_data in get_kits():
             # Generate a collapsable container
-            kit_data = KitData(*kit)
-            kit_container = FoldContainer(name=kit_data.name, version=kit_data.version)
+            kit_container = FoldContainer(name=kit_data.label, version=kit_data.version)
             kit_container.set_content(KitWidget(kit_data))
             self.kits.append(kit_container)
             self.kits_layout.addWidget(kit_container)
@@ -388,10 +410,9 @@ class AuthorTab(QScrollArea):
         """Iterate over the author's kits and add them to the UI."""
         for authors_kit in get_author_kits(self.data.name):
             # Add fold-able element for each kit
-            folder = FoldContainer(name=authors_kit[1], version=authors_kit[3])
-            kit_data = KitData(*authors_kit)
+            folder = FoldContainer(name=authors_kit.name, version=authors_kit.version)
             # Since we are on the authors tab, don't show the author on each kit.
-            kit_widget = KitWidget(kit_data, show_author=False)
+            kit_widget = KitWidget(authors_kit, show_author=False)
             folder.set_content(kit_widget)
             self.base_layout.addWidget(folder)
 

@@ -2,6 +2,7 @@
 CREATE TABLE IF NOT EXISTS kits (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
+    label TEXT,
     author TEXT,
     version TEXT,
     description TEXT,

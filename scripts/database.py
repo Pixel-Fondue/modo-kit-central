@@ -36,6 +36,7 @@ def populate_kits(cursor: Cursor) -> None:
             QUERY_DATA['insert_kit'],
             (
                 kit_name,
+                kit_info.get('label', kit_name),
                 kit_info.get('author'),
                 kit_info.get('version'),
                 kit_info.get('description'),

@@ -1,7 +1,7 @@
 from typing import List
 import sqlite3
 
-from .prefs import Paths, AuthorData, QueryData
+from .prefs import Paths, KitData, AuthorData, QueryData
 
 
 def search_kits(search_text: str) -> List[int]:
@@ -30,7 +30,7 @@ def search_kits(search_text: str) -> List[int]:
         return [kit[0] - 1 for kit in cursor.fetchall()]
 
 
-def get_kits() -> List[tuple]:
+def get_kits() -> List[KitData]:
     """Gets all kits from the database.
 
     Returns:
@@ -39,7 +39,7 @@ def get_kits() -> List[tuple]:
     with sqlite3.connect(Paths.DATABASE) as connection:
         cursor = connection.cursor()
         cursor.execute(QueryData.SelectKits)
-        return cursor.fetchall()
+        return [KitData(*k) for k in cursor.fetchall()]
 
 
 def get_author(author: str) -> AuthorData:
@@ -59,7 +59,7 @@ def get_author(author: str) -> AuthorData:
         return AuthorData(*cursor.fetchone())
 
 
-def get_author_kits(author: str) -> List[tuple]:
+def get_author_kits(author: str) -> List[KitData]:
     """Gets all kits from the database by the given author.
 
     Args:
@@ -71,4 +71,4 @@ def get_author_kits(author: str) -> List[tuple]:
     with sqlite3.connect(Paths.DATABASE) as connection:
         cursor = connection.cursor()
         cursor.execute(QueryData.SelectKitsByAuthor, [author])
-        return cursor.fetchall()
+        return [KitData(*k) for k in cursor.fetchall()]
