@@ -5,7 +5,7 @@
 # Build
 *.pyc
 build/
-*venv*/
+.venv/
 *.egg*
 
 # Mac crap

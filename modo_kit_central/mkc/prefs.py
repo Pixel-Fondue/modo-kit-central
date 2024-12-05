@@ -26,6 +26,7 @@ class ImportInfo:
 
 @dataclass
 class DATA:
+    """Dataclass for storing live data while the kit is running."""
     local: bool = False
     resources: Path = None
     authors: Dict = None
@@ -35,6 +36,7 @@ class DATA:
 
 
 class Paths:
+    """Paths for Modo Kit Central resources."""
     KIT_ROOT = Path(__file__).parent.parent.absolute()
     RESOURCES = KIT_ROOT / "resources"
     DATABASE = RESOURCES / "kits.db"
@@ -46,17 +48,29 @@ class Paths:
 
 
 class Text:
+    """Dataclass for storing text information."""
     title = "Modo Kit Central"
     author = "Author: <a href='{}' style='color: white'>{}</a>"
     lbl_link = "<a href='{link}' style='color: white'>{text}</a>"
+    info_block = (
+        "Welcome to Modo Kit Central! aka MKC\n\n"
+        "MKC is a tool to help you find and install kits for Modo."
+        "Currently, MKC only supports free kits. If you are a Kit Author that"
+        "would like to onboard your kits, Reach out to PF for more info."
+        "Pixel Fondue is working hard"
+        "to onboard paid kits as well. Stay tuned for updates!"
+    )
 
 
 class KEYS:
-    KITS = "kits"
-    AUTHORS = "authors"
+    """Keys for the different tabs."""
+    KITS = "Kits"
+    AUTHORS = "Authors"
+    INFO = "Info"
 
 
 class KIT:
+    """Constants for the Kit Central."""
     ABV = "mkc"
     NAME = "modo_kit_central"
     NICE_NAME = "Modo Kit Central"

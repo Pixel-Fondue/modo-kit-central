@@ -3,25 +3,29 @@ from pathlib import Path
 
 from .utils import load_avatar
 
-
 try:
-    from PySide6.QtGui import QCursor, QDesktopServices, QPixmap, QIcon, QMouseEvent, QPalette, QColor, QPainter
-    from PySide6.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation, QRect
+    from PySide6.QtGui import QCursor, QDesktopServices, QMouseEvent
+    from PySide6.QtGui import QPixmap, QIcon, QPalette, QColor, QPainter
+    from PySide6.QtCore import Qt, QUrl, QRect, QTimer
+    from PySide6.QtCore import QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
     from PySide6.QtWidgets import (
-        QLabel, QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QToolButton, QScrollArea, QPlainTextEdit, QSizePolicy,
-        QFrame, QTabWidget, QLineEdit, QTabBar, QStylePainter, QStyleOptionTab, QStyle
+        QLabel, QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QToolButton, QScrollArea,
+        QPlainTextEdit, QSizePolicy, QFrame, QTabWidget, QLineEdit, QTabBar, QStylePainter,
+        QStyleOptionTab, QStyle
     )
 except ImportError:
     # Fallback to PySide2 if PySide6 is not available
-    from PySide2.QtGui import QCursor, QDesktopServices, QPixmap, QIcon, QMouseEvent, QPalette, QColor, QPainter
-    from PySide2.QtCore import Qt, QUrl, QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation, QRect
+    from PySide2.QtGui import QCursor, QDesktopServices, QMouseEvent
+    from PySide2.QtGui import QPixmap, QIcon, QPalette, QColor, QPainter
+    from PySide2.QtCore import Qt, QUrl, QRect, QTimer
+    from PySide2.QtCore import QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
     from PySide2.QtWidgets import (
-        QLabel, QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QToolButton, QScrollArea, QPlainTextEdit, QSizePolicy,
-        QFrame, QTabWidget, QLineEdit, QTabBar, QStylePainter, QStyleOptionTab, QStyle
+        QLabel, QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QToolButton, QScrollArea,
+        QPlainTextEdit, QSizePolicy, QFrame, QTabWidget, QLineEdit, QTabBar, QStylePainter,
+        QStyleOptionTab, QStyle
     )
 
-from .prefs import Text, Paths, KitData, AuthorData
-from .prefs import DATA, KitData
+from .prefs import KEYS, Text, Paths, DATA, KitData, AuthorData
 from .database import search_kits, get_author, get_kits, get_author_kits
 
 
@@ -48,11 +52,12 @@ class KitWidget(QWidget):
         self.base_layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.base_layout)
         self.lbl_author = QLabel(f"Author: {self.kit_data.author}")
+
         self.description = QPlainTextEdit(self.kit_data.description)
+        self.description.setObjectName("description")
         self.description.setReadOnly(True)
         self.description.setMaximumHeight(120)
-        self.description.setMinimumHeight(20)
-        self.description.setObjectName("description")
+        self.description.setMinimumHeight(40)
 
         self.btn_link = Button("View")
         self.url_view = QUrl(self.kit_data.url)
@@ -83,7 +88,6 @@ class KitWidget(QWidget):
         # Check if the kit is installable.
         if self.kit_data.installable:
             installed_kit = DATA.modo_kits.get(self.kit_data.name, False)
-            print(installed_kit, DATA.modo_kits)
             if not installed_kit:
                 self.btn_install.setText("Install")
             elif installed_kit and installed_kit.version != self.kit_data.version:
@@ -97,6 +101,21 @@ class KitWidget(QWidget):
 
     def _handle_installed_kit(self) -> None:
         ...
+
+    def set_height(self):
+        # Calculate the total height of all blocks (lines) in the document
+        self.description.document().setTextWidth(self.description.viewport().width())
+        self.description.document().adjustSize()
+
+        # Calculate the total height of the content
+        layout = self.description.document().documentLayout()
+        content_height = layout.documentSize().height()
+
+        # Add the top and bottom margins
+        content_height += self.description.contentsMargins().top() + self.description.contentsMargins().bottom()
+        print(content_height)
+        # Apply the calculated height, ensuring it does not exceed the maximum height
+        self.description.setFixedHeight(min(content_height, self.description.maximumHeight()))
 
     def _add_banner(self) -> None:
         """Adds a banner to the widget if it exists."""
@@ -165,9 +184,10 @@ class Banner(QLabel):
 
 
 class FoldContainer(QWidget):
+    """Class to create a collapsable container for the kit widgets."""
 
     def __init__(self, name: str = "test", version: str = None, parent: QWidget = None) -> None:
-        """Class to create a collapsable container for the kit widgets.
+        """Initialization of the FoldContainer class.
 
         Args:
             name: The name of the container.
@@ -191,7 +211,6 @@ class FoldContainer(QWidget):
     def build_ui(self) -> None:
         """Builds the UI"""
         self.setContentsMargins(0, 0, 0, 0)
-        self.toggle_button.setStyleSheet(DATA.CSS)
         self.toggle_button.setFixedHeight(20)
         self.toggle_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.toggle_button.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
@@ -282,12 +301,15 @@ class KitSearchBar(QWidget):
         self.base_layout = QHBoxLayout()
         self.base_layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.base_layout)
-        self.search_txt = QLineEdit()
-        self.search_txt.setPlaceholderText("Search...")
-        self.search_txt.setObjectName("kit_search")
-        self.base_layout.addWidget(self.search_txt)
+        self.search_bar = QLineEdit()
+        self.search_bar.setObjectName("kit_search")
+        self.search_bar.setPlaceholderText("Search...")
+        # Set placeholder property for css.
+        self.search_bar.setProperty("placeholder", True)
+
+        self.base_layout.addWidget(self.search_bar)
         # Connect search bar to search function.
-        self.search_txt.textChanged.connect(self.search)
+        self.search_bar.textChanged.connect(self.search)
 
     def search(self, text: str) -> None:
         """Handles searching the widgets and disabling the ones that do not match.
@@ -295,6 +317,13 @@ class KitSearchBar(QWidget):
         Args:
             text: The search text.
         """
+        if not text:
+            self.search_bar.setProperty("placeholder", True)
+        else:
+            self.search_bar.setProperty("placeholder", False)
+
+        self.search_bar.style().polish(self.search_bar)
+
         # Get id of all matching kits
         kit_ids = search_kits(text)
 
@@ -410,19 +439,19 @@ class AuthorTab(QScrollArea):
         """Iterate over the author's kits and add them to the UI."""
         for authors_kit in get_author_kits(self.data.name):
             # Add fold-able element for each kit
-            folder = FoldContainer(name=authors_kit.name, version=authors_kit.version)
+            folder = FoldContainer(name=authors_kit.label, version=authors_kit.version)
             # Since we are on the authors tab, don't show the author on each kit.
             kit_widget = KitWidget(authors_kit, show_author=False)
             folder.set_content(kit_widget)
             self.base_layout.addWidget(folder)
 
 
-class HelpTab(QWidget):
+class InfoTab(QWidget):
     """Class to display the help information in the main UI."""
 
     def __init__(self) -> None:
         """Initialization of the Help Tab."""
-        super(HelpTab, self).__init__()
+        super(InfoTab, self).__init__()
         self._build_ui()
 
     def _build_ui(self) -> None:
@@ -430,6 +459,14 @@ class HelpTab(QWidget):
         self.base_layout = QVBoxLayout()
         self.base_layout.setAlignment(Qt.AlignTop)
         self.setLayout(self.base_layout)
-        self.lbl_help = QLabel("Help")
-        self.lbl_help.setWordWrap(True)
-        self.base_layout.addWidget(self.lbl_help)
+
+        # Add about text
+        self.about = QLabel()
+        self.about.setObjectName("mkc-about")
+        self.about.setText(Text.info_block)
+        # Center the text
+        #self.about.setAlignment(Qt.AlignCenter)
+        # Wrap the text
+        self.about.setWordWrap(True)
+
+        self.base_layout.addWidget(self.about)

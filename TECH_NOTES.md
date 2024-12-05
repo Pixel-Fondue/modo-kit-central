@@ -10,7 +10,7 @@ ___
    - MAC: `rm -rf .venv`
    - Windows: `rmdir /s .venv`
 5. Install the `pyproject.toml` requirements.
-   - `pip install .`
+   - `pip install pyproject.toml`
 
 
 # Python setup using pyenv:

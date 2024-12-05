@@ -10,7 +10,7 @@ except ImportError:
 
 # Kit imports
 from .prefs import Text, KEYS, DATA, Paths
-from .widgets import Banner, KitsTab, HelpTab
+from .widgets import Banner, KitsTab, InfoTab
 
 
 class KitCentralWindow(QMainWindow):
@@ -63,9 +63,9 @@ class KitCentralWindow(QMainWindow):
         self.tabs.addTab(self.tab_kits, KEYS.KITS)
 
         # Add the help tab
-        self.tab_help = HelpTab()
+        self.tab_help = InfoTab()
         # Add the help tab but to the right side in self.tabs
-        self.tabs.addTab(self.tab_help, "Help")
+        self.tabs.addTab(self.tab_help, KEYS.INFO)
 
         # Clear all close buttons from the initial tabs.
         for tab_index in range(self.tabs.count()):
