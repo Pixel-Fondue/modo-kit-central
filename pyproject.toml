@@ -1,15 +1,25 @@
-[project]
+[tool.poetry]
 name = "modo_kit_central"
 version = "0.1.9"
+description = ""
 authors = [
-    {name = "Shawn Frueh", email = "shawnfrueh@live.com"}
+    "Shawn Frueh <shawnfrueh@live.com>"
 ]
-requires-python = ">=3.10, <3.11"
-dependencies = [
-    "PySide6==6.3.1",
-    "requests==2.32.3",
-    "toml==0.10.2",
-]
+license = "LICENSE"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+PySide6 = "6.3.1"
+requests = "2.32.3"
+toml = "0.10.2"
+
+[tool.poetry.dev-dependencies]
+# Add your development dependencies here
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 [modo.kit]
 short_name = "mkc"
