@@ -68,12 +68,12 @@ def hint_to_kit_info(value: str, import_data: Dict[str, ImportInfo]) -> KitInfo:
         # Split the value by "version" to get the name and version
         name, version = sanitized_value.split("version")
         # Get the path from the import data.
-        import_info = import_data.get(name)
+        import_info = import_data.get(name.strip())
         # Return the KitInfo dataclass
         return KitInfo(name=name.strip(), enabled=True, version=version.strip(), path=import_info.path)
 
 
-def populate_installed_kits():
+def populate_installed_kits() -> None:
     """Gets all kits recognized by the users current Modo session."""
     # Initialize the modo_kits dictionary
     DATA.modo_kits = {}
@@ -82,8 +82,8 @@ def populate_installed_kits():
     # We use this to determine the version of a kit if it is disabled.
     import_data = get_import_data()
 
-    # Get the UI value hints for kit.toggleEnabled to check all kits enabled status.
-    ui_value_hints = get_command_ui_hints("kit.toggleEnabled")
+    # Get the UI value hints for kit.toggleEnable to check all kits enabled status.
+    ui_value_hints = get_command_ui_hints("kit.toggleEnable")
     for hint_index in range(ui_value_hints.PopCount()):
         # Get the hint value at the given index.
         ui_value_hint = ui_value_hints.PopUserName(hint_index)

@@ -32,7 +32,8 @@ def run() -> None:
     sys.exit(mkc_app.exec())
 
 
-if __name__ == '__main__':
+def main():
+    """Main entry point of the runner script."""
     # Add mck to the sys path
     link_kit()
     # Enable local mode

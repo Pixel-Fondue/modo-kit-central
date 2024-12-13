@@ -66,7 +66,7 @@ def get_version(project: dict) -> str:
     Returns:
         The version number from the pyproject file.
     """
-    return project.get('project', {}).get('version', "0.0.0")
+    return project.get('tool', {}).get('poetry', {}).get('version', "0.0.0")
 
 
 def readable_size(size: int, decimal: int = 2) -> str:
