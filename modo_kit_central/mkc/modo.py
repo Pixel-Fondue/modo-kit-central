@@ -1,4 +1,3 @@
-# MODO Specific code goes here!
 from typing import Dict, Iterator
 from pathlib import Path
 from xml.etree import ElementTree as ET
@@ -9,7 +8,11 @@ from .prefs import DATA, KitInfo, ImportInfo
 
 
 def get_command_ui_hints(command: str) -> lxu.object.UIValueHints:
-    """Gets the UI Values Hints for the given command."""
+    """Gets the UI Values Hints for the given command.
+
+    Args:
+        command: The string command to get the UI hints for.
+    """
     # Get the command service to spawn the command.
     service_command = lxu.service.Command()
     # Spawn the command to get the UI hints.
@@ -58,7 +61,7 @@ def hint_to_kit_info(value: str, import_data: Dict[str, ImportInfo]) -> KitInfo:
     """
     # Sanitize the hint value
     sanitized_value = sanitize_hint_value(value)
-    if "disabled" in sanitized_value:
+    if "(disabled)" in sanitized_value:
         # Get the name of the kit
         sanitized_value = sanitized_value.split("(disabled)")[0].strip()
         # Version is not available for disabled kits, so we need to get it from the index.cfg file.

@@ -1,14 +1,4 @@
-from dataclasses import dataclass
-from pathlib import Path
-from xml.etree import ElementTree as ET
-
-@dataclass
-class KitInfo:
-    """Dataclass for the kit's information."""
-    name: str
-    enabled: bool
-    version: str
-    path: Path
+from .prefs import KitInfo
 
 
 def sanitize_hint_value(value: str) -> str:
@@ -46,7 +36,7 @@ def hint_to_kit_info(value: str) -> KitInfo:
     """
     # Sanitize the hint value
     sanitized_value = sanitize_hint_value(value)
-    if "disabled" in sanitized_value:
+    if "(disabled)" in sanitized_value:
         # Get the name of the kit
         sanitized_value = sanitized_value.split("(disabled)")[0].strip()
         return KitInfo(name=sanitized_value, enabled=False, version="n/a", path=None)
@@ -55,24 +45,3 @@ def hint_to_kit_info(value: str) -> KitInfo:
         name, version = sanitized_value.split("version")
         # Return the KitInfo dataclass
         return KitInfo(name=name.strip(), enabled=True, version=version.strip(), path=None)
-
-
-hint_name = "([)MODO_KIT_CENTRAL(]) ([)(j:2)(c:26646166)(])(disabled)"
-clean_name = hint_to_kit_info(hint_name)
-print(clean_name)
-
-hint_name = "([)MODO_KIT_CENTRAL(]) ([)(j:2)(c:26646166)version ([)2.0(])"
-clean_name = hint_to_kit_info(hint_name)
-print(clean_name)
-
-# XML data
-xml_file = Path(__file__).parent.parent / "modo_kit_central" / "index.cfg"
-
-# Parse the XML data
-root = ET.parse(xml_file).getroot()
-
-# Extract kit and version info
-kit = root.attrib.get('kit')
-version = root.attrib.get('version')
-
-print(f'Kit: {kit}, Version: {version}')

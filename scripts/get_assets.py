@@ -8,7 +8,7 @@ owner_repo = repo_url.split("github.com/")[1]
 
 # Define the GitHub API URL for the latest release
 api_url = f"https://api.github.com/repos/{owner_repo}/releases/latest"
-
+api_path = "https://api.github.com/repos/Pixel-Fondue/modo-kit-central/releases/latest"
 # Send a GET request to the GitHub API URL
 response = requests.get(api_url)
 

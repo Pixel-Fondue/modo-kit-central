@@ -25,6 +25,7 @@ class KitCentralWindow(QMainWindow):
         self._build_tabs()
         # Display the UI
         self.show()
+        # Trigger kit population thread.
 
     def _build_window(self) -> None:
         """Sets up the main window properties."""

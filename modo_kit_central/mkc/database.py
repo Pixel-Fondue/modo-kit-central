@@ -66,7 +66,7 @@ def get_author_kits(author: str) -> List[KitData]:
         author: The author's name to get data for.
 
     Returns:
-        kits: A list of all kits by the author.
+        A list of all kits by the author.
     """
     with sqlite3.connect(Paths.DATABASE) as connection:
         cursor = connection.cursor()

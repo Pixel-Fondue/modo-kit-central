@@ -44,7 +44,7 @@ def package_kit(project_data: Dict) -> Path:
     # Build the LPK file.
     with ZipFile(lpk_path, mode='w', compression=ZIP_DEFLATED) as lpk:
         # Add the license
-        lpk.write(license_file, "license")
+        lpk.write(license_file, "LICENSE")
         # Generate the index.xml file data
         index_data = make_index(folder=kit_dir, files=kit_files, message=user_message)
         # Write the index.xml file

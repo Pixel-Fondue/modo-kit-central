@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 from pathlib import Path
 
 from .utils import load_avatar
@@ -6,7 +6,7 @@ from .utils import load_avatar
 try:
     from PySide6.QtGui import QCursor, QDesktopServices, QMouseEvent
     from PySide6.QtGui import QPixmap, QIcon, QPalette, QColor, QPainter
-    from PySide6.QtCore import Qt, QUrl, QRect, QTimer
+    from PySide6.QtCore import Qt, QUrl, QRect, QTimer, QThread
     from PySide6.QtCore import QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
     from PySide6.QtWidgets import (
         QLabel, QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QToolButton, QScrollArea,
@@ -17,7 +17,7 @@ except ImportError:
     # Fallback to PySide2 if PySide6 is not available
     from PySide2.QtGui import QCursor, QDesktopServices, QMouseEvent
     from PySide2.QtGui import QPixmap, QIcon, QPalette, QColor, QPainter
-    from PySide2.QtCore import Qt, QUrl, QRect, QTimer
+    from PySide2.QtCore import Qt, QUrl, QRect, QTimer, QThread
     from PySide2.QtCore import QParallelAnimationGroup, QPropertyAnimation, QAbstractAnimation
     from PySide2.QtWidgets import (
         QLabel, QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QToolButton, QScrollArea,
@@ -25,9 +25,9 @@ except ImportError:
         QStyleOptionTab, QStyle
     )
 
-from .prefs import KEYS, Text, Paths, DATA, KitData, AuthorData
+from .prefs import URLS, Text, Paths, DATA, KitData, AuthorData
 from .database import search_kits, get_author, get_kits, get_author_kits
-
+from .github import DatabaseWorker
 
 class KitWidget(QWidget):
     """Class to display the information of a given kit."""
@@ -149,6 +149,7 @@ class KitWidget(QWidget):
 
 
 class Button(QPushButton):
+    """Class to format all buttons alike."""
 
     def __init__(self, text: str = "Button", icon: QIcon = None) -> None:
         """Inherited Pushbutton class to format all buttons alike.
@@ -346,7 +347,8 @@ class KitsTab(QWidget):
         super(KitsTab, self).__init__(parent)
         self.kits: List[FoldContainer] = []
         self._ui_setup()
-        self._add_kits()
+        # self._add_kits()
+        self._sync_database()
 
     def _ui_setup(self) -> None:
         """Sets up the UI for the kit tab."""
@@ -376,6 +378,24 @@ class KitsTab(QWidget):
         # Set the base layout as the main layout
         self.setLayout(self.base_layout)
 
+    def _sync_database(self) -> None:
+        self.thread = QThread()
+        self.worker = DatabaseWorker()
+        self.worker.moveToThread(self.thread)
+        self.worker.finished.connect(self.on_finished)
+        self.thread.started.connect(self.worker.run)
+        self.thread.start()
+
+    def on_finished(self) -> None:
+        self.thread.quit()
+        self.thread.wait()
+        print("Finished!")
+
+    def on_error(self, error: str) -> None:
+        print(error)
+        self.thread.quit()
+        self.thread.wait()
+
     def _add_kits(self) -> None:
         """Iterate over the kits database table and add the kits to the UI."""
         for kit_data in get_kits():
@@ -387,6 +407,8 @@ class KitsTab(QWidget):
 
 
 class AuthorTab(QScrollArea):
+    """Class to display the author information in the main UI."""
+
     def __init__(self, author_data: AuthorData, parent: QWidget = None) -> None:
         """Scroll area that populates with incoming author information.
 

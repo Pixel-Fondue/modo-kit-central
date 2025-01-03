@@ -23,7 +23,7 @@ class MKCLauncherCMD(MKCCommand):
         """
         return lx.symbol.fCMD_QUIET
 
-    def basic_Execute(self, msg: lx.object.Message, flags: int):
+    def basic_Execute(self, msg: lx.object.Message, flags: int) -> None:
         """Modo Override: Launches the Material Search window.
 
         Args:
