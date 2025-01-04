@@ -1,8 +1,8 @@
 import lx
 
 from mkc.command import MKCCommand
-from mkc.gui import KitCentralWindow
 from mkc.prefs import DATA, KIT
+from mkc.lib import link_libs
 
 
 class MKCLauncherCMD(MKCCommand):
@@ -11,6 +11,7 @@ class MKCLauncherCMD(MKCCommand):
     def __init__(self) -> None:
         """Initialization of the Modo Kit Central Launcher command."""
         super().__init__()
+        link_libs()
 
     def cmd_Flags(self) -> int:
         """Modo Override: Set the internal flags of the command.
@@ -30,6 +31,7 @@ class MKCLauncherCMD(MKCCommand):
             msg: The commands message object
             flags: The int result of cmd_Flags()
         """
+        from mkc.gui import KitCentralWindow
         if DATA.mkc_window:
             DATA.mkc_window.show()
         else:

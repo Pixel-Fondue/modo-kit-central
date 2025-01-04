@@ -1,8 +1,6 @@
 from typing import List, Dict
 from pathlib import Path
 
-from .utils import load_avatar
-
 try:
     from PySide6.QtGui import QCursor, QDesktopServices, QMouseEvent
     from PySide6.QtGui import QPixmap, QIcon, QPalette, QColor, QPainter
@@ -25,9 +23,9 @@ except ImportError:
         QStyleOptionTab, QStyle
     )
 
-from .prefs import URLS, Text, Paths, DATA, KitData, AuthorData
+from .prefs import Text, Paths, DATA, KitData, AuthorData
 from .database import search_kits, get_author, get_kits, get_author_kits
-from .github import DatabaseWorker
+from .github import DatabaseWorker, AvatarWorker
 
 class KitWidget(QWidget):
     """Class to display the information of a given kit."""
@@ -347,7 +345,6 @@ class KitsTab(QWidget):
         super(KitsTab, self).__init__(parent)
         self.kits: List[FoldContainer] = []
         self._ui_setup()
-        # self._add_kits()
         self._sync_database()
 
     def _ui_setup(self) -> None:
@@ -380,6 +377,7 @@ class KitsTab(QWidget):
 
     def _sync_database(self) -> None:
         self.thread = QThread()
+        print("Starting DatabaseWorker...")
         self.worker = DatabaseWorker()
         self.worker.moveToThread(self.thread)
         self.worker.finished.connect(self.on_finished)
@@ -390,6 +388,7 @@ class KitsTab(QWidget):
         self.thread.quit()
         self.thread.wait()
         print("Finished!")
+        self._add_kits()
 
     def on_error(self, error: str) -> None:
         print(error)
@@ -422,6 +421,7 @@ class AuthorTab(QScrollArea):
         self._build_ui()
         self._add_links()
         self._add_kits()
+        self._sync_avatar()
 
     def _build_ui(self) -> None:
         """Builds the UI for the author tab."""
@@ -436,18 +436,45 @@ class AuthorTab(QScrollArea):
         self.setWidget(self.base_widget)
 
         # Load avatar if it exists.
-        self.avatar = load_avatar(self.data.avatar)
-        avatar_lbl = QLabel("test")
-        avatar_lbl.setFixedSize(120, 100)
-        # Load and scale avatar.
-        avatar_pix = QPixmap(self.avatar).scaledToHeight(100)
-        avatar_lbl.setPixmap(avatar_pix)
-        self.base_layout.addWidget(avatar_lbl, alignment=Qt.AlignCenter)
-
-        author_lbl = QLabel(self.data.name)
-        self.base_layout.addWidget(author_lbl, alignment=Qt.AlignCenter)
+        self.avatar = Paths.AVATAR
+        self.avatar_lbl = QLabel()
+        self.avatar_lbl.setFixedSize(120, 100)
+        self.avatar_pix = QPixmap(self.avatar.as_posix())
+        # Load avatar image into the label.
+        self._add_avatar()
+        self.base_layout.addWidget(self.avatar_lbl, alignment=Qt.AlignCenter)
+        # Add author name
+        self.author_lbl = QLabel(self.data.name)
+        self.base_layout.addWidget(self.author_lbl, alignment=Qt.AlignCenter)
+        # Add links layout.
         self.links_layout = QHBoxLayout()
         self.base_layout.addLayout(self.links_layout)
+
+    def _sync_avatar(self) -> None:
+        """Syncs the local avatar with the database avatar."""
+        # Fetch the avatar from the database and save it locally.
+        self.thread = QThread()
+        self.worker = AvatarWorker(self.data.name)
+        self.worker.moveToThread(self.thread)
+        self.worker.finished.connect(self.on_avatar_finished)
+        self.thread.started.connect(self.worker.run)
+        self.thread.start()
+
+    def on_avatar_finished(self, avatar: QPixmap) -> None:
+        """Sets the avatar pixmap to the label.
+
+        Args:
+            avatar: The avatar pixmap to set.
+        """
+        self.thread.quit()
+        self.thread.wait()
+        self.avatar_pix = avatar
+        self._add_avatar()
+
+    def _add_avatar(self) -> None:
+        """Adds the author's avatar to the author tab."""
+        avatar_pix = self.avatar_pix.scaledToHeight(100)
+        self.avatar_lbl.setPixmap(avatar_pix)
 
     def _add_links(self) -> None:
         """Adds all links to the author tab as clickable."""

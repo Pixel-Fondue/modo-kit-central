@@ -1,7 +1,16 @@
+from dataclasses import dataclass
 from typing import List
 import sqlite3
 
 from .prefs import Paths, KitData, AuthorData, QueryData
+
+
+@dataclass
+class ManifestData:
+    """Dataclass for the release information from the manifest.json file."""
+    version: str    # The version of the database.
+    file: str       # The name of the database file.
+
 
 
 def search_kits(search_text: str) -> List[int]:

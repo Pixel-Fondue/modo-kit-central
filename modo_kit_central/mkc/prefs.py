@@ -40,7 +40,9 @@ class Paths:
     KIT_ROOT = Path(__file__).parent.parent.absolute()
     RESOURCES = KIT_ROOT / "resources"
     DATABASE = RESOURCES / "mkc_kits.db"
+    DATABASE_MANIFEST = RESOURCES / "manifest.json"
     TEST_RELEASE = RESOURCES / "test_release.json"
+    AVATAR = RESOURCES / "avatars" / "profile.png"
     IMAGES = RESOURCES / "images"
     ICON = IMAGES / "icon.png"
     IMAGES_CSS = IMAGES / "css"
@@ -54,7 +56,7 @@ class URLS:
     GITHUB_ROOT = "github.com/"
     MODO_KIT_DATABASE = "https://github.com/Pixel-Fondue/modo-kit-database"
     GITHUB_RELEASE_API = "https://api.github.com/repos/{owner}/releases/latest"
-
+    AUTHOR_AVATAR = "https://raw.githubusercontent.com/Pixel-Fondue/modo-kit-database/refs/heads/main/kits/{author}/avatar.png"
 
 class Text:
     """Dataclass for storing text information."""
