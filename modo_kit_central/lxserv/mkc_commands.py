@@ -11,7 +11,6 @@ class MKCLauncherCMD(MKCCommand):
     def __init__(self) -> None:
         """Initialization of the Modo Kit Central Launcher command."""
         super().__init__()
-        link_libs()
 
     def cmd_Flags(self) -> int:
         """Modo Override: Set the internal flags of the command.

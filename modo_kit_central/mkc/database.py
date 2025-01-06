@@ -12,7 +12,6 @@ class ManifestData:
     file: str       # The name of the database file.
 
 
-
 def search_kits(search_text: str) -> List[int]:
     """Searches the database for the given search text.
 

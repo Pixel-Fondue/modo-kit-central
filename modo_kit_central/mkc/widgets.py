@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List
 from pathlib import Path
 
 try:
@@ -100,7 +100,8 @@ class KitWidget(QWidget):
     def _handle_installed_kit(self) -> None:
         ...
 
-    def set_height(self):
+    def set_height(self) -> None:
+        """Sets the height of the description to fit the content."""
         # Calculate the total height of all blocks (lines) in the document
         self.description.document().setTextWidth(self.description.viewport().width())
         self.description.document().adjustSize()
@@ -111,7 +112,6 @@ class KitWidget(QWidget):
 
         # Add the top and bottom margins
         content_height += self.description.contentsMargins().top() + self.description.contentsMargins().bottom()
-        print(content_height)
         # Apply the calculated height, ensuring it does not exceed the maximum height
         self.description.setFixedHeight(min(content_height, self.description.maximumHeight()))
 
@@ -267,7 +267,11 @@ class FoldContainer(QWidget):
         self.animation_setup(content_height)
 
     def animation_setup(self, height: int) -> None:
-        # Initialize all added animations with the same values.
+        """Sets up the animations for the container for a smooth open/close.
+
+        Args:
+            height: The height to animate to.
+        """
         for i in range(self.toggle_animation.animationCount()):
             animation = self.toggle_animation.animationAt(i)
             animation.setDuration(self.anim_length)
@@ -275,13 +279,16 @@ class FoldContainer(QWidget):
             animation.setEndValue(self.collapsed_height + height)
 
         content_animation = self.toggle_animation.animationAt(
-            self.toggle_animation.animationCount() - 1)
+            self.toggle_animation.animationCount() - 1
+        )
         content_animation.setDuration(self.anim_length)
         content_animation.setStartValue(0)
         content_animation.setEndValue(height)
 
 
 class KitSearchBar(QWidget):
+    """Custom search bar for the kits tab."""
+
     def __init__(self, kit_tab: 'KitsTab', parent: QWidget = None):
         """Initialization of the search bar for the kits tab.
 
@@ -376,8 +383,8 @@ class KitsTab(QWidget):
         self.setLayout(self.base_layout)
 
     def _sync_database(self) -> None:
+        """Spawns a thread to handle pulling the latest kit database."""
         self.thread = QThread()
-        print("Starting DatabaseWorker...")
         self.worker = DatabaseWorker()
         self.worker.moveToThread(self.thread)
         self.worker.finished.connect(self.on_finished)
@@ -385,13 +392,18 @@ class KitsTab(QWidget):
         self.thread.start()
 
     def on_finished(self) -> None:
+        """Handles the completion of the database worker."""
         self.thread.quit()
         self.thread.wait()
-        print("Finished!")
         self._add_kits()
 
     def on_error(self, error: str) -> None:
-        print(error)
+        """Handles the error from the database worker.
+
+        Args:
+            error: The error raised by the worker.
+        """
+        print(f"Error: {error}")
         self.thread.quit()
         self.thread.wait()
 
@@ -513,8 +525,6 @@ class InfoTab(QWidget):
         self.about = QLabel()
         self.about.setObjectName("mkc-about")
         self.about.setText(Text.info_block)
-        # Center the text
-        #self.about.setAlignment(Qt.AlignCenter)
         # Wrap the text
         self.about.setWordWrap(True)
 

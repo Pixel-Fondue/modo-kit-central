@@ -1,3 +1,4 @@
+import sys
 import json
 from dataclasses import dataclass
 from pathlib import Path
@@ -5,6 +6,8 @@ from typing import List, Dict, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from .gui import KitCentralWindow
+
+PY_VERSION = f"{sys.version_info.major}{sys.version_info.minor}"
 
 
 @dataclass
@@ -38,6 +41,7 @@ class DATA:
 class Paths:
     """Paths for Modo Kit Central resources."""
     KIT_ROOT = Path(__file__).parent.parent.absolute()
+    KIT_LIBS = KIT_ROOT / f"libs_{PY_VERSION}"
     RESOURCES = KIT_ROOT / "resources"
     DATABASE = RESOURCES / "mkc_kits.db"
     DATABASE_MANIFEST = RESOURCES / "manifest.json"
