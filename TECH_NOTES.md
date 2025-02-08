@@ -39,6 +39,28 @@ Windows:
    - `python -m scripts.run`
 
 
+# Debugging
+The kit is designed to be able to run inside and outside Modo. If you need to run the remote debugger, here is the setup:
+- PyCharm
+  - Install PyCharms' debugger into the kits lib folder. (Requires pro)
+      - `pip install -t modo_kit_central/libs pydevd-pycharm~=<PYCHARM_VERSION>`
+  - Install the kit.
+    - `python -m scripts.install`
+    - `poetry run install`
+  - Create a debug server in PyCharm.
+    - Go to `Run` -> `Edit Configurations`
+    - Click the `+` in the top left and select `Python Debug Server`
+    - Set the port to `6001`
+  - Set up the local and remote paths in the debugger.
+    - Local: `$PROJECT_DIR$/modo_kit_central/mkc`
+    - Remote: `C:/Users/USERNAME/AppData/Roaming/Luxology/Kits/modo_kit_central/mkc`
+  - Run the debugger in pycharm.
+  - Run the kit command to link the debugger.
+    - `mkc.debug 6001`
+  - You should then see the debugger connect in PyCharm.
+- VSCode
+  - `TODO`
+
 ## TODO List:
 - [ ] Clean up kit JSON data.
 - [ ] Add more kits to the kits.json file.
