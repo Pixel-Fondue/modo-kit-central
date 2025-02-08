@@ -1,6 +1,6 @@
 from os import environ
 
-from .utils import load_stylesheet, load_resource
+from .utils import load_stylesheet
 from .version import version
 from .prefs import DATA
 

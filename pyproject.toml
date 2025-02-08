@@ -18,7 +18,7 @@ PySide6 = "6.3.1"
 toml = "0.10.2"
 
 [tool.poetry.group.kit]
-# Kit are required for modo_kit_central
+# Kits required for modo_kit_central
 optional = false
 
 [tool.poetry.group.kit.dependencies]

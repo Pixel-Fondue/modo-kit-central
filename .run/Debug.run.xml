@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Debug" type="PyRemoteDebugConfigurationType" factoryName="Python Remote Debug">
+    <module name="modo-kit-central" />
+    <option name="PORT" value="6001" />
+    <option name="HOST" value="127.0.0.1" />
+    <PathMappingSettings>
+      <option name="pathMappings">
+        <list>
+          <mapping local-root="$PROJECT_DIR$/modo_kit_central/mkc" remote-root="C:/Users/shawn/AppData/Roaming/Luxology/Kits/modo_kit_central/mkc" />
+        </list>
+      </option>
+    </PathMappingSettings>
+    <option name="REDIRECT_OUTPUT" value="true" />
+    <option name="SUSPEND_AFTER_CONNECT" value="true" />
+    <method v="2" />
+  </configuration>
+</component>

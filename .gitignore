@@ -6,6 +6,7 @@
 *.pyc
 build/
 .venv/
+libs/
 *.egg*
 modo_kit_central/libs_*/
 mkc_kits.db

@@ -14,6 +14,7 @@ from .prefs import URLS, Paths
 from .utils import up_to_date
 from .database import ManifestData
 
+
 class ReleaseWorker(QObject):
     """Worker class to fetch the latest release metadata from a repository."""
     finished = Signal(dict)

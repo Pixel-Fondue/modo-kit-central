@@ -1,15 +1,17 @@
 import lx
 
 from mkc.command import MKCCommand
-from mkc.prefs import DATA, KIT
 
 
-class MKCLauncherCMD(MKCCommand):
+class MKCDebugCMD(MKCCommand):
     """Command to launch the Modo Kit Central window."""
+    arg_id = 0  # Class variable to track the argument index
 
     def __init__(self) -> None:
         """Initialization of the Modo Kit Central Launcher command."""
         super().__init__()
+        # Add port number argument for connecting to PyCharm debugger.
+        self.port_id = self.add_arg("port", lx.symbol.sTYPE_INTEGER)
 
     def cmd_Flags(self) -> int:
         """Modo Override: Set the internal flags of the command.
@@ -29,11 +31,11 @@ class MKCLauncherCMD(MKCCommand):
             msg: The commands message object
             flags: The int result of cmd_Flags()
         """
-        from mkc.gui import KitCentralWindow
-        if DATA.mkc_window:
-            DATA.mkc_window.show()
-        else:
-            DATA.mkc_window = KitCentralWindow()
+        # Get the port argument
+        port = self.dyna_Int(self.port_id)
+
+        import pydevd_pycharm
+        pydevd_pycharm.settrace('localhost', port=port, stdoutToServer=True, stderrToServer=True)
 
 
-lx.bless(MKCLauncherCMD, KIT.CMD_LAUNCHER)
+lx.bless(MKCDebugCMD, "mkc.debug")
