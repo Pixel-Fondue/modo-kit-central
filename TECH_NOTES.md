@@ -33,10 +33,13 @@ Windows:
 # Running the scripts
 1. Install the kit locally.
    - `python -m scripts.install`
+   - `poetry run install`
 2. Build the .lpk file.
    - `python -m scripts.build`
+   - `poetry run build`
 3. Run the UI locally. (Not in modo)
    - `python -m scripts.run`
+   - `poetry run app`
 
 
 # Debugging
