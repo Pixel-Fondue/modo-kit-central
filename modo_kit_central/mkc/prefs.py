@@ -1,7 +1,9 @@
+"""Core data and types for Modo Kit Central."""
 import sys
 import json
-from dataclasses import dataclass
+from enum import Enum
 from pathlib import Path
+from dataclasses import dataclass
 from typing import List, Dict, TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -62,6 +64,8 @@ class URLS:
     GITHUB_RELEASE_API = "https://api.github.com/repos/{owner}/releases/latest"
     AUTHOR_AVATAR = "https://raw.githubusercontent.com/Pixel-Fondue/modo-kit-database/refs/heads/main/kits/{author}/avatar.png"
 
+
+@dataclass
 class Text:
     """Dataclass for storing text information."""
     title = "Modo Kit Central"
@@ -77,6 +81,7 @@ class Text:
     )
 
 
+@dataclass
 class KEYS:
     """Keys for the different tabs."""
     KITS = "Kits"
@@ -84,12 +89,22 @@ class KEYS:
     INFO = "Info"
 
 
+@dataclass
 class KIT:
     """Constants for the Kit Central."""
     ABV = "mkc"
     NAME = "modo_kit_central"
     NICE_NAME = "Modo Kit Central"
     CMD_LAUNCHER = f"{ABV}.launcher"
+
+
+@dataclass
+class KitManifest:
+    """Dataclass to hold information from a manifest.json file for a kit."""
+    name: str        # The name of the kit.
+    version: str     # The version of the kit.
+    description: str # The description of the kit.
+    latest: str      # The latest lpk filename.
 
 
 @dataclass
@@ -105,7 +120,7 @@ class KitData:
     # The following fields are optional.
     url: str = None             # The URL to the kit's homepage.
     help: str = None            # The URL to the kit's help page.
-    manifest: str = None        # The manifest.json file for the kit installation.
+    repo: str = None            # The URL to the GitHub repo for the kit installation.
     has_banner: bool = False    # If the kit has a banner image.
     installable: bool = False   # If the kit is installable via MKC.
 
@@ -138,3 +153,21 @@ class QueryData:
     SearchTerm: str = " AND (name LIKE ? OR author LIKE ? OR search LIKE ? OR Description LIKE ?)"
     SelectAuthor: str = "SELECT * FROM authors WHERE name LIKE ?"
     SelectKitsByAuthor: str = "SELECT * FROM kits WHERE author = ?"
+
+
+@dataclass
+class TabRequest:
+    """Dataclass for a tab opening request."""
+    type: str               # The type of tab to open.
+    name: str = None        # The name of the tab.
+    show: bool = False      # If the tab should be shown.
+    closeable: bool = True  # If the tab is closeable.
+    kwargs: Dict = None     # The kwargs to pass to the tab.
+
+
+class KitAction(Enum):
+    """Enum for a kits action button."""
+    NONE = "none"
+    INSTALL = "install"
+    UPDATE = "update"
+    UNINSTALL = "uninstall"

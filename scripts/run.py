@@ -23,8 +23,8 @@ def run() -> None:
 
     # Load mock kit data
     DATA.modo_kits = {
-        'modo_kit_central': KitInfo(
-            name="modo_kit_central", version="0.1.0", enabled=True, path=Path()
+        'MODO_KIT_CENTRAL': KitInfo(
+            name="MODO_KIT_CENTRAL", version="0.0.0", enabled=True, path=Path()
         ),
     }
     DATA.mkc_window = KitCentralWindow()
@@ -40,3 +40,7 @@ def main():
     environ['MKC_LOCAL'] = 'True'
     # Run MKC gui
     run()
+
+
+if __name__ == '__main__':
+    main()

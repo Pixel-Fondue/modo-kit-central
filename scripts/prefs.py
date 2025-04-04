@@ -11,8 +11,6 @@ class Paths:
     KIT = ROOT / "modo_kit_central"
     KIT_RESOURCES = KIT / "resources"
     KIT_DATABASE = KIT_RESOURCES / "kits.db"
-    KIT_LIBS_39 = KIT / "libs_39"
-    KIT_LIBS_310 = KIT / "libs_310"
     # Tooling paths
     SCRIPTS = ROOT / "scripts"
     SCRIPTS_RESOURCES = SCRIPTS / "resources"
