@@ -1,8 +1,9 @@
 from dataclasses import dataclass
-from typing import List
+from typing import List, Dict
 import sqlite3
 
-from .prefs import Paths, KitData, AuthorData, QueryData
+from .prefs import DATA, KitData, AuthorData, QueryData
+from .files import Paths
 
 
 @dataclass
@@ -30,6 +31,7 @@ def search_kits(search_text: str) -> List[int]:
         # For every '?' in the query, add the search term to the params.
         params.extend([f"%{term}%"] * QueryData.SearchTerm.count("?"))
 
+    # Search the database.
     with sqlite3.connect(Paths.DATABASE) as connection:
         cursor = connection.cursor()
         # Search all fields in kits table for the search text.
@@ -38,7 +40,7 @@ def search_kits(search_text: str) -> List[int]:
         return [kit[0] - 1 for kit in cursor.fetchall()]
 
 
-def get_kits() -> List[KitData]:
+def get_kits() -> Dict[str, KitData]:
     """Gets all kits from the database.
 
     Returns:
@@ -47,7 +49,7 @@ def get_kits() -> List[KitData]:
     with sqlite3.connect(Paths.DATABASE) as connection:
         cursor = connection.cursor()
         cursor.execute(QueryData.SelectKits)
-        return [KitData(*k) for k in cursor.fetchall()]
+        return {k[1]: KitData(*k) for k in cursor.fetchall()}
 
 
 def get_author(author: str) -> AuthorData:

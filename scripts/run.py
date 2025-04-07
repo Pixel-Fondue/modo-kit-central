@@ -43,4 +43,5 @@ def main():
 
 
 if __name__ == '__main__':
+    """Module entry point of the script."""
     main()

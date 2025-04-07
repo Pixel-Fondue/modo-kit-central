@@ -1,5 +1,8 @@
+"""Module to get all the packages in the scene."""
 from typing import List
-import lx, lxu
+
+import lx
+import lxu
 
 # Initialize the Host Service.
 HOST_SERVICE = lx.service.Host()
@@ -45,26 +48,8 @@ def get_item_packages(scene_item: lxu.object.Item) -> List[str]:
     item_packages = []
 
     # Iterate over each package and test it against the scene item.
-    for package in ALL_PACKAGES:
+    for package in get_all_packages():
         if scene_item.PackageTest(package):
             item_packages.append(package)
 
     return item_packages
-
-
-if __name__ == '__main__':
-    # Get all available packages
-    ALL_PACKAGES = get_all_packages()
-
-    # To test this out, lets grab the default Mesh item.
-    # Get the scene item to get teh Mesh item.
-    scene = lxu.select.SceneSelection().current()
-    # Use the ItemLookup to get the Mesh item by name.
-    default_mesh = scene.ItemLookup("Mesh")
-    # There will be no packages on the default Mesh item.
-    # Let's add one.
-    default_mesh.PackageAdd('glDraw')
-
-    # Get a List of all the packages that the Mesh item contains.
-    packages = get_item_packages(default_mesh)
-    print(packages)

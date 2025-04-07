@@ -10,7 +10,8 @@ except ImportError:
     from PySide2.QtCore import QObject, Signal, qDebug
     from PySide2.QtGui import QPixmap
 
-from .prefs import URLS, Paths
+from .prefs import URLS
+from .files import Paths
 from .utils import up_to_date
 from .database import ManifestData
 

@@ -15,10 +15,11 @@ except ImportError:
         QLabel, QWidget, QVBoxLayout, QHBoxLayout, QScrollArea, QStyle
     )
 
-from ..prefs import Text, Paths, AuthorData, KEYS, TabRequest
+from ..prefs import Text, AuthorData, KEYS, TabRequest, DATA
+from ..files import Paths
 from ..database import get_kits, get_author_kits, get_author
 from ..github import DatabaseWorker, AvatarWorker
-from .core import FoldContainer, KitSearchBar, KitWidget
+from .core import FoldContainer, KitSearchBar, KitWidget, KitInfoWidget
 
 
 class KitsTab(QWidget):
@@ -33,10 +34,11 @@ class KitsTab(QWidget):
         """
         super(KitsTab, self).__init__(parent)
         self.kits: List[FoldContainer] = []
-        self._ui_setup()
+        self.local_kits: List[FoldContainer] = []
+        self._build_ui()
         self._sync_database()
 
-    def _ui_setup(self) -> None:
+    def _build_ui(self) -> None:
         """Sets up the UI for the kit tab."""
         self.setContentsMargins(4, 4, 4, 4)
         # Search
@@ -91,17 +93,32 @@ class KitsTab(QWidget):
 
     def _add_kits(self) -> None:
         """Iterate over the kits database table and add the kits to the UI."""
-        for kit_data in get_kits():
-            # Generate a collapsable container
+        # Get copy of installed kits.
+        installed_kits = DATA.modo_kits.copy()
+        database_kits = get_kits()
+
+        for kit_name, kit_data in database_kits.items():
+            # Generate a collapsable container.
             kit_container = FoldContainer(name=kit_data.label, version=kit_data.version)
             kit_widget = KitWidget(kit_data)
             kit_container.set_content(kit_widget)
-            # Link the author request signal to the kit widget
-            # Get the author data for the kit
+            # Get the author data for the kit,
             author_data = {'author_data': get_author(kit_data.author)}
-            author_request = TabRequest(KEYS.AUTHORS, show=True, kwargs=author_data)
+            author_request = TabRequest(type=KEYS.AUTHORS, name=kit_data.author, show=True, kwargs=author_data)
+            # Link the author request signal to the kit widget
             kit_widget.author_clicked.connect(lambda author: self.author_request.emit(author_request))
             self.kits.append(kit_container)
+            self.kits_layout.addWidget(kit_container)
+            # If the kit is installed, remove it from the installed kits list.
+            if kit_name in installed_kits:
+                del installed_kits[kit_name]
+
+        # Add the installed kits that are not in the database.
+        for kit_name, kit_info in installed_kits.items():
+            kit_container = FoldContainer(name=kit_name, version=kit_info.version)
+            kit_info_widget = KitInfoWidget(kit_info)
+            kit_container.set_content(kit_info_widget)
+            self.local_kits.append(kit_container)
             self.kits_layout.addWidget(kit_container)
 
 

@@ -1,4 +1,5 @@
-from .prefs import Paths, DATA
+from .prefs import DATA
+from .files import Paths
 
 
 def set_absolute_images(css_data: str) -> str:
@@ -44,8 +45,3 @@ def up_to_date(version_local: str, version_latest: str) -> bool:
     else:
         # Local version is up-to-date.
         return True
-
-
-def debug():
-    import pydevd_pycharm
-    pydevd_pycharm.settrace('localhost', port=6000, stdoutToServer=True, stderrToServer=True)

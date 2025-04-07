@@ -25,7 +25,8 @@ except ImportError:
         QPlainTextEdit, QSizePolicy, QFrame, QTabWidget, QLineEdit
     )
 
-from ..prefs import Text, Paths, DATA, KitData, KitAction
+from ..prefs import Text, DATA, KitData, KitInfo, KitAction
+from ..files import Paths
 from ..database import search_kits
 from ..update import update_kit
 
@@ -89,9 +90,9 @@ class FoldContainer(QWidget):
         self.toggle_animation = QParallelAnimationGroup(self)
         self.content_area = QScrollArea(maximumHeight=0, minimumHeight=0)
         self.content = None
-        self.build_ui()
+        self._build_ui()
 
-    def build_ui(self) -> None:
+    def _build_ui(self) -> None:
         """Builds the UI"""
         self.setContentsMargins(0, 0, 0, 0)
         self.toggle_button.setFixedHeight(20)
@@ -279,6 +280,43 @@ class KitWidget(QWidget):
         update_kit(self.kit_data)
 
 
+class KitInfoWidget(QWidget):
+    """Class to display information about an installed kit that is not in the database."""
+
+    def __init__(self, kit_info: KitInfo) -> None:
+        """Initialization of the kit info widget.
+
+        Args:
+            kit_info: Information about an installed kit.
+        """
+        super(KitInfoWidget, self).__init__()
+        self.kit_info = kit_info
+        self._build_ui()
+
+    def _build_ui(self) -> None:
+        """Builds the UI for the kit info widget."""
+        self.base_layout = QVBoxLayout()
+        self.base_layout.setContentsMargins(0, 0, 0, 0)
+        self.setLayout(self.base_layout)
+
+        # Display kit name and status
+        status = "Enabled" if self.kit_info.enabled else "Disabled"
+        self.name_label = QLabel(f"{self.kit_info.name} ({status})")
+        self.name_label.setObjectName("kit-name")
+
+        # Display version
+        self.version_label = QLabel(f"Version: {self.kit_info.version}")
+
+        # Display path
+        self.path_label = QLabel(f"Path: {self.kit_info.path}")
+        self.path_label.setWordWrap(True)
+
+        # Add widgets to layout
+        self.base_layout.addWidget(self.name_label)
+        self.base_layout.addWidget(self.version_label)
+        self.base_layout.addWidget(self.path_label)
+
+
 class KitSearchBar(QWidget):
     """Custom search bar for the kits tab."""
 
@@ -327,6 +365,15 @@ class KitSearchBar(QWidget):
         # Iterate over all kits and set visibility based on search.
         for kit_id, kit in enumerate(self.kit_tab.kits):
             if kit_id in kit_ids:
+                kit.setVisible(True)
+            else:
+                kit.setVisible(False)
+
+        # Iterate over all local kits that are not in the database.
+        search_terms = [s.strip().lower() for s in text.split(",")]
+
+        for kit in self.kit_tab.local_kits:
+            if any(term in kit.content.kit_info.name.lower() for term in search_terms):
                 kit.setVisible(True)
             else:
                 kit.setVisible(False)

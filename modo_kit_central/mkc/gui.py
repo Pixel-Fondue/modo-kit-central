@@ -12,8 +12,10 @@ except ImportError:
     from PySide2.QtWidgets import QMainWindow, QTabWidget, QWidget, QVBoxLayout, QTabBar, QLabel
 
 # Kit imports
-from .prefs import Text, KEYS, DATA, Paths, TabRequest
-from .widgets.tabs import tab_map, TAB, KitsTab
+from .prefs import Text, KEYS, DATA, TabRequest
+from .files import Paths
+from .version import __version__
+from .widgets.tabs import tab_map, TAB
 from .widgets.core import Banner
 
 
@@ -34,7 +36,7 @@ class KitCentralWindow(QMainWindow):
     def _build_window(self) -> None:
         """Sets up the main window properties."""
         self.setStyleSheet(DATA.CSS)
-        self.setWindowTitle(Text.title)
+        self.setWindowTitle(f"{Text.title} (v{__version__})")
         self.setWindowFlags(self.windowFlags() | Qt.WindowStaysOnTopHint)
         self.icon = QPixmap(Paths.ICON.as_posix())
         self.setWindowIcon(self.icon)
@@ -101,32 +103,35 @@ class KitCentralWindow(QMainWindow):
         Returns:
             QWidget: The new tab widget if it was created, otherwise None.
         """
-        # Get the intended tab name and check to see if it exists.
-        tab_name = tab_request.name if tab_request.name else tab_request.type
-        tab = self.tabs.findChild(QWidget, tab_name)
-        # If the tab exists, get the index of the tab, else set it to -1.
-        tab_index = self.tabs.indexOf(tab) if tab else -1
+        # Determine the tab name, fallback to type if name not provided
+        tab_name = tab_request.name or tab_request.type
 
-        if tab_index != -1:
-            # The tab already exists, so just show it.
+        # Check if tab already exists
+        existing_tab: TAB = self.tabs.findChild(QWidget, tab_name)
+        if existing_tab:
+            # Show the existing tab
+            tab_index = self.tabs.indexOf(existing_tab)
             self.tabs.setCurrentIndex(tab_index)
-            return self.tabs.widget(tab_index)
+            return existing_tab
 
-        # Looks like we need to create a new tab. Let's grab it from the tab map.
-        tab_class: Type[TAB] = tab_map.get(tab_request.type)
+        # Get the tab class from our map
+        tab_class = tab_map.get(tab_request.type)
         if not tab_class:
             return None
 
-        # Initialize the tab with the request data if it exists.
+        # Create the new tab
         new_tab = tab_class(**tab_request.kwargs) if tab_request.kwargs else tab_class()
-        # Add the new tab to the tab bar and get the index.
+
+        # Add the tab to the tab bar
         new_tab_index = self.tabs.addTab(new_tab, tab_name)
 
+        # Handle tab visibility if requested
         if tab_request.show:
-            # If the tab is requested to be shown, set it to the current index.
             self.tabs.setCurrentIndex(new_tab_index)
+
+        # Handle tab close-ability
         if not tab_request.closeable:
-            # If the tab is not closeable, set the close button to None.
+            # Remove close buttons from both sides
             self.tab_bar.setTabButton(new_tab_index, QTabBar.RightSide, None)
             self.tab_bar.setTabButton(new_tab_index, QTabBar.LeftSide, None)
 

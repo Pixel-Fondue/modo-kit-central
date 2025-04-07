@@ -25,7 +25,7 @@ Windows:
 - `pyenv install 3.10.11`
 - `pyenv global 3.10.11`
 - Without choco:
-- - Follow the instructions on the [pyenv-win github page](https://github.com/pyenv-win/pyenv-win/blob/master/docs/installation.md#powershell).
+- - Follow the instructions on the [pyenv-win GitHub page](https://github.com/pyenv-win/pyenv-win/blob/master/docs/installation.md#powershell).
 
 # Running the scripts
 1. Install the kit locally.

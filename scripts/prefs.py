@@ -1,29 +1,37 @@
+"""All paths related to building the project."""
 from dataclasses import dataclass
 from pathlib import Path
+
+import toml
+
+
+@dataclass
+class Project:
+    """Project data from pyproject.toml."""
+    DATA = toml.load("pyproject.toml")
+    NAME = DATA['tool']['poetry']['name']
+    VERSION = DATA['tool']['poetry']['version']
+    LPK_NAME = DATA['modo']['kit']['lpk_name']
 
 
 @dataclass(frozen=True)
 class Paths:
     """All paths related to building the project."""
-    ROOT = Path(__file__).parent.parent.absolute()
-    PYPROJECT = ROOT / "pyproject.toml"
+    REPO_ROOT = Path(__file__).parent.parent.absolute()
     # Kit paths
-    KIT = ROOT / "modo_kit_central"
+    KIT = REPO_ROOT / Project.NAME
     KIT_RESOURCES = KIT / "resources"
     KIT_DATABASE = KIT_RESOURCES / "kits.db"
+    KIT_VERSION = KIT / "mkc" / "version.py"
     # Tooling paths
-    SCRIPTS = ROOT / "scripts"
+    SCRIPTS = REPO_ROOT / "scripts"
     SCRIPTS_RESOURCES = SCRIPTS / "resources"
-    SCRIPT_QUERIES = SCRIPTS / "queries"
     # Data paths
     KIT_DATA = SCRIPTS_RESOURCES / "kits.json"
     AUTHOR_DATA = SCRIPTS_RESOURCES / "authors.json"
-
-
-@dataclass
-class KitInfo:
-    """Dataclass for the kit's information."""
-    name: str       # The name of the kit.
-    enabled: bool   # If the kit is enabled.
-    version: str    # The version of the kit.
-    path: Path      # The path to the kits root directory.
+    # Build paths
+    BUILD = REPO_ROOT / "build"
+    LICENSE = REPO_ROOT / "LICENSE"
+    ZIP_INDEX = "index.xml"
+    ZIP_LICENSE = "LICENSE"
+    LPK_OUTPUT = BUILD / Project.LPK_NAME.format(version=Project.VERSION)

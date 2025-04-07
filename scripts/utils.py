@@ -40,25 +40,13 @@ def make_index(folder: Path, files: List[Path], message: str, restart="No") -> s
     return xml
 
 
-def get_pyproject() -> Dict:
-    """Gets the data from the pyproject file.
-
-    Returns:
-        The data from the pyproject.toml file.
-    """
-    return toml.load(Paths.PYPROJECT.read_text())
-
-
-def get_version(project: Dict) -> str:
-    """Gets the version number from the pyproject file.
+def set_version(version: str) -> None:
+    """Sets the version.py file to the given version.
 
     Args:
-        project: The data from the pyproject file.
-
-    Returns:
-        The version number from the pyproject file.
+        version: The version number to set.
     """
-    return project.get('tool', {}).get('poetry', {}).get('version', "0.0.0")
+    Paths.KIT_VERSION.write_text(f"__version__ = '{version}'\n")
 
 
 def readable_size(size: int, decimal: int = 2) -> str:

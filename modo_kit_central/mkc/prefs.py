@@ -9,8 +9,6 @@ from typing import List, Dict, TYPE_CHECKING
 if TYPE_CHECKING:
     from .gui import KitCentralWindow
 
-PY_VERSION = f"{sys.version_info.major}{sys.version_info.minor}"
-
 
 @dataclass
 class KitInfo:
@@ -38,22 +36,7 @@ class DATA:
     CSS: str = ""
     mkc_window: 'KitCentralWindow' = None
     modo_kits: Dict[str, KitInfo] = None
-
-
-class Paths:
-    """Paths for Modo Kit Central resources."""
-    KIT_ROOT = Path(__file__).parent.parent.absolute()
-    KIT_LIBS = KIT_ROOT / f"libs_{PY_VERSION}"
-    RESOURCES = KIT_ROOT / "resources"
-    DATABASE = RESOURCES / "mkc_kits.db"
-    DATABASE_MANIFEST = RESOURCES / "manifest.json"
-    TEST_RELEASE = RESOURCES / "test_release.json"
-    AVATAR = RESOURCES / "avatars" / "profile.png"
-    IMAGES = RESOURCES / "images"
-    ICON = IMAGES / "icon.png"
-    IMAGES_CSS = IMAGES / "css"
-    BANNERS = IMAGES / "banners"
-    BANNER_MKC = BANNERS / "Modo Kit Central.png"
+    local_kits: Dict[str, KitInfo] = None
 
 
 @dataclass
@@ -101,10 +84,31 @@ class KIT:
 @dataclass
 class KitManifest:
     """Dataclass to hold information from a manifest.json file for a kit."""
-    name: str        # The name of the kit.
-    version: str     # The version of the kit.
-    description: str # The description of the kit.
-    latest: str      # The latest lpk filename.
+    name: str               # The name of the kit.
+    version: str            # The version of the kit.
+    description: str        # The description of the kit.
+    # Optional
+    latest: str = None      # The latest lpk filename for all platforms.
+    latest_win: str = None  # The latest lpk filename for Windows.
+    latest_mac: str = None  # The latest lpk filename for Mac.
+
+    def __post_init__(self) -> None:
+        """Get the latest lpk for the active platform."""
+        if self.latest:
+            # If latest is used, assume it's the latest for all platforms.
+            return
+        elif sys.platform == "win32":
+            self.latest = self.latest_win
+        elif sys.platform == "darwin":
+            self.latest = self.latest_mac
+
+
+@dataclass
+class GithubAsset:
+    """Dataclass to hold information from a GitHub release."""
+    name: str   # The name of the asset.
+    size: int   # The size of the asset.
+    url: str    # The URL to download the asset.
 
 
 @dataclass
