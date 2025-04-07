@@ -1,9 +1,11 @@
 """Update module for modo kit central."""
 import json
-from typing import Dict, List
+from typing import Dict
 from pathlib import Path
 from urllib import request
 from http import HTTPStatus
+
+from lx import command
 
 from .files import Paths
 from .github import get_latest_release
@@ -99,4 +101,5 @@ def update_kit(kit: KitData) -> None:
         raise Exception("No latest lpk found in the release assets!")
 
     lpk_file = kit_download(latest_lpk)
-    print(lpk_file)
+    # Load the lpk into modo.
+    command('app.load', filename=lpk_file.as_posix())

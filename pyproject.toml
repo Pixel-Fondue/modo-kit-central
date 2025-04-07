@@ -11,6 +11,7 @@ package-mode = true
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.10"
+modo-api = "^15.1.2"
 
 [tool.poetry.group.dev.dependencies]
 # Add your development dependencies here
@@ -30,6 +31,7 @@ build-backend = "poetry.core.masonry.api"
 
 [modo.kit]
 short_name = "mkc"
+label = "Modo Kit Central"
 lpk_name = "modo_kit_central_{version}.lpk"
 
 [tool.poetry.scripts]

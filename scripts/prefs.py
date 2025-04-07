@@ -9,9 +9,13 @@ import toml
 class Project:
     """Project data from pyproject.toml."""
     DATA = toml.load("pyproject.toml")
-    NAME = DATA['tool']['poetry']['name']
-    VERSION = DATA['tool']['poetry']['version']
-    LPK_NAME = DATA['modo']['kit']['lpk_name']
+    POETRY = DATA['tool']['poetry']
+    NAME = POETRY['name']
+    VERSION = POETRY['version']
+    DESCRIPTION = POETRY['description']
+    KIT = DATA['modo']['kit']
+    KIT_LABEL = KIT['label']
+    LPK_NAME = KIT['lpk_name']
 
 
 @dataclass(frozen=True)
@@ -35,3 +39,4 @@ class Paths:
     ZIP_INDEX = "index.xml"
     ZIP_LICENSE = "LICENSE"
     LPK_OUTPUT = BUILD / Project.LPK_NAME.format(version=Project.VERSION)
+    MANIFEST_OUTPUT = BUILD / "manifest.json"

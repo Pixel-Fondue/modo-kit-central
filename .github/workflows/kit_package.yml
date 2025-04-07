@@ -41,32 +41,16 @@ jobs:
           python -m scripts.build
           ls -l ./build
 
-      # Create a tag release on the repository
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1.1.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          # Set tag values
-          tag_name: ${{ env.KIT_VERSION }}
-          release_name: Modo Kit Central ${{ env.KIT_VERSION }}
-          draft: false
-          prerelease: false
-
       # Upload the .lpk file to the release tag.
       - name: Upload LPK Asset
         id: upload-release-asset
-        uses: actions/upload-release-asset@v1.0.2
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          KIT_FILE_NAME: ${{ env.KIT_NAME }}_${{ env.KIT_VERSION }}.lpk
         with:
-          # Get the url of the checked out code
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          # Get the relative path to the generated kit
-          asset_path: ./build/${{ env.KIT_FILE_NAME }}
-          # Get the name of the lpk file
-          asset_name: ${{ env.KIT_FILE_NAME }}
-          # Mark the LPK type as zip
-          asset_content_type: application/zip
+          # Set the tag name of the release to the version.
+          tag_name: ${{ env.KIT_VERSION }}
+          # Set the name of the release.
+          name: Modo Kit Central ${{ env.KIT_VERSION }}
+          # Upload all files in the build directory.
+          files: build/*

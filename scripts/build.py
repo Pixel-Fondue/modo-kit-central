@@ -1,6 +1,10 @@
+from json import dumps
 from pathlib import Path
 from shutil import rmtree
+from dataclasses import asdict
 from zipfile import ZipFile, ZIP_DEFLATED
+
+from modo_kit_central.mkc.prefs import KitManifest
 
 from .utils import make_index, readable_size, set_version
 from .prefs import Paths, Project
@@ -8,7 +12,13 @@ from .prefs import Paths, Project
 
 def create_manifest() -> None:
     """Creates the manifest.json file for the published kit."""
-    ...
+    manifest = KitManifest(
+        name=Project.KIT_LABEL,
+        version=Project.VERSION,
+        description=Project.DESCRIPTION,
+        latest=Paths.LPK_OUTPUT.name
+    )
+    Paths.MANIFEST_OUTPUT.write_text(dumps(asdict(manifest), indent=4))
 
 
 def package_kit() -> Path:
@@ -18,8 +28,13 @@ def package_kit() -> Path:
         lpk_path: The path to the LPK file.
     """
 
-    # Get all files in the kit directory while ignoring .pyc files
-    kit_files = [f for f in Paths.KIT.glob("**/*") if f.is_file() and not f.suffix == ".pyc"]
+    # Get all files in the kit directory while ignoring .pyc files and the libs directory
+    kit_files = [
+        f for f in Paths.KIT.glob("**/*")
+        if f.is_file()
+        and not f.suffix == ".pyc"
+        and "libs" not in f.parts
+    ]
 
     # Clear the build directory
     if Paths.BUILD.exists():
@@ -57,7 +72,9 @@ def package_kit() -> Path:
 
 def main():
     """Main entry point of the builder script."""
+
     package_kit()
+    create_manifest()
 
 
 if __name__ == '__main__':

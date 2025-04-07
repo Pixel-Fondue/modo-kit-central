@@ -75,22 +75,6 @@ class KitsTab(QWidget):
         self.thread.started.connect(self.worker.run)
         self.thread.start()
 
-    def on_finished(self) -> None:
-        """Handles the completion of the database worker."""
-        self.thread.quit()
-        self.thread.wait()
-        self._add_kits()
-
-    def on_error(self, error: str) -> None:
-        """Handles the error from the database worker.
-
-        Args:
-            error: The error raised by the worker.
-        """
-        print(f"Error: {error}")
-        self.thread.quit()
-        self.thread.wait()
-
     def _add_kits(self) -> None:
         """Iterate over the kits database table and add the kits to the UI."""
         # Get copy of installed kits.
@@ -120,6 +104,22 @@ class KitsTab(QWidget):
             kit_container.set_content(kit_info_widget)
             self.local_kits.append(kit_container)
             self.kits_layout.addWidget(kit_container)
+
+    def on_finished(self) -> None:
+        """Handles the completion of the database worker."""
+        self.thread.quit()
+        self.thread.wait()
+        self._add_kits()
+
+    def on_error(self, error: str) -> None:
+        """Handles the error from the database worker.
+
+        Args:
+            error: The error raised by the worker.
+        """
+        print(f"Error: {error}")
+        self.thread.quit()
+        self.thread.wait()
 
 
 class AuthorTab(QScrollArea):
