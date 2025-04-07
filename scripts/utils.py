@@ -1,12 +1,9 @@
-from typing import List
+from typing import List, Dict
 from pathlib import Path
 
 import toml
 
-
-class Paths:
-    """Class to store the paths used in the project."""
-    REPO_ROOT = Path(__file__).parent.parent.absolute()
+from .prefs import Paths
 
 
 def make_index(folder: Path, files: List[Path], message: str, restart="No") -> str:
@@ -43,30 +40,13 @@ def make_index(folder: Path, files: List[Path], message: str, restart="No") -> s
     return xml
 
 
-def get_pyproject() -> dict:
-    """Gets the data from the pyproject file.
-
-    Returns:
-        project_data: The data from the pyproject.toml file.
-    """
-    pyproject = Paths.REPO_ROOT / "pyproject.toml"
-
-    with pyproject.open('r') as project_file:
-        project_data = toml.load(project_file)
-
-    return project_data
-
-
-def get_version(project: dict) -> str:
-    """Gets the version number from the pyproject file.
+def set_version(version: str) -> None:
+    """Sets the version.py file to the given version.
 
     Args:
-        project: The data from the pyproject file.
-
-    Returns:
-        The version number from the pyproject file.
+        version: The version number to set.
     """
-    return project.get('project', {}).get('version', "0.0.0")
+    Paths.KIT_VERSION.write_text(f"__version__ = '{version}'\n")
 
 
 def readable_size(size: int, decimal: int = 2) -> str:
