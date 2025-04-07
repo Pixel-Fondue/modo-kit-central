@@ -17,8 +17,8 @@ def get_cache_dir() -> Path:
         # macOS: ~/Library/Caches/ModoKitCentral
         cache_dir = Path.home() / "Library" / "Caches" / "ModoKitCentral"
     else:
-        # Fallback to temp directory
-        cache_dir = Path(Paths.KIT_CACHE)
+        # Fallback to Linux: ~/.cache/ModoKitCentral
+        cache_dir = Path.home() / ".cache" / "ModoKitCentral"
 
     # Ensure the directory exists
     cache_dir.mkdir(parents=True, exist_ok=True)
