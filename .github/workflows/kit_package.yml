@@ -31,15 +31,11 @@ jobs:
 
       # Use toml to get the version of the kit and store it as an environment variable
       - name: Get Kit Version
-        run: |
-          echo "KIT_VERSION=$(python -c 'import toml; print(toml.load("pyproject.toml")["project"]["version"])')" >> $GITHUB_ENV
-          echo "KIT_NAME=$(python -c 'import toml; print(toml.load("pyproject.toml")["project"]["name"])')" >> $GITHUB_ENV
+        run: python -m scripts.version
 
       # Package the lpk file
       - name: Package Kit
-        run: |
-          python -m scripts.build
-          ls -l ./build
+        run: python -m scripts.build
 
       # Upload the .lpk file to the release tag.
       - name: Upload LPK Asset
