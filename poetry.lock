@@ -6,7 +6,7 @@ version = "15.1.2"
 description = "Dumped API for Modo 15.1.2"
 optional = false
 python-versions = "*"
-groups = ["main"]
+groups = ["dev"]
 files = [
     {file = "modo-api-15.1.2.tar.gz", hash = "sha256:2e5df341c01d388134ff393c9a42ca3397e791043f3f1845f709bed45a6dd3b6"},
     {file = "modo_api-15.1.2-py3-none-any.whl", hash = "sha256:34a3020536e7abe1c16be36a8e567a418a2e10422a005af0c901e95b500ede25"},
@@ -91,4 +91,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.9,<3.10"
-content-hash = "7d5cdf02be813af813ff483ffc8324fa5b9835734e2e4e5782b6d0bfab4048d9"
+content-hash = "ab40173c0d5c07c1f4103fa6b252a781424108dc170f4c7361a60065fc54439e"
