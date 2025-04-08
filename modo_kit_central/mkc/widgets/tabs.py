@@ -72,6 +72,7 @@ class KitsTab(QWidget):
         self.worker = DatabaseWorker()
         self.worker.moveToThread(self.thread)
         self.worker.finished.connect(self.on_finished)
+        self.worker.error.connect(self.on_error)
         self.thread.started.connect(self.worker.run)
         self.thread.start()
 
@@ -90,7 +91,7 @@ class KitsTab(QWidget):
             author_data = {'author_data': get_author(kit_data.author)}
             author_request = TabRequest(type=KEYS.AUTHORS, name=kit_data.author, show=True, kwargs=author_data)
             # Link the author request signal to the kit widget
-            kit_widget.author_clicked.connect(lambda author: self.author_request.emit(author_request))
+            kit_widget.author_clicked.connect(lambda clicked, r=author_request: self.author_request.emit(r))
             self.kits.append(kit_container)
             self.kits_layout.addWidget(kit_container)
             # If the kit is installed, remove it from the installed kits list.
@@ -175,6 +176,7 @@ class AuthorTab(QScrollArea):
         self.worker = AvatarWorker(self.data.name)
         self.worker.moveToThread(self.thread)
         self.worker.finished.connect(self.on_avatar_finished)
+        self.worker.error.connect(self.on_avatar_error)
         self.thread.started.connect(self.worker.run)
         self.thread.start()
 
@@ -188,6 +190,16 @@ class AuthorTab(QScrollArea):
         self.thread.wait()
         self.avatar_pix = avatar
         self._add_avatar()
+
+    def on_avatar_error(self, error: str) -> None:
+        """Handles the error from the avatar worker.
+
+        Args:
+            error: The error raised by the worker.
+        """
+        print(f"Error: {error}")
+        self.thread.quit()
+        self.thread.wait()
 
     def _add_avatar(self) -> None:
         """Adds the author's avatar to the author tab."""
