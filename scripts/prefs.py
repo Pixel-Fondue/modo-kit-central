@@ -27,6 +27,7 @@ class Paths:
     KIT_RESOURCES = KIT / "resources"
     KIT_DATABASE = KIT_RESOURCES / "kits.db"
     KIT_VERSION = KIT / "mkc" / "version.py"
+    KIT_INDEX = KIT / "index.cfg"
     # Tooling paths
     SCRIPTS = REPO_ROOT / "scripts"
     SCRIPTS_RESOURCES = SCRIPTS / "resources"

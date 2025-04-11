@@ -1,7 +1,6 @@
-from typing import List, Dict
+import re
+from typing import List
 from pathlib import Path
-
-import toml
 
 from .prefs import Paths
 
@@ -47,6 +46,14 @@ def set_version(version: str) -> None:
         version: The version number to set.
     """
     Paths.KIT_VERSION.write_text(f"__version__ = '{version}'\n")
+    index_data = Paths.KIT_INDEX.read_text()
+    # Replace the version number in the index.cfg file
+    versioned_data = re.sub(
+        r'MODO_KIT_CENTRAL" version="[^"]*"',
+        f'MODO_KIT_CENTRAL" version="{version}"',
+        index_data
+    )
+    Paths.KIT_INDEX.write_text(versioned_data)
 
 
 def readable_size(size: int, decimal: int = 2) -> str:

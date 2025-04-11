@@ -16,29 +16,6 @@ from .utils import up_to_date
 from .database import ManifestData
 
 
-class ReleaseWorker(QObject):
-    """Worker class to fetch the latest release metadata from a repository."""
-    finished = Signal(dict)
-    error = Signal(str)
-
-    def __init__(self, repo_url: str) -> None:
-        """Initialization of the ReleaseWorker.
-
-        Args:
-            repo_url: The URL to the repository.
-        """
-        super().__init__()
-        self.repo_url = repo_url
-
-    def run(self) -> None:
-        """Runs the worker to fetch the latest release."""
-        try:
-            release_info = get_latest_release(self.repo_url)
-            self.finished.emit(release_info)
-        except Exception as e:
-            self.error.emit(f"Failed to fetch the latest release: {e}")
-
-
 class DatabaseWorker(QObject):
     """Worker class to fetch the latest database."""
     finished = Signal()
@@ -129,7 +106,10 @@ class AvatarWorker(QObject):
         """Runs the worker to fetch the author's avatar."""
         try:
             avatar_pixmap = self._fetch_avatar()
-            self.finished.emit(avatar_pixmap)
+            if avatar_pixmap:
+                self.finished.emit(avatar_pixmap)
+            else:
+                self.error.emit("Failed to fetch the author's avatar.")
         except Exception as e:
             self.error.emit(f"Failed to fetch the author's avatar: {e}")
 
