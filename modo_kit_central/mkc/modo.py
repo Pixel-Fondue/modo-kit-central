@@ -1,6 +1,7 @@
 from typing import Dict, Iterator
 from pathlib import Path
 from xml.etree import ElementTree as ET
+import re
 
 import lxu
 
@@ -61,11 +62,13 @@ def hint_to_kit_info(value: str, import_data: Dict[str, ImportInfo]) -> KitInfo:
     """
     # Sanitize the hint value
     sanitized_value = sanitize_hint_value(value)
+    print(import_data)
     if "(disabled)" in sanitized_value:
         # Get the name of the kit
         sanitized_value = sanitized_value.split("(disabled)")[0].strip()
         # Version is not available for disabled kits, so we need to get it from the index.cfg file.
         import_info = import_data.get(sanitized_value)
+
         return KitInfo(name=sanitized_value, enabled=False, version=import_info.name, path=import_info.path)
     else:
         # Split the value by "version" to get the name and version
@@ -106,13 +109,16 @@ def get_import_data() -> Dict[str, ImportInfo]:
 
     for kit_config_file in all_imported_kits():
         try:
-            # Parse the XML data from the index.cfg file.
-            configuration = ET.parse(kit_config_file).getroot()
-            # <configuration kit="MODO_KIT_CENTRAL" version="1.30" and="rel]1500"></configuration>
-            kit_name = configuration.attrib.get('kit')
-            kit_version = configuration.attrib.get('version')
-            kit_root_path = kit_config_file.parent
-            kit_xml_data[kit_name] = ImportInfo(name=kit_name, version=kit_version, path=kit_root_path)
+            # Pattern info: <configuration kit="MODO_KIT_CENTRAL" version="2.0">
+            # Kit = required, version = optional
+            config_pattern = r'<configuration[^>]*\skit="([^"]*)"(?:[^>]*\sversion="([^"]*)")?'
+            match = re.search(config_pattern, kit_config_file.read_text())
+            if match:
+                kit_name = match.group(1)
+                kit_version = match.group(2) if match.group(2) else None
+                kit_xml_data[kit_name] = ImportInfo(name=kit_name, version=kit_version, path=kit_config_file.parent)
+            else:
+                print(f"Error parsing {kit_config_file}")
         except ET.ParseError:
             print(f"Error parsing {kit_config_file.parent.name}/index.cfg")
 

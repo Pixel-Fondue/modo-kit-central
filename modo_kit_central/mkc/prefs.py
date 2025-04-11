@@ -22,9 +22,9 @@ class KitInfo:
 @dataclass
 class ImportInfo:
     """Dataclass for the import information."""
-    name: str       # The name of the kit.
-    version: str    # The version of the kit.
-    path: Path      # The path to the kits root directory.
+    name: str          # The name of the kit.
+    version: str       # The version of the kit.
+    path: Path = None  # The path to the kits root directory.
 
 
 @dataclass
